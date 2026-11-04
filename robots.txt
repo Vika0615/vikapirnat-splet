@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /src/
+Disallow: /tools/
+Sitemap: https://vika0615.github.io/vikapirnat-splet/sitemap.xml

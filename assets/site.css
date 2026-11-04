@@ -1,0 +1,63 @@
+/* Vika Pirnat — dodatki za spletno stran. Samo žetoni iz tokens.css; komponente so v bundle.css (kopija iz design sistema). */
+
+html { scroll-padding-top: var(--space-4); }
+
+/* Preskok na vsebino */
+.site-skip { position: absolute; left: var(--space-4); top: -100px; z-index: 10; padding: 10px 14px; border-radius: var(--radius-m); background: var(--lime); color: var(--on-lime); font-weight: 600; text-decoration: none; }
+.site-skip:focus { top: var(--space-3); }
+
+/* Preklop jezika kot povezave (ločen URL za vsak jezik) */
+.vp-lang a { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.06em; padding: 5px 10px; border-radius: var(--radius-s); color: var(--ink-dim); text-decoration: none; }
+.vp-lang a:hover { color: var(--ink); }
+.vp-lang a[aria-current="true"] { background: var(--ink); color: var(--ground); }
+
+/* Oznaka »Kaj pove slika« ostane oznaka (v bundle.css jo povozi .vp-map__cap p) */
+.vp-map__cap p.vp-eyebrow { font-size: 12px; }
+
+/* Uvod brez slike */
+.site-intro { padding-block: var(--space-9) var(--space-7); display: grid; gap: var(--space-5); max-width: var(--measure); }
+.site-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3) var(--space-5); }
+.site-stack { display: grid; gap: var(--space-5); align-content: start; }
+.site-more { margin: var(--space-6) 0 0; }
+
+/* Ponudba */
+.site-offer { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); }
+.site-offer article { display: grid; gap: var(--space-3); align-content: start; padding: var(--space-5); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-l); }
+.site-offer h3 { margin: 0; }
+.site-offer p { margin: 0; font-size: 16px; line-height: 1.55; color: var(--ink-dim); }
+.site-offer ul { margin: 0; padding-left: 1.1em; display: grid; gap: var(--space-1); font-size: 16px; line-height: 1.5; color: var(--ink); }
+.site-offer .vp-out { display: grid; gap: var(--space-1); padding-top: var(--space-3); border-top: 1px solid var(--line); font-size: 16px; line-height: 1.5; color: var(--ink); }
+
+/* Seznam case studyjev */
+.site-work { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-4); }
+.site-card { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 160px; gap: var(--space-6); align-items: center; padding: var(--space-6); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-l); }
+.site-card:hover { border-color: var(--edge); }
+.site-card__text { display: grid; gap: var(--space-3); justify-items: start; min-width: 0; }
+.site-card__text p { margin: 0; }
+.site-card h2 { margin: 0; font-family: var(--font-display); font-size: clamp(22px, 2.6vw, 30px); line-height: 1.2; font-weight: 700; letter-spacing: -0.02em; text-wrap: balance; }
+.site-card h2 a { color: var(--ink); text-decoration: none; }
+.site-card h2 a::after { content: ""; position: absolute; inset: 0; border-radius: var(--radius-l); }
+.site-card h2 a:focus-visible { outline: none; }
+.site-card:has(h2 a:focus-visible) { outline: 2px solid var(--focus); outline-offset: 3px; }
+.site-card__go { font-weight: 600; font-size: 15px; color: var(--link); text-decoration: underline; text-underline-offset: 5px; }
+.site-card img { display: block; width: 100%; height: auto; border-radius: var(--radius-l); border: 1px solid var(--line); }
+.site-card--soon { background: transparent; border-style: dashed; border-color: var(--edge); grid-template-columns: minmax(0, 1fr); }
+.site-card--soon:hover { border-color: var(--edge); }
+.site-card--soon h2 { color: var(--ink-dim); }
+
+/* Obrazec */
+.site-hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.site-form__error { margin: 0; padding: var(--space-3) var(--space-4); border: 1px solid var(--edge); border-radius: var(--radius-m); color: var(--ink); font-size: 15px; }
+.vp-form button[disabled] { opacity: 0.7; cursor: progress; }
+
+/* Kontaktna stran */
+.site-contact { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--space-7); padding-block: var(--space-9) var(--space-8); align-items: start; }
+
+@media (max-width: 820px) {
+  .site-intro { padding-block: var(--space-7) var(--space-6); }
+  .site-offer { grid-template-columns: minmax(0, 1fr); }
+  .site-card { grid-template-columns: minmax(0, 1fr); gap: var(--space-5); padding: var(--space-5); }
+  .site-card img { max-width: 160px; }
+  .site-contact { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); padding-block: var(--space-7); }
+  .vp-contact { padding: var(--space-5); }
+}

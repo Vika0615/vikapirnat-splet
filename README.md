@@ -1,0 +1,47 @@
+# vikapirnat-splet
+
+Osebna spletna stran Vike Pirnat (produktno vodenje, svetovanje). Statični HTML, CSS in malo JS, brez ogrodja. Gostuje na GitHub Pages.
+
+## Zgradba
+
+| Mapa ali datoteka | Kaj je |
+|---|---|
+| `src/sl/*.html`, `src/en/*.html` | vsebina strani (SLO in ENG). **Tu urejaš besedilo.** |
+| `tools/build.py` | zgradi strani: glava, noga, pas s klicem k pogovoru, obrazec, `tokens.css`, `sitemap.xml`, `404.html` |
+| `tools/tokens.json` | žetoni iz design sistema (barve, pisave, razmiki) |
+| `assets/bundle.css`, `assets/bundle.js` | **kopiji** komponent iz design sistema, ne urejaj ročno |
+| `assets/site.css`, `assets/site.js` | dodatki samo za to stran (kartice dela, obrazec, preklop jezika) |
+| `assets/maps/*.js` | podatki za zemljevid problema (en na case study) |
+| `assets/img/` | posnetki zaslona |
+| `index.html`, `storitve/`, `delo/`, `kontakt/`, `en/…` | zgrajene strani, ki jih streže GitHub Pages |
+
+Design sistem: https://claude.ai/artifact/QMSTcyAZq2PXfPNSFTN81s
+
+## Sprememba besedila
+
+1. Uredi datoteko v `src/sl/` ali `src/en/` (vedno obe).
+2. Zaženi `py tools/build.py`.
+3. Preveri lokalno: `py -m http.server 8765` in odpri http://127.0.0.1:8765/
+4. Commit in push. GitHub Pages objavi v 1–2 minutah.
+
+## Nov case study
+
+1. V `tools/build.py` dodaj vrstico v `PAGES`, npr. `"pilot": ("delo/pilot/", "en/work/pilot/")`.
+2. Kopiraj `src/sl/gobe.html` in `src/en/gobe.html` v `src/sl/pilot.html` in `src/en/pilot.html` ter zamenjaj vsebino.
+3. Za zemljevid problema dodaj `assets/maps/pilot.js` in v glavi strani `scripts: maps/pilot.js`; na sliki `data-map="pilot"`.
+4. Na strani Delo (`src/sl/work.html`, `src/en/work.html`) kopiraj kartico `<li class="site-card">` in jo postavi na vrh seznama. Za kartico »V pripravi« uporabi `site-card site-card--soon` (navodilo je v komentarju na strani).
+5. `py tools/build.py`, commit, push.
+
+## Obrazec
+
+Obrazec pošilja prek Formspree na `vika.pirnat@gmail.com`. Endpoint je v `tools/build.py` (`FORM_ENDPOINT`). Polja: `ime`, `email`, `faza`, `sporocilo`, skrita `_subject`, `jezik` in past za robote `_gotcha`.
+
+## Lastna domena (ko jo kupiš)
+
+1. V `tools/build.py` nastavi `SITE_URL = "https://vikapirnat.si/"`, dodaj datoteko `CNAME` z vrstico `vikapirnat.si`, zaženi build, commit, push.
+2. Pri registrarju v DNS dodaj (vrednosti preveri v GitHubovi dokumentaciji »Managing a custom domain for your GitHub Pages site«):
+   - 4 zapise `A` za `@`: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+   - (neobvezno) 4 zapise `AAAA` za `@`: `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`
+   - zapis `CNAME` za `www` → `vika0615.github.io`
+3. Na GitHubu: Settings → Pages → Custom domain `vikapirnat.si` → Save. Ko je preverjanje DNS zeleno, vklopi **Enforce HTTPS**.
+4. Priporočeno: domeno preveri tudi v Settings (profil) → Pages → Add a domain, da je nihče drug ne more uporabiti.

@@ -1,0 +1,97 @@
+/* Ustvarjeno iz tools/tokens.json (design sistem Vika Pirnat, različica 2).
+   Ne urejaj ročno: spremeni tokens.json in zaženi `py tools/build.py`.
+   Privzeta je temna tema; svetla velja, kadar jo ima brskalnik ali jo izbere obiskovalec. */
+
+:root {
+  --font-display: "Red Hat Display", "Segoe UI", system-ui, sans-serif;
+  --font-text: "Red Hat Text", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "Red Hat Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 72px;
+  --space-9: 104px;
+  --radius-s: 6px;
+  --radius-m: 8px;
+  --radius-l: 12px;
+  --radius-xl: 20px;
+  --content-max: 1120px;
+  --measure: 66ch;
+  --focus: var(--lime-line);
+  --link: var(--lime-line);
+  --ground: #272b40;
+  --surface: #30354d;
+  --raised: #393e58;
+  --line: #4a4f6a;
+  --edge: #8d92ad;
+  --ink: #f3efe9;
+  --ink-dim: #bcbfd0;
+  --lime: #b4d77a;
+  --lime-line: #b4d77a;
+  --lime-soft: #3b4632;
+  --on-lime: #272b40;
+  --magenta: #ee86cb;
+  --alert: #ff9b8a;
+  --alert-soft: #4a2f38;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --ground: #edeef4;
+    --surface: #f8f9fc;
+    --raised: #ffffff;
+    --line: #d5d8e4;
+    --edge: #7c8199;
+    --ink: #1b1f30;
+    --ink-dim: #545a73;
+    --lime: #b4d77a;
+    --lime-line: #4d7316;
+    --lime-soft: #e5f0d0;
+    --on-lime: #1b1f30;
+    --magenta: #b0267a;
+    --alert: #a8321e;
+    --alert-soft: #f8e1dc;
+    color-scheme: light;
+  }
+}
+
+:root[data-theme="light"] {
+  --ground: #edeef4;
+  --surface: #f8f9fc;
+  --raised: #ffffff;
+  --line: #d5d8e4;
+  --edge: #7c8199;
+  --ink: #1b1f30;
+  --ink-dim: #545a73;
+  --lime: #b4d77a;
+  --lime-line: #4d7316;
+  --lime-soft: #e5f0d0;
+  --on-lime: #1b1f30;
+  --magenta: #b0267a;
+  --alert: #a8321e;
+  --alert-soft: #f8e1dc;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --ground: #272b40;
+  --surface: #30354d;
+  --raised: #393e58;
+  --line: #4a4f6a;
+  --edge: #8d92ad;
+  --ink: #f3efe9;
+  --ink-dim: #bcbfd0;
+  --lime: #b4d77a;
+  --lime-line: #b4d77a;
+  --lime-soft: #3b4632;
+  --on-lime: #272b40;
+  --magenta: #ee86cb;
+  --alert: #ff9b8a;
+  --alert-soft: #4a2f38;
+  color-scheme: dark;
+}

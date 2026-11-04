@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gobe case study: an app that deliberately doesn't identify mushrooms · Vika Pirnat</title>
+<meta name="description" content="How a “snap a photo, get an answer” idea became a learning quiz for beginners. From idea to Google Play in 23 days.">
+<link rel="canonical" href="https://vika0615.github.io/vikapirnat-splet/en/work/gobe/">
+<link rel="alternate" hreflang="sl" href="https://vika0615.github.io/vikapirnat-splet/delo/gobe/">
+<link rel="alternate" hreflang="en" href="https://vika0615.github.io/vikapirnat-splet/en/work/gobe/">
+<link rel="alternate" hreflang="x-default" href="https://vika0615.github.io/vikapirnat-splet/delo/gobe/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gobe case study: an app that deliberately doesn't identify mushrooms · Vika Pirnat">
+<meta property="og:description" content="How a “snap a photo, get an answer” idea became a learning quiz for beginners. From idea to Google Play in 23 days.">
+<meta property="og:url" content="https://vika0615.github.io/vikapirnat-splet/en/work/gobe/">
+<meta property="og:locale" content="en_GB">
+<link rel="icon" href="data:,">
+<script>(function(){try{var t=localStorage.getItem('vp-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../../../assets/tokens.css">
+<link rel="stylesheet" href="../../../assets/bundle.css">
+<link rel="stylesheet" href="../../../assets/site.css">
+</head>
+<body data-lang="en">
+<a class="site-skip" href="#vsebina">Skip to content</a>
+<div class="vp-wrap">
+  <header class="vp-header">
+    <a class="vp-header__name" href="../../../en/">Vika Pirnat</a>
+    <div class="vp-header__end">
+      <nav class="vp-header__nav" aria-label="Main navigation">
+        <a href="../../../en/">How I work</a>
+        <a href="../../../en/services/">Services</a>
+        <a href="../../../en/work/" aria-current="page">Work</a>
+        <a href="../../../en/contact/">Contact</a>
+      </nav>
+      <div class="vp-lang" role="group" aria-label="Language">
+        <a href="../../../delo/gobe/" hreflang="sl">SLO</a><a href="../../../en/work/gobe/" hreflang="en" aria-current="true">ENG</a>
+      </div>
+      <div class="vp-lang" role="group" aria-label="Theme">
+        <button type="button" data-set-theme="system" aria-pressed="true">System</button><button type="button" data-set-theme="light" aria-pressed="false">Light</button><button type="button" data-set-theme="dark" aria-pressed="false">Dark</button>
+      </div>
+    </div>
+  </header>
+</div>
+<main id="vsebina">
+<div class="vp-wrap">
+
+  <section class="vp-hero">
+    <div class="vp-hero__text">
+      <p class="vp-eyebrow">Case study · Gobe · Android · 2026</p>
+      <h1 class="vp-h1">An app that deliberately doesn't identify mushrooms</h1>
+      <p class="vp-lede">How a “snap a photo, get an answer” idea became a learning quiz for beginners: who we serve, what we don't build and why, how we measure. From idea to Google Play in 23 days.</p>
+      <dl class="vp-meta">
+        <div><dt>Role</dt><dd>Product manager, idea to launch</dd></div>
+        <div><dt>Team</dt><dd>One person</dd></div>
+        <div><dt>Time</dt><dd>23 days</dd></div>
+        <div><dt>Market</dt><dd>Slovenia, Android</dd></div>
+      </dl>
+      <div><a class="vp-btn vp-btn--quiet" href="https://play.google.com/store/apps/details?id=io.github.vika0615.gobe" target="_blank" rel="noopener">Gobe on Google Play ↗</a></div>
+    </div>
+    <figure class="vp-phone">
+      <img src="../../../assets/img/gobe/02-kviz.webp" width="540" height="960" alt="The Gobe quiz (in Slovenian): “What's under the cap?” with the answers gills, tubes, blunt ridges, smooth, spines and “Don't know”.">
+      <figcaption>The quiz asks what an experienced forager looks at.</figcaption>
+    </figure>
+  </section>
+
+  <dl class="vp-stats">
+    <div class="vp-stat"><dt class="vp-stat__l">days from the first line of the spec to public launch</dt><dd class="vp-stat__n">23</dd></div>
+    <div class="vp-stat"><dt class="vp-stat__l">mushrooms in the atlas, each with lookalikes and sources</dt><dd class="vp-stat__n">64</dd></div>
+    <div class="vp-stat"><dt class="vp-stat__l">automated tests</dt><dd class="vp-stat__n">542</dd></div>
+    <div class="vp-stat"><dt class="vp-stat__l">views of one LinkedIn post in 5 days</dt><dd class="vp-stat__n">73,569</dd></div>
+  </dl>
+
+  <section class="vp-section" style="border-top:0">
+    <div class="vp-section__head">
+      <p class="vp-eyebrow">01 · Problem</p>
+      <h2 class="vp-h2">Beginners can't tell which answer is right</h2>
+    </div>
+    <div class="vp-body">
+      <p>By early October 2026, the Clinical Toxicology Centre in Ljubljana had treated 21 mushroom poisonings that year, and 533 over five years. Toxicologist Dr Lucija Šarc warns that families often check online which mushrooms they ate only after the meal.</p>
+      <p>Every day, beginners in Facebook foraging groups post a photo of a mushroom they've just picked and ask strangers about it. They often get two opposite answers: one person says it's poisonous, the next says it's edible. <span class="vp-marker">A beginner has no way to judge which answer is right.</span></p>
+    </div>
+  </section>
+
+  <section class="vp-section">
+    <div class="vp-section__head">
+      <p class="vp-eyebrow">02 · Users</p>
+      <h2 class="vp-h2">Who goes mushroom picking, and who I chose</h2>
+    </div>
+    <div class="vp-seg" role="table" aria-label="User types">
+      <div class="vp-seg__head" role="row">
+        <span class="vp-eyebrow" role="columnheader">Type</span>
+        <span class="vp-eyebrow" role="columnheader">What they want</span>
+        <span class="vp-eyebrow" role="columnheader">What they use now</span>
+        <span class="vp-eyebrow" role="columnheader">Choice</span>
+      </div>
+      <div class="vp-seg__row" role="row">
+        <span class="vp-seg__type" role="cell">The quick-answer seeker</span>
+        <p class="vp-seg__cell" role="cell"><span class="vp-seg__k vp-eyebrow">Wants</span>the mushroom's name and whether it's edible, right now</p>
+        <p class="vp-seg__cell vp-seg__cell--muted" role="cell"><span class="vp-seg__k vp-eyebrow">Now</span>a photo app, a question in a group</p>
+        <div class="vp-seg__choice" role="cell"><span class="vp-tag vp-tag--no">No</span><p>The promise they want can't be kept safely.</p></div>
+      </div>
+      <div class="vp-seg__row" role="row">
+        <span class="vp-seg__type" role="cell">The occasional picker</span>
+        <p class="vp-seg__cell" role="cell"><span class="vp-seg__k vp-eyebrow">Wants</span>picks the 2–3 mushrooms they know, like porcini and chanterelles</p>
+        <p class="vp-seg__cell vp-seg__cell--muted" role="cell"><span class="vp-seg__k vp-eyebrow">Now</span>experience, advice from family</p>
+        <div class="vp-seg__choice" role="cell"><span class="vp-tag vp-tag--partial">Partly</span><p>An atlas with lookalikes: what resembles “my” mushroom.</p></div>
+      </div>
+      <div class="vp-seg__row vp-seg__row--chosen" role="row">
+        <span class="vp-seg__type" role="cell">The beginner who wants to learn</span>
+        <p class="vp-seg__cell" role="cell"><span class="vp-seg__k vp-eyebrow">Wants</span>to understand how mushrooms differ and, step by step, judge for themselves</p>
+        <p class="vp-seg__cell vp-seg__cell--muted" role="cell"><span class="vp-seg__k vp-eyebrow">Now</span>books, clubs, groups</p>
+        <div class="vp-seg__choice" role="cell"><span class="vp-tag vp-tag--chosen">Chosen</span><p>The main user. I'm a beginner too.</p></div>
+      </div>
+      <div class="vp-seg__row" role="row">
+        <span class="vp-seg__type" role="cell">Experienced foragers, clubs</span>
+        <p class="vp-seg__cell" role="cell"><span class="vp-seg__k vp-eyebrow">Wants</span>to share knowledge and protect people and nature</p>
+        <p class="vp-seg__cell vp-seg__cell--muted" role="cell"><span class="vp-seg__k vp-eyebrow">Now</span>their own knowledge</p>
+        <div class="vp-seg__choice" role="cell"><span class="vp-tag vp-tag--no">Not as users</span><p>A source of trust and the toughest critics.</p></div>
+      </div>
+    </div>
+    <div class="vp-body" style="margin-top:var(--space-6)">
+      <p><strong>Why the beginner who wants to learn?</strong> The problem is biggest for them, and existing solutions serve them worst: experts advise them against identification apps, and answers in groups contradict each other. The product can give them honest value without promising certainty. I'm one of them, so I can test every step on myself. And it's the path experts support, and their support is what trust depends on.</p>
+    </div>
+  </section>
+
+  <section class="vp-section">
+    <div class="vp-split">
+      <div>
+        <div class="vp-section__head">
+          <p class="vp-eyebrow">03 · Key decision</p>
+          <h2 class="vp-h2">Why I gave up photo identification</h2>
+          <p class="vp-small">The obvious idea: take a photo, and the app tells you what it is. It would be faster and bring more downloads.</p>
+        </div>
+        <ol class="vp-reasons">
+          <li><div><h4>Users don't ask for a name.</h4><p>In the forest they want to know whether they can eat it. No app can answer that with certainty.</p></div></li>
+          <li><div><h4>A photo can't see the key features.</h4><p>The volva at the base of the stem is often underground; smell and colour change when cut don't show in a picture. These are exactly the features that separate deadly mushrooms from edible ones.</p></div></li>
+          <li><div><h4>The risk isn't symmetrical.</h4><p>A wrong “edible” can kill. A wrong “don't know” costs a full basket.</p></div></li>
+          <li><div><h4>A quick answer teaches nothing.</h4><p>The beginner stays dependent on the app and is back at square one next time.</p></div></li>
+          <li><div><h4>Experts would reject it.</h4><p>Under my post in a foraging group, an experienced forager wrote that beginners should avoid identification apps, because a wrong identification can cause severe poisoning. Every word is true.</p></div></li>
+        </ol>
+        <div class="vp-body" style="margin-top:var(--space-6)">
+          <p><strong>What I built instead:</strong> a quiz that asks what an experienced forager looks at: where it grows, which trees are nearby, what's under the cap, whether it has a ring and a volva. Step by step it rules out what doesn't fit, and next to every mushroom it shows the dangerous lookalikes.</p>
+        </div>
+        <blockquote style="margin:var(--space-7) 0 0">
+          <p class="vp-pull">It doesn't identify mushrooms. It teaches you to look.</p>
+          <span class="vp-pull__by">The product promise</span>
+        </blockquote>
+        <p class="vp-small" style="margin-top:var(--space-5)">The cost: fewer downloads and a slower answer. So the success criterion is that a beginner gets from opening the app to possible matches in under 60 seconds.</p>
+      </div>
+      <figure class="vp-phone">
+        <img src="../../../assets/img/gobe/03-rezultat.webp" width="540" height="960" loading="lazy" alt="The quiz result (in Slovenian): “This is a possible match, not an identification”, with the deadly lookalikes of the chanterelle.">
+        <figcaption>The result is a possible match, not an identification, and it always shows the dangerous lookalikes.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="vp-section">
+    <div class="vp-split">
+      <div>
+        <div class="vp-section__head">
+          <p class="vp-eyebrow">04 · In the user's shoes</p>
+          <h2 class="vp-h2">Designed for the forest, not the couch</h2>
+        </div>
+        <ul class="vp-notes">
+          <li><h4>One hand, in a forest</h4><p>Large touch targets, main actions in the lower half of the screen, contrast that holds in sunlight. Works offline and asks for neither camera nor location.</p></li>
+          <li><h4>Colour is a soft signal</h4><p>The death cap often has an olive-brown cap, and a beginner says “brown”. So colour never rules a mushroom out; it only moves it down the list.</p></li>
+          <li><h4>“Don't know” is a valid answer</h4><p>It's on every question and never rules out a dangerous mushroom. The “How do I check?” help has photos.</p></li>
+          <li><h4>A test at home</h4><p>My daughter brought home a mushroom: a parasol, or a deadly destroying angel. The app didn't choose for us. It showed us the difference: snake-like scales on the stem.</p></li>
+          <li><h4>A test in the forest</h4><p>One walk showed there are far more common mushrooms than 25. Testers reported a missing mushroom 33 times. Before launch: 64 species.</p></li>
+          <li><h4>A bug from the meadow</h4><p>“In a meadow” plus “Smooth” gave 0 possible mushrooms. The fix was a new screen: “No mushroom in the app matches. Don't eat a mushroom you can't recognise.”</p></li>
+        </ul>
+      </div>
+      <figure class="vp-phone">
+        <img src="../../../assets/img/gobe/05-dvojnice.webp" width="540" height="960" loading="lazy" alt="A species card (in Slovenian): “Watch out for lookalikes”, with the deadly funeral bell and lookalikes the app doesn't know yet.">
+        <figcaption>Lookalikes, even ones the app doesn't know yet.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="vp-section">
+    <figure class="vp-map" id="map" data-map="gobe">
+      <div class="vp-map__head">
+        <div>
+          <p class="vp-eyebrow">05 · Problem map</p>
+          <h2 class="vp-map__title">The launch date was set by the 14-day test, not by the build.</h2>
+          <p class="vp-map__sub">5 key building blocks · 12 tasks · 4 blind spots · 1 roadblock · 28 days</p>
+        </div>
+        <button class="vp-map__replay" type="button" data-replay>↻ Draw again</button>
+      </div>
+      <p class="vp-map__hint">↔ swipe the diagram sideways</p>
+      <div class="vp-map__scroll"><svg class="vp-map__svg" role="img" aria-label="The Gobe project map by day: key building blocks as lanes, tasks, prerequisites, the critical path, the 14-day closed test as a roadblock, and four blind spots."></svg></div>
+      <div class="vp-map__legend" aria-hidden="true">
+        <span><i class="vp-lg vp-lg--block"></i>key building block</span>
+        <span><i class="vp-lg vp-lg--task"></i>task</span>
+        <span><i class="vp-lg vp-lg--link"></i>prerequisite</span>
+        <span><i class="vp-lg vp-lg--crit"></i>critical path</span>
+        <span><i class="vp-lg vp-lg--blind"></i>blind spot</span>
+        <span><i class="vp-lg vp-lg--bar"></i>roadblock</span>
+      </div>
+      <figcaption class="vp-map__cap">
+        <p class="vp-eyebrow">What the picture says</p>
+        <p>I built the first working version in one week. <strong>The launch date was set by the closed test Google requires: 12 testers, 14 days.</strong> Work continued during the test. Testers reported a missing mushroom 33 times, so the app grew from 25 to 64 species before launch.</p>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="vp-section">
+    <div class="vp-section__head">
+      <p class="vp-eyebrow">06 · Decisions</p>
+      <h2 class="vp-h2">Decisions and trade-offs</h2>
+      <p class="vp-small">Every screen starts as a mock-up I approve before any code. I chose between ideas with an impact–effort matrix.</p>
+    </div>
+    <div class="vp-decisions">
+      <article class="vp-decision"><h3 class="vp-decision__what">A quiz instead of a camera</h3><div class="vp-decision__part"><p class="vp-eyebrow">Why</p><p>Photo identification promises a certainty that doesn't exist.</p></div><div class="vp-decision__part vp-decision__cost"><p class="vp-eyebrow">Trade-off</p><p>Fewer downloads, a slower answer.</p></div></article>
+      <article class="vp-decision"><h3 class="vp-decision__what">Deadly species are never silently dropped</h3><div class="vp-decision__part"><p class="vp-eyebrow">Why</p><p>The risk isn't symmetrical: a wrong “edible” can kill.</p></div><div class="vp-decision__part vp-decision__cost"><p class="vp-eyebrow">Trade-off</p><p>A longer list of possible matches.</p></div></article>
+      <article class="vp-decision"><h3 class="vp-decision__what">Soft and hard signals</h3><div class="vp-decision__part"><p class="vp-eyebrow">Why</p><p>Beginners misjudge colour, so colour never rules a mushroom out.</p></div><div class="vp-decision__part vp-decision__cost"><p class="vp-eyebrow">Trade-off</p><p>A less narrow shortlist.</p></div></article>
+      <article class="vp-decision"><h3 class="vp-decision__what">Lookalikes even when the app doesn't know them</h3><div class="vp-decision__part"><p class="vp-eyebrow">Why</p><p>Silence about a lookalike must not mean “safe”.</p></div><div class="vp-decision__part vp-decision__cost"><p class="vp-eyebrow">Trade-off</p><p>I publicly admit what the app doesn't know.</p></div></article>
+      <article class="vp-decision"><h3 class="vp-decision__what">No internet, camera or location</h3><div class="vp-decision__part"><p class="vp-eyebrow">Why</p><p>There's no signal in the forest; privacy.</p></div><div class="vp-decision__part vp-decision__cost"><p class="vp-eyebrow">Trade-off</p><p>All photos ship inside the app, so the install is bigger.</p></div></article>
+      <article class="vp-decision"><h3 class="vp-decision__what">Sources instead of waiting for expert review</h3><div class="vp-decision__part"><p class="vp-eyebrow">Why</p><p>Launch doesn't depend on a volunteer; when sources disagree, the stricter label wins.</p></div><div class="vp-decision__part vp-decision__cost"><p class="vp-eyebrow">Trade-off</p><p>Responsibility for the content is mine.</p></div></article>
+      <article class="vp-decision"><h3 class="vp-decision__what">64 species instead of 25 before launch</h3><div class="vp-decision__part"><p class="vp-eyebrow">Why</p><p>33 reports of a missing mushroom and one walk in the forest.</p></div><div class="vp-decision__part vp-decision__cost"><p class="vp-eyebrow">Trade-off</p><p>A later launch.</p></div></article>
+      <article class="vp-decision"><h3 class="vp-decision__what">Analytics only with consent</h3><div class="vp-decision__part"><p class="vp-eyebrow">Why</p><p>Trust and GDPR; no IP addresses, no search terms.</p></div><div class="vp-decision__part vp-decision__cost"><p class="vp-eyebrow">Trade-off</p><p>I see about 57% of users.</p></div></article>
+    </div>
+  </section>
+
+  <section class="vp-section">
+    <div class="vp-split" style="grid-template-columns:minmax(0,1fr) minmax(0,420px)">
+      <div>
+        <div class="vp-section__head">
+          <p class="vp-eyebrow">07 · Measurement</p>
+          <h2 class="vp-h2">What people actually do</h2>
+        </div>
+        <div class="vp-body">
+          <p>Analytics (PostHog, EU servers) starts only after the user taps “Allow”. No IP addresses, no session recordings, no search terms.</p>
+          <p>During the test, testers mostly tapped through the quiz on the couch. <span class="vp-marker">Data like that measures curiosity, not use.</span> The real test was the forest.</p>
+          <p>Google's test robots were being counted as users (28 fake devices). After I fixed the filter, there were 57 active devices, not 87.</p>
+        </div>
+      </div>
+      <div class="vp-bars" role="img" aria-label="“Don't know” on the volva question: 12 of 20 before photos, 1 of 12 after.">
+        <p class="vp-bars__title">“Don't know” on the volva question</p>
+        <div class="vp-bar"><div class="vp-bar__label"><span>Before photos in the help</span><span class="vp-bar__value">12 of 20 · 60%</span></div><div class="vp-bar__track"><div class="vp-bar__fill" style="width:60%"></div></div></div>
+        <div class="vp-bar vp-bar--after"><div class="vp-bar__label"><span>After adding photos</span><span class="vp-bar__value">1 of 12 · 8%</span></div><div class="vp-bar__track"><div class="vp-bar__fill" style="width:8.33%"></div></div></div>
+        <p class="vp-small">Small numbers, but the direction is clear. Fewer “don't know” answers isn't automatically better; people may be guessing. That's why “don't know” never rules out a dangerous mushroom.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="vp-section">
+    <div class="vp-section__head">
+      <p class="vp-eyebrow">08 · First week</p>
+      <h2 class="vp-h2">People open the dangerous lookalikes</h2>
+    </div>
+    <div class="vp-rank">
+      <div><span class="vp-eyebrow">Most opened</span><b>False chanterelle</b><span><span class="vp-tag vp-tag--risk">Poisonous</span></span><span class="vp-small">lookalike of the chanterelle</span></div>
+      <div><span class="vp-eyebrow">Second most opened</span><b>Deadly dapperling</b><span><span class="vp-tag vp-tag--risk">Deadly</span></span><span class="vp-small">lookalike of the parasol</span></div>
+      <div><span class="vp-eyebrow">Not in the top 8</span><b>Porcini</b><span><span class="vp-tag">Edible</span></span><span class="vp-small">the mushroom everyone knows</span></div>
+    </div>
+    <ul class="vp-notes" style="margin-top:var(--space-6)">
+      <li><h4>~56 installs</h4><p>in the first 4 days, 5 uninstalls</p></li>
+      <li><h4>395 species cards opened</h4><p>13 people came back to the quiz</p></li>
+      <li><h4>55% of opens at the weekend</h4><p>when people go mushroom picking</p></li>
+      <li><h4>46 people with analytics on</h4><p>one week, testers included: small numbers</p></li>
+    </ul>
+    <p class="vp-pull" style="margin-top:var(--space-7);max-width:22ch;font-size:clamp(26px,3.4vw,36px)">They aren't just looking for a name. They're looking for the difference between edible and poisonous.</p>
+  </section>
+
+  <section class="vp-section">
+    <div class="vp-section__head">
+      <p class="vp-eyebrow">09 · What I learned</p>
+      <h2 class="vp-h2">Four lessons for every next product</h2>
+    </div>
+    <ul class="vp-notes">
+      <li><h4>Letting go is hardest</h4><p>The hardest product decision is dropping the feature everyone expects.</p></li>
+      <li><h4>Test where it's used</h4><p>Couch data measures curiosity. The real test is the place where the product is used.</p></li>
+      <li><h4>Measure before the test</h4><p>I add analytics before the test. Without it I'd have a feeling, not evidence.</p></li>
+      <li><h4>Check the filter</h4><p>If the number is the same with and without it, the filter doesn't work.</p></li>
+    </ul>
+  </section>
+
+</div>
+
+<section class="vp-band" id="contact" aria-labelledby="cs-contact">
+  <div class="vp-wrap vp-band__inner">
+    <div class="site-stack">
+      <p class="vp-eyebrow">Contact</p>
+      <h2 class="vp-h2" id="cs-contact">Have an idea or a product, and not sure who it's for or what it must do?</h2>
+      <p class="vp-lede">Write me a few lines. I'll reply personally. The first 30-minute call is free.</p>
+    </div>
+    <div class="vp-contact">
+      <form class="vp-form" data-form action="#" method="POST" data-off>
+        <input type="hidden" name="_subject" value="Enquiry from the website">
+        <input type="hidden" name="jezik" value="en">
+        <div class="site-hp" aria-hidden="true"><label>Leave this field empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+        <div class="vp-field"><label for="f-name">Name and company</label><input class="vp-input" id="f-name" name="ime" autocomplete="name"></div>
+        <div class="vp-field"><label for="f-email">Email</label><input class="vp-input" id="f-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="vp-field"><label for="f-stage">Where are you now?</label>
+          <select class="vp-input" id="f-stage" name="faza">
+          <option value="ideja">Idea</option>
+          <option value="prototip">Prototype</option>
+          <option value="produkt">Product with users</option>
+          </select>
+        </div>
+        <div class="vp-field"><label for="f-msg">What are you building, for whom, and where are you stuck?</label><textarea class="vp-input" id="f-msg" name="sporocilo" required></textarea></div>
+        <div><button class="vp-btn vp-btn--primary" type="submit" data-sending="Sending …">Send</button></div>
+        <p class="vp-form__done" data-form-done hidden role="status">Thank you, your message has been sent. I'll reply personally to your email.</p>
+        <p class="site-form__error" data-form-error hidden role="alert">The message couldn't be sent. Please email me at vika.pirnat@gmail.com.</p>
+        <p class="site-form__error" data-form-off hidden role="alert">The form isn't connected yet. Please email me at vika.pirnat@gmail.com.</p>
+        <p class="vp-small">I use the details from this form only to reply to your message. The form runs on Formspree.</p>
+      </form>
+      <div class="vp-contact__alt">
+        <p class="vp-eyebrow">Prefer email or LinkedIn?</p>
+        <div class="vp-contact__row">
+          <span class="vp-contact__email" id="mail">vika.pirnat@gmail.com</span>
+          <button class="vp-btn" type="button" data-copy="mail"><span lang="en">Copy</span></button>
+        </div>
+        <div><a class="vp-btn vp-btn--quiet" href="https://www.linkedin.com/in/vika-pirnat/" target="_blank" rel="noopener">Message me on LinkedIn ↗</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<div class="vp-wrap">
+  <footer class="vp-footer">
+    <span>© 2026 Vika Pirnat</span>
+    <span>Data: Play Console and PostHog, as of 2 Nov 2026.</span>
+    <span><a href="mailto:vika.pirnat@gmail.com">vika.pirnat@gmail.com</a> · <a href="https://www.linkedin.com/in/vika-pirnat/" target="_blank" rel="noopener">LinkedIn ↗</a></span>
+  </footer>
+</div>
+<script src="../../../assets/bundle.js"></script>
+<script src="../../../assets/maps/gobe.js"></script>
+<script src="../../../assets/site.js"></script>
+</body>
+</html>
