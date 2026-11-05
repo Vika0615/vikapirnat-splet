@@ -18,6 +18,7 @@
 <script>document.documentElement.classList.add('js');(function(){try{var t=localStorage.getItem('vp-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
 <link rel="preload" href="../../assets/fonts/red-hat-text-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../assets/fonts/red-hat-display-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../assets/fonts.css">
 <link rel="stylesheet" href="../../assets/tokens.css">
 <link rel="stylesheet" href="../../assets/bundle.css">
@@ -27,12 +28,12 @@
 <a class="site-skip" href="#vsebina">Na vsebino</a>
 <div class="vp-wrap">
   <header class="vp-header">
-    <a class="vp-header__name" href="../../">Vika Pirnat</a>
+    <a class="site-mark" href="../../" aria-label="Vika Pirnat"><span aria-hidden="true">v<span class="site-mark__i">ı</span>ka p<span class="site-mark__i">ı</span>rnat</span></a>
     <div class="vp-header__end">
       <nav class="vp-header__nav" aria-label="Glavna navigacija">
         <a href="../../">O meni</a>
-        <a href="../../kako-delam/">Kako delam</a>
         <a href="../../projekti/" aria-current="page">Projekti</a>
+        <a href="../../blog/">Blog</a>
         <a href="../../kontakt/">Kontakt</a>
       </nav>
       <div class="vp-lang" role="group" aria-label="Jezik">
@@ -40,6 +41,9 @@
       </div>
     </div>
   </header>
+</div>
+<div class="vp-wrap">
+  <nav class="site-crumbs" aria-label="Kje ste"><ol><li><a href="../../">O meni</a></li><li><a href="../../projekti/">Projekti</a></li><li aria-current="page">Gobe</li></ol></nav>
 </div>
 <main id="vsebina">
 <div class="vp-wrap">
@@ -57,7 +61,7 @@
       </dl>
       <div class="site-stores" role="group" aria-label="Prenos aplikacije Gobe">
           <a class="site-store" href="https://play.google.com/store/apps/details?id=io.github.vika0615.gobe" target="_blank" rel="noopener"><span class="site-store__k">Prenesi za Android</span><span class="site-store__n">Google Play ↗</span></a>
-          <span class="site-store site-store--soon"><span class="site-store__k"><span class="site-dot site-dot--soon" aria-hidden="true"></span>Za iPhone · v pripravi</span><span class="site-store__n">App Store</span></span>
+          <span class="site-store site-store--soon"><span class="site-store__k"><span class="site-dot site-dot--soon" aria-hidden="true"></span>V pripravi</span><span class="site-store__n">Za iPhone</span></span>
         </div>
     </div>
     <figure class="vp-phone">
@@ -82,7 +86,7 @@
       <p>Ko sem zaključila v zadnji službi, sem nenadoma imela čas in svobodo. In veliko željo, da enkrat sama izpeljem celoten produkt: od ideje do objave, z analitiko od prvega dne.</p>
       <p>Porodila se je ideja o gobah. Ne poznam jih in veliko ljudi ne ve, kako začeti. V društvo se ne želi vpisati vsak. Mora obstajati preprostejši način. Da jih ne poznam, je bila prednost: vsak korak sem preizkusila na sebi.</p>
       <p>Hkrati me moti, kako izčrpavamo gozd. Naberemo več gob in kostanja, kot jih pojemo, in del konča v smeteh. Tehnologija je lahko mentor: nauči, kaj je prav in kaj pravi zakon, ter gradi potrpežljivost.</p>
-      <p><span class="vp-marker">Cilj: samozavest, da utrgaš svojo prvo lisičko in ti ni treba doma spraševati na Facebooku, ali je užitna.</span></p>
+      <p><span class="vp-marker">Cilj je, da začetnik prvo lisičko prepozna že v gozdu, preden jo utrga, in ne šele doma s pomočjo neznancev na Facebooku.</span></p>
     </div>
   </section>
 
@@ -162,10 +166,10 @@
       <div>
         <div class="vp-section__head">
           <p class="vp-eyebrow">05 · Na kaj sem morala paziti</p>
-          <h2 class="vp-h2" id="pazi">Napačen »užitna« lahko ubije</h2>
+          <h2 class="vp-h2" id="pazi">»Užitna« ob napačni gobi je lahko usodna</h2>
         </div>
         <ol class="vp-reasons">
-          <li><div><h4>Kviz nikoli tiho ne izloči smrtno strupene gobe.</h4><p>Tveganje ni simetrično. Napačen »ne vem« stane polno košaro, napačen »užitna« lahko življenje.</p></div></li>
+          <li><div><h4>Kviz nikoli tiho ne izloči smrtno strupene gobe.</h4><p>Tveganje ni simetrično. Napačen »ne vem« stane polno košaro. Napačen »užitna« ima lahko hude posledice.</p></div></li>
           <li><div><h4>»Ne vem« je vedno dovoljen.</h4><p>In nikoli ne izloči nevarne gobe.</p></div></li>
           <li><div><h4>Barva je mehak znak.</h4><p>Zelena mušnica ima pogosto olivno rjav klobuk in začetnik reče »rjava«. Barva zato gobe ne izloči, le premakne jo nižje na seznamu.</p></div></li>
           <li><div><h4>Vsak podatek ima vir.</h4><p>Pri neskladju virov velja strožja oznaka.</p></div></li>
@@ -258,7 +262,7 @@
     <div class="site-stack">
       <p class="vp-eyebrow">Kontakt</p>
       <h2 class="vp-h2" id="cs-contact">Imate idejo ali produkt in ne veste, za koga je in kaj mora narediti?</h2>
-      <p class="vp-lede">Napišite mi nekaj vrstic. Odgovorim osebno. Prvi 30-minutni pogovor je brezplačen.</p>
+      <p class="vp-lede">Napišite mi nekaj vrstic. Odgovorim osebno.</p>
     </div>
     <div class="vp-contact">
       <div><a class="vp-btn vp-btn--primary" href="mailto:vika.pirnat@gmail.com?subject=Povpra%C5%A1evanje%20s%20spletne%20strani">Pišite mi →</a></div>
@@ -275,9 +279,13 @@
 </section>
 </main>
 <div class="vp-wrap">
+  <nav class="site-pager" aria-label="Naprej ali nazaj"><a class="site-pager__link" href="../../projekti/"><span class="site-pager__k">← Nazaj</span><span class="site-pager__t">Projekti</span></a><a class="site-pager__link site-pager__link--next" href="../../kontakt/"><span class="site-pager__k">Naprej →</span><span class="site-pager__t">Kontakt</span></a></nav>
+</div>
+<div class="vp-wrap">
   <footer class="vp-footer">
     <span>© 2026 Vika Pirnat</span>
     <span>Podatki: Play Console in PostHog, stanje 2. 11. 2026.</span>
+    <nav class="site-footnav" aria-label="Strani"><a href="../../">O meni</a> · <a href="../../projekti/">Projekti</a> · <a href="../../blog/">Blog</a> · <a href="../../kontakt/">Kontakt</a></nav>
     <span><a href="mailto:vika.pirnat@gmail.com">vika.pirnat@gmail.com</a> · <a href="https://www.linkedin.com/in/vika-pirnat/" target="_blank" rel="noopener">LinkedIn ↗</a></span>
     <span class="site-theme"><span>Tema</span>
       <span class="vp-lang" role="group" aria-label="Tema"><button type="button" data-set-theme="system" aria-pressed="true">Sistem</button><button type="button" data-set-theme="light" aria-pressed="false">Svetla</button><button type="button" data-set-theme="dark" aria-pressed="false">Temna</button></span>

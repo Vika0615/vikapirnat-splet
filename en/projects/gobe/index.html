@@ -18,6 +18,7 @@
 <script>document.documentElement.classList.add('js');(function(){try{var t=localStorage.getItem('vp-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
 <link rel="preload" href="../../../assets/fonts/red-hat-text-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../../assets/fonts/red-hat-display-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../../assets/fonts.css">
 <link rel="stylesheet" href="../../../assets/tokens.css">
 <link rel="stylesheet" href="../../../assets/bundle.css">
@@ -27,12 +28,12 @@
 <a class="site-skip" href="#vsebina">Skip to content</a>
 <div class="vp-wrap">
   <header class="vp-header">
-    <a class="vp-header__name" href="../../../en/">Vika Pirnat</a>
+    <a class="site-mark" href="../../../en/" aria-label="Vika Pirnat"><span aria-hidden="true">v<span class="site-mark__i">ı</span>ka p<span class="site-mark__i">ı</span>rnat</span></a>
     <div class="vp-header__end">
       <nav class="vp-header__nav" aria-label="Main navigation">
         <a href="../../../en/">About</a>
-        <a href="../../../en/how-i-work/">How I work</a>
         <a href="../../../en/projects/" aria-current="page">Projects</a>
+        <a href="../../../en/blog/">Blog</a>
         <a href="../../../en/contact/">Contact</a>
       </nav>
       <div class="vp-lang" role="group" aria-label="Language">
@@ -40,6 +41,9 @@
       </div>
     </div>
   </header>
+</div>
+<div class="vp-wrap">
+  <nav class="site-crumbs" aria-label="You are here"><ol><li><a href="../../../en/">About</a></li><li><a href="../../../en/projects/">Projects</a></li><li aria-current="page">Gobe</li></ol></nav>
 </div>
 <main id="vsebina">
 <div class="vp-wrap">
@@ -57,7 +61,7 @@
       </dl>
       <div class="site-stores" role="group" aria-label="Get the Gobe app">
           <a class="site-store" href="https://play.google.com/store/apps/details?id=io.github.vika0615.gobe" target="_blank" rel="noopener"><span class="site-store__k">Download for Android</span><span class="site-store__n">Google Play ↗</span></a>
-          <span class="site-store site-store--soon"><span class="site-store__k"><span class="site-dot site-dot--soon" aria-hidden="true"></span>For iPhone · coming soon</span><span class="site-store__n">App Store</span></span>
+          <span class="site-store site-store--soon"><span class="site-store__k"><span class="site-dot site-dot--soon" aria-hidden="true"></span>Coming soon</span><span class="site-store__n">For iPhone</span></span>
         </div>
     </div>
     <figure class="vp-phone">
@@ -82,7 +86,7 @@
       <p>When I finished at my last job, I suddenly had time and freedom. And a strong wish to take a whole product from idea to launch on my own, with analytics from day one.</p>
       <p>Then came the idea of mushrooms. I don't know them, and many people don't know where to start. Not everyone wants to join a society. There had to be a simpler way. Not knowing them was an advantage: I could test every step on myself.</p>
       <p>I've also always been bothered by how we strip the forest. We pick more mushrooms and chestnuts than we eat, and some end up in the bin. Technology can be a mentor: it can teach what's right and what the law says, and build patience.</p>
-      <p><span class="vp-marker">The goal: the confidence to pick your first chanterelle without asking a Facebook group, back at home, whether it's edible.</span></p>
+      <p><span class="vp-marker">The goal: a beginner who recognises their first chanterelle in the forest, before picking it, not back home with the help of strangers on Facebook.</span></p>
     </div>
   </section>
 
@@ -94,7 +98,7 @@
     <div class="vp-body">
       <p>Every day, beginners in Facebook foraging groups post a photo of a mushroom and ask strangers. Under the same photo, one person writes “poisonous”, the next “edible”. A beginner can't tell who is right.</p>
       <p>By October 2026, the Clinical Toxicology Centre in Ljubljana had treated 21 mushroom poisonings that year, and 533 over five years. Toxicologist Dr Lucija Šarc warns that families often check what they ate only after the meal.</p>
-      <p>The obvious solution was a “snap and identify” app. Simple, fast, high impact. And wrong. It would encourage even more careless picking. Worse, it would give false confidence. A chanterelle can be mistaken for the deadly webcap, which can kill.</p>
+      <p>The obvious solution was a “snap and identify” app. Simple, fast, high impact. And wrong. It would encourage even more careless picking. Worse, it would give false confidence. A chanterelle can be mistaken for the deadly webcap.</p>
       <p><span class="vp-marker">One more answer doesn't solve this. An app that teaches people to judge does.</span></p>
     </div>
     <blockquote style="margin:var(--space-7) 0 0">
@@ -162,10 +166,10 @@
       <div>
         <div class="vp-section__head">
           <p class="vp-eyebrow">05 · What I had to watch out for</p>
-          <h2 class="vp-h2" id="careful">A wrong “edible” can kill</h2>
+          <h2 class="vp-h2" id="careful">“Edible” on the wrong mushroom can be fatal</h2>
         </div>
         <ol class="vp-reasons">
-          <li><div><h4>The quiz never silently rules out a deadly mushroom.</h4><p>The risk isn't symmetrical. A wrong “don't know” costs a full basket; a wrong “edible” can cost a life.</p></div></li>
+          <li><div><h4>The quiz never silently rules out a deadly mushroom.</h4><p>The risk isn't symmetrical. A wrong “don't know” costs a full basket. A wrong “edible” can have serious consequences.</p></div></li>
           <li><div><h4>“Don't know” is always allowed.</h4><p>And it never rules out a dangerous mushroom.</p></div></li>
           <li><div><h4>Colour is a soft sign.</h4><p>The death cap often has an olive-brown cap, and a beginner says “brown”. So colour doesn't rule a mushroom out, it only moves it down the list.</p></div></li>
           <li><div><h4>Every fact has a source.</h4><p>When sources disagree, the stricter label wins.</p></div></li>
@@ -258,7 +262,7 @@
     <div class="site-stack">
       <p class="vp-eyebrow">Contact</p>
       <h2 class="vp-h2" id="cs-contact">Do you have an idea or a product, but aren't sure who it's for and what it must do?</h2>
-      <p class="vp-lede">Write me a few lines. I'll reply personally. The first 30-minute call is free.</p>
+      <p class="vp-lede">Write me a few lines. I'll reply personally.</p>
     </div>
     <div class="vp-contact">
       <div><a class="vp-btn vp-btn--primary" href="mailto:vika.pirnat@gmail.com?subject=Enquiry%20from%20the%20website">Email me →</a></div>
@@ -275,9 +279,13 @@
 </section>
 </main>
 <div class="vp-wrap">
+  <nav class="site-pager" aria-label="Next or back"><a class="site-pager__link" href="../../../en/projects/"><span class="site-pager__k">← Back</span><span class="site-pager__t">Projects</span></a><a class="site-pager__link site-pager__link--next" href="../../../en/contact/"><span class="site-pager__k">Next →</span><span class="site-pager__t">Contact</span></a></nav>
+</div>
+<div class="vp-wrap">
   <footer class="vp-footer">
     <span>© 2026 Vika Pirnat</span>
     <span>Data: Play Console and PostHog, as of 2 Nov 2026.</span>
+    <nav class="site-footnav" aria-label="Pages"><a href="../../../en/">About</a> · <a href="../../../en/projects/">Projects</a> · <a href="../../../en/blog/">Blog</a> · <a href="../../../en/contact/">Contact</a></nav>
     <span><a href="mailto:vika.pirnat@gmail.com">vika.pirnat@gmail.com</a> · <a href="https://www.linkedin.com/in/vika-pirnat/" target="_blank" rel="noopener">LinkedIn ↗</a></span>
     <span class="site-theme"><span>Theme</span>
       <span class="vp-lang" role="group" aria-label="Theme"><button type="button" data-set-theme="system" aria-pressed="true">System</button><button type="button" data-set-theme="light" aria-pressed="false">Light</button><button type="button" data-set-theme="dark" aria-pressed="false">Dark</button></span>

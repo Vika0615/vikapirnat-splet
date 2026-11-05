@@ -18,6 +18,7 @@
 <script>document.documentElement.classList.add('js');(function(){try{var t=localStorage.getItem('vp-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
 <link rel="preload" href="../assets/fonts/red-hat-text-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/red-hat-display-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../assets/fonts.css">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/bundle.css">
@@ -27,12 +28,12 @@
 <a class="site-skip" href="#vsebina">Na vsebino</a>
 <div class="vp-wrap">
   <header class="vp-header">
-    <a class="vp-header__name" href="../">Vika Pirnat</a>
+    <a class="site-mark" href="../" aria-label="Vika Pirnat"><span aria-hidden="true">v<span class="site-mark__i">ı</span>ka p<span class="site-mark__i">ı</span>rnat</span></a>
     <div class="vp-header__end">
       <nav class="vp-header__nav" aria-label="Glavna navigacija">
         <a href="../">O meni</a>
-        <a href="../kako-delam/">Kako delam</a>
         <a href="../projekti/" aria-current="page">Projekti</a>
+        <a href="../blog/">Blog</a>
         <a href="../kontakt/">Kontakt</a>
       </nav>
       <div class="vp-lang" role="group" aria-label="Jezik">
@@ -40,6 +41,9 @@
       </div>
     </div>
   </header>
+</div>
+<div class="vp-wrap">
+  <nav class="site-crumbs" aria-label="Kje ste"><ol><li><a href="../">O meni</a></li><li aria-current="page">Projekti</li></ol></nav>
 </div>
 <main id="vsebina">
 <div class="vp-wrap">
@@ -73,7 +77,7 @@
   <div class="vp-wrap vp-band__inner">
     <div class="site-stack">
       <p class="vp-eyebrow">Kontakt</p>
-      <h2 class="vp-h2" id="cta-title">Prvi 30-minutni pogovor je brezplačen.</h2>
+      <h2 class="vp-h2" id="cta-title">Stopite z mano v stik.</h2>
       <p class="vp-lede">Povejte mi, kaj gradite, za koga in kje se je zataknilo. Odgovorim osebno.</p>
       <p class="vp-small">Odprta sem za pogodbeno delo, skupen projekt ali zaposlitev.</p>
     </div>
@@ -92,8 +96,12 @@
 </section>
 </main>
 <div class="vp-wrap">
+  <nav class="site-pager" aria-label="Naprej ali nazaj"><a class="site-pager__link" href="../"><span class="site-pager__k">← Nazaj</span><span class="site-pager__t">O meni</span></a><a class="site-pager__link site-pager__link--next" href="../projekti/gobe/"><span class="site-pager__k">Naprej →</span><span class="site-pager__t">Gobe</span></a></nav>
+</div>
+<div class="vp-wrap">
   <footer class="vp-footer">
     <span>© 2026 Vika Pirnat</span>
+    <nav class="site-footnav" aria-label="Strani"><a href="../">O meni</a> · <a href="../projekti/">Projekti</a> · <a href="../blog/">Blog</a> · <a href="../kontakt/">Kontakt</a></nav>
     <span><a href="mailto:vika.pirnat@gmail.com">vika.pirnat@gmail.com</a> · <a href="https://www.linkedin.com/in/vika-pirnat/" target="_blank" rel="noopener">LinkedIn ↗</a></span>
     <span class="site-theme"><span>Tema</span>
       <span class="vp-lang" role="group" aria-label="Tema"><button type="button" data-set-theme="system" aria-pressed="true">Sistem</button><button type="button" data-set-theme="light" aria-pressed="false">Svetla</button><button type="button" data-set-theme="dark" aria-pressed="false">Temna</button></span>

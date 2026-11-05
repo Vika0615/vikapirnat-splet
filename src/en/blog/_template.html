@@ -1,0 +1,31 @@
+<!--
+BLOG POST TEMPLATE. Copy to src/en/blog/<post-name>.html (without the leading _).
+Use the same file name as the Slovenian post in src/sl/blog/, so the language switch links them.
+While status is "draft", the post isn't published. Set it to "published" to publish.
+
+title: Post title · Vika Pirnat
+title_short: Post title
+description: One sentence: what the reader learns.
+date: 2026-11-10
+status: draft
+-->
+<div class="vp-wrap">
+  <article class="site-post">
+    <header class="site-post__head">
+      <p class="vp-eyebrow">{{date}} · Learning</p>
+      <h1 class="vp-h1">Post title</h1>
+      <p class="vp-lede">A two-sentence intro: what the problem is and why it matters.</p>
+    </header>
+    <div class="vp-body">
+      <h2>Subheading</h2>
+      <p>Short paragraphs. One idea per paragraph.</p>
+      <blockquote><p class="vp-pull">The idea the reader takes away.</p></blockquote>
+      <h2>Sources</h2>
+      <ol class="site-refs">
+        <li>Surname, I. (year). Title. <i>Journal</i>, volume(issue), pages.</li>
+      </ol>
+    </div>
+  </article>
+</div>
+
+{{cta}}

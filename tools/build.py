@@ -29,18 +29,30 @@ YEAR = "2026"
 # id strani: (pot SL, pot EN). Nova stran = nova vrstica + src/sl/<id>.html + src/en/<id>.html
 PAGES = {
     "home": ("", "en/"),
-    "method": ("kako-delam/", "en/how-i-work/"),
     "work": ("projekti/", "en/projects/"),
     "gobe": ("projekti/gobe/", "en/projects/gobe/"),
+    "blog": ("blog/", "en/blog/"),
     "contact": ("kontakt/", "en/contact/"),
 }
-NAV = ["home", "method", "work", "contact"]
+NAV = ["home", "work", "blog", "contact"]
+# Drobtinice in »Nazaj«: nadrejena stran. Zapisi na blogu (post:<ime>) imajo za starša blog.
+PARENT = {"work": "home", "gobe": "work", "blog": "home", "contact": "home"}
+# Zapisi na blogu: src/<jezik>/blog/<ime>.html (datoteke z _ na začetku so predloge). Napolni collect_posts().
+POSTS = {"sl": {}, "en": {}}
 LANGS = ("sl", "en")
 
 T = {
     "sl": {
         "locale": "sl_SI",
-        "nav": {"home": "O meni", "method": "Kako delam", "work": "Projekti", "contact": "Kontakt"},
+        "nav": {"home": "O meni", "work": "Projekti", "blog": "Blog", "contact": "Kontakt"},
+        "crumb": {"gobe": "Gobe"},
+        "crumbs_label": "Kje ste",
+        "pager_label": "Naprej ali nazaj",
+        "back": "Nazaj",
+        "next": "Naprej",
+        "footer_nav": "Strani",
+        "posts_empty": "Prvi zapis je v pripravi.",
+        "months": ["jan.", "feb.", "mar.", "apr.", "maj", "jun.", "jul.", "avg.", "sep.", "okt.", "nov.", "dec."],
         "nav_label": "Glavna navigacija",
         "lang_label": "Jezik",
         "theme_label": "Tema",
@@ -48,7 +60,7 @@ T = {
         "skip": "Na vsebino",
         "site": "Vika Pirnat",
         "cta_eyebrow": "Kontakt",
-        "cta_title": "Prvi 30-minutni pogovor je brezplačen.",
+        "cta_title": "Stopite z mano v stik.",
         "cta_lede": "Povejte mi, kaj gradite, za koga in kje se je zataknilo. Odgovorim osebno.",
         "cta_open": "Odprta sem za pogodbeno delo, skupen projekt ali zaposlitev.",
         "c_write": "Pišite mi →",
@@ -58,11 +70,20 @@ T = {
         "linkedin": "Pišite mi na LinkedInu ↗",
         "stores": "Prenos aplikacije Gobe",
         "play_k": "Prenesi za Android",
-        "ios_k": "Za iPhone · v pripravi",
+        "ios_k": "V pripravi",
+        "ios_n": "Za iPhone",
     },
     "en": {
         "locale": "en_GB",
-        "nav": {"home": "About", "method": "How I work", "work": "Projects", "contact": "Contact"},
+        "nav": {"home": "About", "work": "Projects", "blog": "Blog", "contact": "Contact"},
+        "crumb": {"gobe": "Gobe"},
+        "crumbs_label": "You are here",
+        "pager_label": "Next or back",
+        "back": "Back",
+        "next": "Next",
+        "footer_nav": "Pages",
+        "posts_empty": "The first post is on its way.",
+        "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
         "nav_label": "Main navigation",
         "lang_label": "Language",
         "theme_label": "Theme",
@@ -70,7 +91,7 @@ T = {
         "skip": "Skip to content",
         "site": "Vika Pirnat",
         "cta_eyebrow": "Contact",
-        "cta_title": "The first 30-minute call is free.",
+        "cta_title": "Let's talk.",
         "cta_lede": "Tell me what you're building, who it's for and where you're stuck. I'll reply personally.",
         "cta_open": "I'm open to contract work, a joint project or employment.",
         "c_write": "Email me →",
@@ -80,7 +101,8 @@ T = {
         "linkedin": "Message me on LinkedIn ↗",
         "stores": "Get the Gobe app",
         "play_k": "Download for Android",
-        "ios_k": "For iPhone · coming soon",
+        "ios_k": "Coming soon",
+        "ios_n": "For iPhone",
     },
 }
 
@@ -152,7 +174,29 @@ def build_bundle():
 # ---------- 2. strani ----------
 
 def url_of(page_id, lang):
+    if page_id.startswith("post:"):
+        slug = page_id[5:]
+        if slug not in POSTS[lang]:
+            return url_of("blog", lang)  # zapis v drugem jeziku še ne obstaja
+        return ("blog/" if lang == "sl" else "en/blog/") + slug + "/"
     return PAGES[page_id][0 if lang == "sl" else 1]
+
+
+def label_of(page_id, lang):
+    s = T[lang]
+    if page_id.startswith("post:"):
+        return POSTS[lang][page_id[5:]]["title_short"]
+    return s["crumb"].get(page_id) or s["nav"][page_id]
+
+
+def parent_of(page_id):
+    return "blog" if page_id.startswith("post:") else PARENT.get(page_id)
+
+
+def fmt_date(iso, lang):
+    y, m, d = (int(x) for x in iso.split("-"))
+    mon = T[lang]["months"][m - 1]
+    return f"{d}. {mon} {y}" if lang == "sl" else f"{d} {mon} {y}"
 
 
 def depth(path):
@@ -208,12 +252,60 @@ def contact_block(lang):
 
 
 def stores_block(lang):
-    """Gumba za aplikacijo Gobe: Google Play (deluje) in App Store (v pripravi, utripa)."""
+    """Gumba za aplikacijo Gobe: Google Play (deluje) in iPhone (v pripravi, utripa).
+    Applovega gumba »App Store« ne smemo uporabiti, dokler aplikacija ni v App Storu (Applova pravila)."""
     s = T[lang]
     return f"""<div class="site-stores" role="group" aria-label="{s['stores']}">
           <a class="site-store" href="{GOBE_PLAY}" target="_blank" rel="noopener"><span class="site-store__k">{s['play_k']}</span><span class="site-store__n">Google Play ↗</span></a>
-          <span class="site-store site-store--soon"><span class="site-store__k"><span class="site-dot site-dot--soon" aria-hidden="true"></span>{s['ios_k']}</span><span class="site-store__n">App Store</span></span>
+          <span class="site-store site-store--soon"><span class="site-store__k"><span class="site-dot site-dot--soon" aria-hidden="true"></span>{s['ios_k']}</span><span class="site-store__n">{s['ios_n']}</span></span>
         </div>"""
+
+
+def wordmark(href):
+    """Ime kot znak: male črke, pisava Bricolage Grotesque, na i-jih utripajoči zeleni piki."""
+    i = '<span class="site-mark__i">ı</span>'
+    return f'<a class="site-mark" href="{href}" aria-label="Vika Pirnat"><span aria-hidden="true">v{i}ka p{i}rnat</span></a>'
+
+
+def crumbs(lang, root, page_id):
+    """Drobtinice: O meni › Projekti › Gobe. Na domači strani jih ni."""
+    if page_id == "home":
+        return ""
+    chain, cur = [], page_id
+    while cur:
+        chain.append(cur)
+        cur = parent_of(cur)
+    chain.reverse()
+    items = [f'<li><a href="{root}{url_of(pid, lang)}">{label_of(pid, lang)}</a></li>' for pid in chain[:-1]]
+    items.append(f'<li aria-current="page">{label_of(chain[-1], lang)}</li>')
+    return f"""<div class="vp-wrap">
+  <nav class="site-crumbs" aria-label="{T[lang]['crumbs_label']}"><ol>{''.join(items)}</ol></nav>
+</div>"""
+
+
+def pager(lang, root, page_id, next_id):
+    """Na dnu vsake podstrani: nazaj na nadrejeno stran in naprej na naslednjo, da obiskovalec ne obstane."""
+    if page_id == "home":
+        return ""
+    s = T[lang]
+    back = parent_of(page_id)
+    left = f'<a class="site-pager__link" href="{root}{url_of(back, lang)}"><span class="site-pager__k">← {s["back"]}</span><span class="site-pager__t">{label_of(back, lang)}</span></a>'
+    right = ""
+    if next_id:
+        right = f'<a class="site-pager__link site-pager__link--next" href="{root}{url_of(next_id, lang)}"><span class="site-pager__k">{s["next"]} →</span><span class="site-pager__t">{label_of(next_id, lang)}</span></a>'
+    return f"""<div class="vp-wrap">
+  <nav class="site-pager" aria-label="{s['pager_label']}">{left}{right}</nav>
+</div>"""
+
+
+def posts_list(lang, root):
+    posts = sorted(POSTS[lang].items(), key=lambda kv: kv[1]["date"], reverse=True)
+    if not posts:
+        return f'<p class="site-posts-empty"><span class="site-dot site-dot--soon" aria-hidden="true"></span>{T[lang]["posts_empty"]}</p>'
+    items = []
+    for slug, m in posts:
+        items.append(f"""<li><a href="{root}{url_of('post:' + slug, lang)}"><time datetime="{m['date']}">{fmt_date(m['date'], lang)}</time><h2>{m['title_short']}</h2><p>{m.get('description', '')}</p></a></li>""")
+    return f'<ul class="site-posts">{"".join(items)}</ul>'
 
 
 def header(lang, root, page_id, nav_key):
@@ -229,7 +321,7 @@ def header(lang, root, page_id, nav_key):
     return f"""<a class="site-skip" href="#vsebina">{s['skip']}</a>
 <div class="vp-wrap">
   <header class="vp-header">
-    <a class="vp-header__name" href="{root}{url_of('home', lang)}">{s['site']}</a>
+    {wordmark(root + url_of('home', lang))}
     <div class="vp-header__end">
       <nav class="vp-header__nav" aria-label="{s['nav_label']}">
         {chr(10).join('        ' + n for n in nav).strip()}
@@ -242,7 +334,7 @@ def header(lang, root, page_id, nav_key):
 </div>"""
 
 
-def footer(lang, note):
+def footer(lang, root, note):
     s = T[lang]
     note_html = f"\n    <span>{note}</span>" if note else ""
     themes = []
@@ -252,6 +344,7 @@ def footer(lang, note):
     return f"""<div class="vp-wrap">
   <footer class="vp-footer">
     <span>© {YEAR} {s['site']}</span>{note_html}
+    <nav class="site-footnav" aria-label="{s['footer_nav']}">{' · '.join(f'<a href="{root}{url_of(k, lang)}">{s["nav"][k]}</a>' for k in NAV)}</nav>
     <span><a href="mailto:{EMAIL}">{EMAIL}</a> · <a href="{LINKEDIN}" target="_blank" rel="noopener">LinkedIn ↗</a></span>
     <span class="site-theme"><span>{s['theme_label']}</span>
       <span class="vp-lang" role="group" aria-label="{s['theme_label']}">{''.join(themes)}</span>
@@ -278,6 +371,10 @@ def page(lang, page_id, meta, body):
     body = body.replace("{{cta}}", cta_band(lang, root, page_id))
     body = body.replace("{{contact}}", contact_block(lang))
     body = body.replace("{{stores}}", stores_block(lang))
+    body = body.replace("{{posts}}", posts_list(lang, root))
+    if page_id.startswith("post:"):
+        m = POSTS[lang][page_id[5:]]
+        body = body.replace("{{date}}", f'<time datetime="{m["date"]}">{fmt_date(m["date"], lang)}</time>')
     body = body.replace("{{email}}", EMAIL).replace("{{linkedin}}", LINKEDIN)
     body = re.sub(r"\{\{href:([a-z0-9-]+)\}\}", lambda m: root + url_of(m.group(1), lang), body)
     body = body.replace("{{root}}", root)
@@ -300,6 +397,7 @@ def page(lang, page_id, meta, body):
 <script>{HEAD_THEME}</script>
 <link rel="preload" href="{root}assets/fonts/red-hat-text-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{root}assets/fonts/red-hat-display-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{root}assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{root}assets/fonts.css">
 <link rel="stylesheet" href="{root}assets/tokens.css">
 <link rel="stylesheet" href="{root}assets/bundle.css">
@@ -307,10 +405,12 @@ def page(lang, page_id, meta, body):
 </head>
 <body data-lang="{lang}">
 {header(lang, root, page_id, meta.get('nav', page_id))}
+{crumbs(lang, root, page_id)}
 <main id="vsebina">
 {body.strip()}
 </main>
-{footer(lang, meta.get('footnote', ''))}
+{pager(lang, root, page_id, meta.get('next'))}
+{footer(lang, root, meta.get('footnote', ''))}
 <script src="{root}assets/bundle.js"></script>{scripts}
 <script src="{root}assets/site.js"></script>
 </body>
@@ -318,8 +418,27 @@ def page(lang, page_id, meta, body):
 """
 
 
-def build_pages():
+def collect_posts():
     for lang in LANGS:
+        folder = ROOT / "src" / lang / "blog"
+        for f in (sorted(folder.glob("*.html")) if folder.exists() else []):
+            if f.name.startswith("_"):
+                continue
+            meta, body = parse_fragment(f.read_text(encoding="utf-8"))
+            if meta.get("status", "objavljeno") in ("osnutek", "draft"):
+                continue
+            meta.setdefault("title_short", meta.get("title", f.stem).split(" · ")[0])
+            POSTS[lang][f.stem] = {**meta, "_body": body}
+
+
+def build_pages():
+    collect_posts()
+    for lang in LANGS:
+        for slug, m in POSTS[lang].items():
+            pid = "post:" + slug
+            out = ROOT / url_of(pid, lang) / "index.html"
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_text(page(lang, pid, {**m, "nav": "blog"}, m["_body"]), encoding="utf-8", newline="\n")
         for page_id in PAGES:
             src = ROOT / "src" / lang / f"{page_id}.html"
             meta, body = parse_fragment(src.read_text(encoding="utf-8"))
@@ -331,7 +450,7 @@ def build_pages():
 def build_extras():
     urls = "\n".join(
         f"  <url><loc>{SITE_URL}{url_of(p, l)}</loc></url>" for p in PAGES for l in LANGS
-    )
+    ) + "".join(f"\n  <url><loc>{SITE_URL}{url_of('post:' + s, l)}</loc></url>" for l in LANGS for s in POSTS[l])
     (ROOT / "sitemap.xml").write_text(
         f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}\n</urlset>\n',
         encoding="utf-8", newline="\n")
@@ -353,7 +472,7 @@ def build_extras():
 </head>
 <body data-lang="sl">
 <div class="vp-wrap">
-  <header class="vp-header"><a class="vp-header__name" href="{base}">Vika Pirnat</a></header>
+  <header class="vp-header">{wordmark(base)}</header>
   <section class="site-intro">
     <p class="vp-eyebrow">404</p>
     <h1 class="vp-h1">Te strani ni.</h1>
