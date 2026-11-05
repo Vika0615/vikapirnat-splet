@@ -7,9 +7,11 @@ Osebna spletna stran Vike Pirnat (produktno vodenje, svetovanje). Statični HTML
 | Mapa ali datoteka | Kaj je |
 |---|---|
 | `src/sl/*.html`, `src/en/*.html` | vsebina strani (SLO in ENG). **Tu urejaš besedilo.** |
-| `tools/build.py` | zgradi strani: glava, noga, pas s klicem k pogovoru, obrazec, `tokens.css`, `sitemap.xml`, `404.html` |
+| `tools/build.py` | zgradi strani: glava, noga (s preklopom teme), pas s klicem k pogovoru, obrazec, `tokens.css`, `bundle.css`, `sitemap.xml`, `404.html` |
 | `tools/tokens.json` | žetoni iz design sistema (barve, pisave, razmiki) |
-| `assets/bundle.css`, `assets/bundle.js` | **kopiji** komponent iz design sistema, ne urejaj ročno |
+| `tools/bundle.css` | **nespremenjena kopija** komponent iz design sistema; gradnja iz nje naredi `assets/bundle.css` brez pisav z Googla |
+| `assets/bundle.js` | **kopija** skripte iz design sistema, ne urejaj ročno |
+| `assets/fonts.css`, `assets/fonts/` | pisave Red Hat (latin, latin-ext), gostujejo na strani, da obiskovalčev IP ne gre k Googlu |
 | `assets/site.css`, `assets/site.js` | dodatki samo za to stran (kartice dela, obrazec, preklop jezika) |
 | `assets/maps/*.js` | podatki za zemljevid problema (en na case study) |
 | `assets/img/` | posnetki zaslona |
@@ -26,9 +28,9 @@ Design sistem: https://claude.ai/artifact/QMSTcyAZq2PXfPNSFTN81s
 
 ## Nov case study
 
-1. V `tools/build.py` dodaj vrstico v `PAGES`, npr. `"pilot": ("delo/pilot/", "en/work/pilot/")`.
-2. Kopiraj `src/sl/gobe.html` in `src/en/gobe.html` v `src/sl/pilot.html` in `src/en/pilot.html` ter zamenjaj vsebino.
-3. Za zemljevid problema dodaj `assets/maps/pilot.js` in v glavi strani `scripts: maps/pilot.js`; na sliki `data-map="pilot"`.
+1. V `tools/build.py` dodaj vrstico v `PAGES`, npr. `"primer": ("delo/primer/", "en/work/primer/")`.
+2. Kopiraj `src/sl/gobe.html` in `src/en/gobe.html` v `src/sl/primer.html` in `src/en/primer.html` ter zamenjaj vsebino.
+3. Za zemljevid problema dodaj `assets/maps/primer.js` in v glavi strani `scripts: maps/primer.js`; na sliki `data-map="primer"`.
 4. Na strani Delo (`src/sl/work.html`, `src/en/work.html`) kopiraj kartico `<li class="site-card">` in jo postavi na vrh seznama. Za kartico »V pripravi« uporabi `site-card site-card--soon` (navodilo je v komentarju na strani).
 5. `py tools/build.py`, commit, push.
 

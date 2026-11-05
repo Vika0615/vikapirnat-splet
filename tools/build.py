@@ -4,8 +4,11 @@
     py tools/build.py
 
 1. tools/tokens.json   -> assets/tokens.css  (barve, pisave, razmiki iz design sistema)
+   tools/bundle.css    -> assets/bundle.css  (komponente iz design sistema, brez pisav z Googla)
 2. src/sl/*.html, src/en/*.html -> strani v korenu repozitorija (glava, noga, skripte)
 3. sitemap.xml, robots.txt, 404.html
+
+Pisave (assets/fonts.css, assets/fonts/) gostujejo na strani.
 
 Vsebina strani je v src/. Glava, noga, pas s klicem k pogovoru in obrazec so tukaj,
 da so na vseh straneh enaki. Ko je domena pripravljena, spremeni SITE_URL in ponovno zaženi.
@@ -152,6 +155,15 @@ def build_tokens():
     (ROOT / "assets" / "tokens.css").write_text(css, encoding="utf-8", newline="\n")
 
 
+def build_bundle():
+    """tools/bundle.css je nespremenjena kopija iz design sistema. Na strani gre brez @import
+    pisav z Googla: pisave so v assets/fonts.css in assets/fonts/, da obiskovalčev IP ne gre k Googlu."""
+    css = (ROOT / "tools" / "bundle.css").read_text(encoding="utf-8")
+    css = re.sub(r'@import url\("https://fonts\.googleapis\.com[^)]*\);\s*', "", css)
+    head = "/* Ustvarjeno iz tools/bundle.css (kopija iz design sistema), brez @import pisav. Ne urejaj ročno. */\n"
+    (ROOT / "assets" / "bundle.css").write_text(head + css, encoding="utf-8", newline="\n")
+
+
 # ---------- 2. strani ----------
 
 def url_of(page_id, lang):
@@ -245,10 +257,6 @@ def header(lang, root, page_id, nav_key):
     for l, label in (("sl", "SLO"), ("en", "ENG")):
         cur = ' aria-current="true"' if l == lang else ""
         langs.append(f'<a href="{root}{url_of(page_id, l)}" hreflang="{l}"{cur}>{label}</a>')
-    themes = []
-    for m in ("system", "light", "dark"):
-        pressed = "true" if m == "system" else "false"
-        themes.append(f'<button type="button" data-set-theme="{m}" aria-pressed="{pressed}">{s["theme"][m]}</button>')
     return f"""<a class="site-skip" href="#vsebina">{s['skip']}</a>
 <div class="vp-wrap">
   <header class="vp-header">
@@ -260,9 +268,6 @@ def header(lang, root, page_id, nav_key):
       <div class="vp-lang" role="group" aria-label="{s['lang_label']}">
         {''.join(langs)}
       </div>
-      <div class="vp-lang" role="group" aria-label="{s['theme_label']}">
-        {''.join(themes)}
-      </div>
     </div>
   </header>
 </div>"""
@@ -271,10 +276,17 @@ def header(lang, root, page_id, nav_key):
 def footer(lang, note):
     s = T[lang]
     note_html = f"\n    <span>{note}</span>" if note else ""
+    themes = []
+    for m in ("system", "light", "dark"):
+        pressed = "true" if m == "system" else "false"
+        themes.append(f'<button type="button" data-set-theme="{m}" aria-pressed="{pressed}">{s["theme"][m]}</button>')
     return f"""<div class="vp-wrap">
   <footer class="vp-footer">
     <span>© {YEAR} {s['site']}</span>{note_html}
     <span><a href="mailto:{EMAIL}">{EMAIL}</a> · <a href="{LINKEDIN}" target="_blank" rel="noopener">LinkedIn ↗</a></span>
+    <span class="site-theme"><span>{s['theme_label']}</span>
+      <span class="vp-lang" role="group" aria-label="{s['theme_label']}">{''.join(themes)}</span>
+    </span>
   </footer>
 </div>"""
 
@@ -316,8 +328,9 @@ def page(lang, page_id, meta, body):
 <meta property="og:locale" content="{s['locale']}">
 <link rel="icon" href="data:,">
 <script>{HEAD_THEME}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="{root}assets/fonts/red-hat-text-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{root}assets/fonts/red-hat-display-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="{root}assets/fonts.css">
 <link rel="stylesheet" href="{root}assets/tokens.css">
 <link rel="stylesheet" href="{root}assets/bundle.css">
 <link rel="stylesheet" href="{root}assets/site.css">
@@ -363,6 +376,7 @@ def build_extras():
 <meta name="robots" content="noindex">
 <link rel="icon" href="data:,">
 <script>{HEAD_THEME}</script>
+<link rel="stylesheet" href="{base}assets/fonts.css">
 <link rel="stylesheet" href="{base}assets/tokens.css">
 <link rel="stylesheet" href="{base}assets/bundle.css">
 <link rel="stylesheet" href="{base}assets/site.css">
@@ -385,6 +399,7 @@ def build_extras():
 
 if __name__ == "__main__":
     build_tokens()
+    build_bundle()
     build_pages()
     build_extras()
     print("Zgrajeno:", ", ".join(f"/{url_of(p, l)}" for l in LANGS for p in PAGES))

@@ -4,20 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Work · Vika Pirnat</title>
-<meta name="description" content="Case studies: how I think on real projects. The whole picture, key decisions with reasons and trade-offs, and what the data showed.">
+<meta name="description" content="How I think, shown on a real project: the whole picture, key decisions with reasons and trade-offs, and what the data showed.">
 <link rel="canonical" href="https://vika0615.github.io/vikapirnat-splet/en/work/">
 <link rel="alternate" hreflang="sl" href="https://vika0615.github.io/vikapirnat-splet/delo/">
 <link rel="alternate" hreflang="en" href="https://vika0615.github.io/vikapirnat-splet/en/work/">
 <link rel="alternate" hreflang="x-default" href="https://vika0615.github.io/vikapirnat-splet/delo/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Work · Vika Pirnat">
-<meta property="og:description" content="Case studies: how I think on real projects. The whole picture, key decisions with reasons and trade-offs, and what the data showed.">
+<meta property="og:description" content="How I think, shown on a real project: the whole picture, key decisions with reasons and trade-offs, and what the data showed.">
 <meta property="og:url" content="https://vika0615.github.io/vikapirnat-splet/en/work/">
 <meta property="og:locale" content="en_GB">
 <link rel="icon" href="data:,">
 <script>(function(){try{var t=localStorage.getItem('vp-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="../../assets/fonts/red-hat-text-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/red-hat-display-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../assets/fonts.css">
 <link rel="stylesheet" href="../../assets/tokens.css">
 <link rel="stylesheet" href="../../assets/bundle.css">
 <link rel="stylesheet" href="../../assets/site.css">
@@ -37,9 +38,6 @@
       <div class="vp-lang" role="group" aria-label="Language">
         <a href="../../delo/" hreflang="sl">SLO</a><a href="../../en/work/" hreflang="en" aria-current="true">ENG</a>
       </div>
-      <div class="vp-lang" role="group" aria-label="Theme">
-        <button type="button" data-set-theme="system" aria-pressed="true">System</button><button type="button" data-set-theme="light" aria-pressed="false">Light</button><button type="button" data-set-theme="dark" aria-pressed="false">Dark</button>
-      </div>
     </div>
   </header>
 </div>
@@ -48,8 +46,8 @@
 
   <section class="site-intro">
     <p class="vp-eyebrow">Work</p>
-    <h1 class="vp-h1">How I think, on real projects.</h1>
-    <p class="vp-lede">Each case study shows the whole picture, the key decisions with reasons and trade-offs, and what the data showed.</p>
+    <h1 class="vp-h1">How I think, shown on a real project.</h1>
+    <p class="vp-lede">Gobe is the first example I can show in full: the whole picture, the key decisions with reasons and trade-offs, and what the data showed. New examples will appear here as projects wrap up.</p>
   </section>
 
   <section class="vp-section" style="padding-top:var(--space-6)">
@@ -61,7 +59,7 @@
           <p class="vp-eyebrow">Case study · Android · 2026</p>
           <h2><a href="../../en/work/gobe/">Gobe: an app that deliberately doesn't identify mushrooms</a></h2>
           <p class="vp-small">How a “snap a photo, get an answer” idea became a learning quiz for beginners: who we serve, what we don't build and why, how we measure.</p>
-          <p class="vp-data">23 days to launch · 64 mushrooms · 542 automated tests</p>
+          <p class="vp-data">23 days to launch · “don't know” from 60% to 8% · 25 → 64 species</p>
           <span class="site-card__go" aria-hidden="true">Read the case study →</span>
         </div>
         <img src="../../assets/img/gobe/05-dvojnice.webp" width="540" height="960" loading="lazy" alt="A Gobe app screen: dangerous lookalikes next to every mushroom, including ones the app doesn't know yet.">
@@ -96,6 +94,9 @@
   <footer class="vp-footer">
     <span>© 2026 Vika Pirnat</span>
     <span><a href="mailto:vika.pirnat@gmail.com">vika.pirnat@gmail.com</a> · <a href="https://www.linkedin.com/in/vika-pirnat/" target="_blank" rel="noopener">LinkedIn ↗</a></span>
+    <span class="site-theme"><span>Theme</span>
+      <span class="vp-lang" role="group" aria-label="Theme"><button type="button" data-set-theme="system" aria-pressed="true">System</button><button type="button" data-set-theme="light" aria-pressed="false">Light</button><button type="button" data-set-theme="dark" aria-pressed="false">Dark</button></span>
+    </span>
   </footer>
 </div>
 <script src="../../assets/bundle.js"></script>

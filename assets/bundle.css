@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;600;700&family=Red+Hat+Mono:wght@400;500&family=Red+Hat+Text:ital,wght@0,400;0,500;0,600;1,400&display=swap");
-
+/* Ustvarjeno iz tools/bundle.css (kopija iz design sistema), brez @import pisav. Ne urejaj ročno. */
 /* Vika Pirnat — komponente. Vse vrednosti pridejo iz tokens.json (tokens.css). Predpona razredov: vp-
    Teme: tokens.css nastavi [data-theme="dark"] in [data-theme="light"]; spletna stran privzeto sledi brskalniku
    (prefers-color-scheme) in ponudi ročni preklop (VP.theme v bundle.js). */

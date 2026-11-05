@@ -11,6 +11,10 @@ html { scroll-padding-top: var(--space-4); }
 .vp-lang a:hover { color: var(--ink); }
 .vp-lang a[aria-current="true"] { background: var(--ink); color: var(--ground); }
 
+/* Preklop teme v nogi */
+.vp-footer { align-items: center; }
+.site-theme { display: inline-flex; align-items: center; gap: var(--space-2); }
+
 /* Oznaka »Kaj pove slika« ostane oznaka (v bundle.css jo povozi .vp-map__cap p) */
 .vp-map__cap p.vp-eyebrow { font-size: 12px; }
 
@@ -27,6 +31,11 @@ html { scroll-padding-top: var(--space-4); }
 .site-offer p { margin: 0; font-size: 16px; line-height: 1.55; color: var(--ink-dim); }
 .site-offer ul { margin: 0; padding-left: 1.1em; display: grid; gap: var(--space-1); font-size: 16px; line-height: 1.5; color: var(--ink); }
 .site-offer .vp-out { display: grid; gap: var(--space-1); padding-top: var(--space-3); border-top: 1px solid var(--line); font-size: 16px; line-height: 1.5; color: var(--ink); }
+
+/* Case study: »Kaj to pomeni za vaš produkt« */
+.site-takeaway { list-style: none; margin: 0; padding: var(--space-5) var(--space-6); display: grid; gap: var(--space-3); max-width: var(--measure); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-l); }
+.site-takeaway li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: var(--space-2); font-size: 17px; line-height: 1.55; color: var(--ink); }
+.site-takeaway li::before { content: "→"; font-family: var(--font-mono); color: var(--lime-line); }
 
 /* Seznam case studyjev */
 .site-work { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-4); }

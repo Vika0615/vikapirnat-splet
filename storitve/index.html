@@ -4,20 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Storitve · Vika Pirnat</title>
-<meta name="description" content="Produktni pregled, načrtovanje razvoja, pregled funkcionalnosti, preverjanje ideje, merjenje in zunanja produktna vodja.">
+<meta name="description" content="Od ideje do prve različice, produktni pregled, načrtovanje razvoja, pregled funkcionalnosti, merjenje in zunanja produktna vodja.">
 <link rel="canonical" href="https://vika0615.github.io/vikapirnat-splet/storitve/">
 <link rel="alternate" hreflang="sl" href="https://vika0615.github.io/vikapirnat-splet/storitve/">
 <link rel="alternate" hreflang="en" href="https://vika0615.github.io/vikapirnat-splet/en/services/">
 <link rel="alternate" hreflang="x-default" href="https://vika0615.github.io/vikapirnat-splet/storitve/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Storitve · Vika Pirnat">
-<meta property="og:description" content="Produktni pregled, načrtovanje razvoja, pregled funkcionalnosti, preverjanje ideje, merjenje in zunanja produktna vodja.">
+<meta property="og:description" content="Od ideje do prve različice, produktni pregled, načrtovanje razvoja, pregled funkcionalnosti, merjenje in zunanja produktna vodja.">
 <meta property="og:url" content="https://vika0615.github.io/vikapirnat-splet/storitve/">
 <meta property="og:locale" content="sl_SI">
 <link rel="icon" href="data:,">
 <script>(function(){try{var t=localStorage.getItem('vp-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="../assets/fonts/red-hat-text-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/red-hat-display-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/fonts.css">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/bundle.css">
 <link rel="stylesheet" href="../assets/site.css">
@@ -37,9 +38,6 @@
       <div class="vp-lang" role="group" aria-label="Jezik">
         <a href="../storitve/" hreflang="sl" aria-current="true">SLO</a><a href="../en/services/" hreflang="en">ENG</a>
       </div>
-      <div class="vp-lang" role="group" aria-label="Tema">
-        <button type="button" data-set-theme="system" aria-pressed="true">Sistem</button><button type="button" data-set-theme="light" aria-pressed="false">Svetla</button><button type="button" data-set-theme="dark" aria-pressed="false">Temna</button>
-      </div>
     </div>
   </header>
 </div>
@@ -49,7 +47,7 @@
   <section class="site-intro">
     <p class="vp-eyebrow">Storitve</p>
     <h1 class="vp-h1">Pri čem vam lahko pomagam</h1>
-    <p class="vp-lede">Na voljo sem za posamezno nalogo ali za daljše sodelovanje. Pristop je vedno enak: najprej celota, nato to, kar najbolj štrli.</p>
+    <p class="vp-lede">Na voljo sem za posamezno nalogo ali za daljše sodelovanje. Pristop je vedno enak: najprej celota, nato to, na čem vse stoji.</p>
     <div class="site-actions">
       <a class="vp-btn vp-btn--primary" href="../kontakt/">Pišite mi →</a>
     </div>
@@ -58,7 +56,7 @@
   <section class="vp-section" aria-labelledby="problem">
     <div class="vp-section__head">
       <p class="vp-eyebrow">Problem</p>
-      <h2 class="vp-h2" id="problem">Ideja je, nekoga, ki bi jo preveril, pa ni</h2>
+      <h2 class="vp-h2" id="problem">Kaj se zgodi brez produktne vodje</h2>
     </div>
     <div class="vp-body">
       <p>Imate idejo za digitalni produkt ali produkt, ki ne deluje, a nikogar, ki bi ugotovil, za koga je, kaj mora narediti in česa ne ter ali ga ljudje uporabljajo. <span class="vp-marker">Brez tega se gradi na pamet.</span></p>
@@ -71,13 +69,14 @@
       <h2 class="vp-h2" id="pomoc">Na voljo sem za</h2>
     </div>
     <ul class="vp-notes">
+      <li><h4>Od ideje do prve različice</h4><p>Za koga je produkt in ali ga ljudje res rabijo: tipi uporabnikov, makete, nato delujoča prva različica ene glavne poti z analitiko in test s pravimi ljudmi.</p></li>
       <li><h4>Produktni pregled</h4><p>Produkt pogledam z očmi uporabnika: kje se ljudje zataknejo, kaj popraviti najprej in kaj meriti.</p></li>
       <li><h4>Načrtovanje razvoja</h4><p>Prioritete in načrt: kaj gradimo najprej, kaj kasneje in česa ne, z razlogom za vsako odločitev.</p></li>
       <li><h4>Pregled funkcionalnosti</h4><p>Preden gradite novo funkcijo: za koga je, kaj mora narediti in kako boste vedeli, ali deluje.</p></li>
-      <li><h4>Preverjanje ideje</h4><p>Za koga je produkt in ali ga ljudje res rabijo: tipi uporabnikov, makete, test s pravimi ljudmi.</p></li>
       <li><h4>Merjenje</h4><p>Kaj meriti, da boste videli, kaj ljudje res počnejo. Analitika s soglasjem in v skladu z GDPR.</p></li>
       <li><h4>Zunanja produktna vodja</h4><p>Za ekipo, ki gradi, a nima kapacitete za produktno vodenje.</p></li>
     </ul>
+    <p class="vp-small site-more">Kodo za prve različice napišem z orodjem za programiranje z umetno inteligenco (Claude Code), produktne odločitve so moje.</p>
   </section>
 
   <section class="vp-section" aria-labelledby="za-koga">
@@ -111,7 +110,7 @@
       <li>
         <h3>Delo</h3>
         <p>Vsak teden pisni pregled: kaj je narejeno, kaj sem odločila in zakaj.</p>
-        <p class="vp-out"><b>Dobite</b>popisan zemljevid odločitev, ki ga ekipa uporablja naprej</p>
+        <p class="vp-out"><b>Dobite</b>zapisane odločitve, ki jih ekipa uporablja naprej</p>
       </li>
     </ol>
   </section>
@@ -143,6 +142,9 @@
   <footer class="vp-footer">
     <span>© 2026 Vika Pirnat</span>
     <span><a href="mailto:vika.pirnat@gmail.com">vika.pirnat@gmail.com</a> · <a href="https://www.linkedin.com/in/vika-pirnat/" target="_blank" rel="noopener">LinkedIn ↗</a></span>
+    <span class="site-theme"><span>Tema</span>
+      <span class="vp-lang" role="group" aria-label="Tema"><button type="button" data-set-theme="system" aria-pressed="true">Sistem</button><button type="button" data-set-theme="light" aria-pressed="false">Svetla</button><button type="button" data-set-theme="dark" aria-pressed="false">Temna</button></span>
+    </span>
   </footer>
 </div>
 <script src="../assets/bundle.js"></script>
