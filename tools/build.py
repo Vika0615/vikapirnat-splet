@@ -20,7 +20,7 @@ from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parent.parent
 
-SITE_URL = "https://vika0615.github.io/vikapirnat-splet/"  # z domeno: "https://vikapirnat.si/"
+SITE_URL = "https://vikapirnat.com/"  # lastna domena (datoteka CNAME); prej https://vika0615.github.io/vikapirnat-splet/
 EMAIL = "vika.pirnat@gmail.com"
 LINKEDIN = "https://www.linkedin.com/in/vika-pirnat/"
 GOBE_PLAY = "https://play.google.com/store/apps/details?id=io.github.vika0615.gobe"

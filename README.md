@@ -45,12 +45,14 @@ Vsaka podstran ima drobtinice (O meni › Projekti › Gobe) in na dnu »Nazaj«
 
 Stran nima obrazca. Kontakt je gumb za e-pošto (`mailto:` z zadevo), naslov s kopiranjem in povezava na LinkedIn. Vse je v `contact_block()` v `tools/build.py`; naslov in povezava sta v `EMAIL` in `LINKEDIN`.
 
-## Lastna domena (ko jo kupiš)
+## Lastna domena: vikapirnat.com
 
-1. V `tools/build.py` nastavi `SITE_URL = "https://vikapirnat.si/"`, dodaj datoteko `CNAME` z vrstico `vikapirnat.si`, zaženi build, commit, push.
-2. Pri registrarju v DNS dodaj (vrednosti preveri v GitHubovi dokumentaciji »Managing a custom domain for your GitHub Pages site«):
-   - 4 zapise `A` za `@`: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   - (neobvezno) 4 zapise `AAAA` za `@`: `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`
-   - zapis `CNAME` za `www` → `vika0615.github.io`
-3. Na GitHubu: Settings → Pages → Custom domain `vikapirnat.si` → Save. Ko je preverjanje DNS zeleno, vklopi **Enforce HTTPS**.
-4. Priporočeno: domeno preveri tudi v Settings (profil) → Pages → Add a domain, da je nihče drug ne more uporabiti.
+Domena je registrirana pri Webtasy (imenski strežniki `cdns1.controlpanel.si`, `cdns2.controlpanel.si`). Stran streže GitHub Pages.
+
+- `tools/build.py`: `SITE_URL = "https://vikapirnat.com/"`; datoteka `CNAME` v korenu vsebuje `vikapirnat.com`.
+- DNS pri Webtasy (vrednosti iz GitHubove dokumentacije »Managing a custom domain for your GitHub Pages site«):
+  - 4 zapisi `A` za `@`: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+  - 4 zapisi `AAAA` za `@`: `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`
+  - zapis `CNAME` za `www` → `vika0615.github.io`
+- GitHub: Settings → Pages → Custom domain `vikapirnat.com`, **Enforce HTTPS** vklopljen, ko GitHub izda certifikat.
+- Priporočeno: domeno preveri v Settings (profil) → Pages → Add a domain (zapis TXT), da je nihče drug ne more uporabiti za svojo stran.
