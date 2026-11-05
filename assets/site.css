@@ -10,7 +10,8 @@ html { scroll-padding-top: var(--space-4); }
 .site-wm { font-family: "Bricolage Grotesque", var(--font-display); font-weight: 700; letter-spacing: -0.02em; white-space: nowrap; }
 .site-wm__i { position: relative; display: inline-block; margin-inline: 0.035em; }
 .site-wm__i::after { content: ""; position: absolute; left: 50%; top: -0.12em; width: 0.22em; height: 0.22em; margin-left: -0.11em; border-radius: 50%; background: var(--lime-line); }
-.site-wm--sm { font-size: 15px; color: var(--ink); }
+.site-wm--sm { font-size: 17px; color: var(--ink); }
+.site-wm--sm .site-wm__i::after { width: 4px; height: 4px; margin-left: -2px; top: -3px; }
 .site-mark { display: inline-block; padding-block: 10px 4px; font-size: 28px; line-height: 1; color: var(--ink); text-decoration: none; }
 .site-mark:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; border-radius: var(--radius-s); }
 
@@ -110,7 +111,7 @@ html { scroll-padding-top: var(--space-4); }
 .site-photo img { position: relative; display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius-xl); background: var(--raised); }
 .site-photo__tag { position: absolute; z-index: 1; padding: 6px 12px; border-radius: 999px; background: var(--raised); border: 1px solid var(--line); font-family: var(--font-mono); font-size: 12px; line-height: 1.3; color: var(--ink); white-space: nowrap; box-shadow: 0 6px 18px rgb(0 0 0 / 0.18); }
 .site-photo__tag--a { top: 9%; left: -28px; }
-.site-photo__tag--b { top: 48%; right: -22px; }
+.site-photo__tag--b { top: 48%; right: -14px; }
 .site-photo__tag--c { bottom: 8%; left: -16px; border-color: var(--lime-line); }
 html.js .site-photo__tag { animation: site-float-in 0.7s cubic-bezier(.2,.7,.2,1) both; }
 html.js .site-photo__tag--b { animation-delay: 0.15s; }
@@ -158,8 +159,16 @@ html.js .site-photo__tag--c { animation-delay: 0.3s; }
 .site-chips--ai li { border-color: var(--lime-line); background: var(--lime-soft); }
 
 /* ---------- Kako razmišljam: seznam konceptov, ki se odpre na klik ---------- */
-.site-think { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: var(--space-8); align-items: start; }
-.site-think .vp-section__head { position: sticky; top: var(--space-6); margin: 0; }
+.site-think { display: grid; gap: var(--space-6); }
+.site-stage { display: none; }
+@media (min-width: 900px) {
+  html.js .site-think { grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr); gap: var(--space-7); align-items: start; }
+  html.js .site-stage { display: block; position: sticky; top: var(--space-5); }
+  html.js .site-stage .site-acc__panel { grid-template-columns: minmax(0, 1fr); padding: 0; animation: site-float-in .3s ease both; }
+  html.js .site-acc__icon { display: none; }
+  html.js .site-acc__item summary { padding-inline: var(--space-3) 0; border-left: 2px solid transparent; transition: border-color .2s; }
+  html.js .site-acc__item[open] summary { border-left-color: var(--lime-line); }
+}
 .site-concepts { display: grid; }
 .site-concepts__group { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2) var(--space-3); margin: var(--space-6) 0 var(--space-2); font-family: var(--font-text); font-size: 15px; line-height: 1.4; font-weight: 400; color: var(--ink-dim); }
 .site-concepts__group:first-child { margin-top: 0; }
@@ -176,9 +185,9 @@ html.js .site-photo__tag--c { animation-delay: 0.3s; }
 .site-acc__icon::after { transform: rotate(90deg); }
 .site-acc__item[open] .site-acc__icon { border-color: var(--lime-line); }
 .site-acc__item[open] .site-acc__icon::after { transform: rotate(0deg); }
-.site-acc__panel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-5); align-items: start; padding: 0 0 var(--space-5); }
+.site-acc__panel { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-4); align-items: start; padding: 0 0 var(--space-5); }
 .site-acc__item[open] .site-acc__panel { animation: site-float-in .35s ease both; }
-.site-acc__fig { margin: 0; padding: var(--space-4); background: var(--raised); border: 1px solid var(--line); border-radius: var(--radius-l); }
+.site-acc__fig { max-width: 560px; margin: 0; padding: var(--space-4); background: var(--raised); border: 1px solid var(--line); border-radius: var(--radius-l); }
 .site-acc__fig svg { display: block; width: 100%; height: auto; }
 .site-acc__text { display: grid; gap: var(--space-2); align-content: start; font-size: 15px; line-height: 1.55; color: var(--ink-dim); min-width: 0; }
 .site-acc__text p, .site-acc__text ul { margin: 0; }
@@ -273,7 +282,7 @@ html.js [data-reveal].is-in { opacity: 1; transform: none; }
   html.js [data-reveal] { opacity: 1; transform: none; transition: none; }
   html.js .site-photo__tag, .site-dot::after { animation: none; }
   .site-flow__track li::before, .site-flow__track li::after, .site-flow__loop li { transition: none; }
-  .site-acc__item[open] .site-acc__panel { animation: none; }
+  .site-acc__item[open] .site-acc__panel, html.js .site-stage .site-acc__panel { animation: none; }
   .site-principles li:hover { transform: none; }
 }
 
@@ -319,8 +328,6 @@ html.js [data-reveal].is-in { opacity: 1; transform: none; }
   .site-feature { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); padding: var(--space-5); }
   .site-facts { grid-template-columns: minmax(0, 1fr); }
   .site-principles, .site-skills, .site-services, .site-balance { grid-template-columns: minmax(0, 1fr); }
-  .site-think { grid-template-columns: minmax(0, 1fr); gap: var(--space-5); }
-  .site-think .vp-section__head { position: static; }
   .site-acc__panel { grid-template-columns: minmax(0, 1fr); }
   .site-shortcuts li { grid-template-columns: minmax(0, 1fr); gap: var(--space-1); }
   .site-pager { grid-template-columns: minmax(0, 1fr); padding-block: var(--space-6) var(--space-5); }

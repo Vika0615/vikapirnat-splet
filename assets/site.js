@@ -31,6 +31,30 @@
     requestAnimationFrame(step);
   }
 
+  // Koncepti »Kako razmišljam«: na računalniku seznam levo, izbrani koncept desno (vedno je izbran en);
+  // na telefonu se koncept odpre pod svojim imenom.
+  var stage = document.querySelector('[data-stage]');
+  if (stage) {
+    var wide = window.matchMedia('(min-width: 900px)');
+    var items = Array.prototype.slice.call(document.querySelectorAll('.site-acc__item'));
+    items.forEach(function (d) { d._panel = d.querySelector('.site-acc__panel'); });
+    var place = function () {
+      items.forEach(function (d) { if (d._panel.parentNode !== d) d.appendChild(d._panel); });
+      if (!wide.matches) return;
+      var open = items.filter(function (d) { return d.open; })[0];
+      if (!open) { items[0].open = true; return; } // »toggle« pokliče place znova
+      stage.appendChild(open._panel);
+    };
+    items.forEach(function (d) {
+      d.addEventListener('toggle', function () {
+        if (wide.matches && !items.some(function (x) { return x.open; })) { d.open = true; return; }
+        place();
+      });
+    });
+    if (wide.addEventListener) wide.addEventListener('change', place);
+    place();
+  }
+
   // Pojav ob drsenju, števci in diagram poteka (.site-flow) se sprožijo, ko pridejo v pogled
   var targets = document.querySelectorAll('[data-reveal], .site-flow');
   if (!('IntersectionObserver' in window)) {
