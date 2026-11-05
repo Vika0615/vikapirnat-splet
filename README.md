@@ -7,15 +7,15 @@ Osebna spletna stran Vike Pirnat (produktno vodenje, svetovanje). Statični HTML
 | Mapa ali datoteka | Kaj je |
 |---|---|
 | `src/sl/*.html`, `src/en/*.html` | vsebina strani (SLO in ENG). **Tu urejaš besedilo.** |
-| `tools/build.py` | zgradi strani: glava, noga (s preklopom teme), pas s klicem k pogovoru, obrazec, `tokens.css`, `bundle.css`, `sitemap.xml`, `404.html` |
+| `tools/build.py` | zgradi strani: glava, noga (s preklopom teme), pas s klicem k pogovoru, kontakt (e-pošta in LinkedIn), `tokens.css`, `bundle.css`, `sitemap.xml`, `404.html` |
 | `tools/tokens.json` | žetoni iz design sistema (barve, pisave, razmiki) |
 | `tools/bundle.css` | **nespremenjena kopija** komponent iz design sistema; gradnja iz nje naredi `assets/bundle.css` brez pisav z Googla |
 | `assets/bundle.js` | **kopija** skripte iz design sistema, ne urejaj ročno |
 | `assets/fonts.css`, `assets/fonts/` | pisave Red Hat (latin, latin-ext), gostujejo na strani, da obiskovalčev IP ne gre k Googlu |
-| `assets/site.css`, `assets/site.js` | dodatki samo za to stran (kartice dela, obrazec, preklop jezika) |
+| `assets/site.css`, `assets/site.js` | dodatki samo za to stran (kartice projektov, O meni, preklop jezika) |
 | `assets/maps/*.js` | podatki za zemljevid problema (en na case study) |
-| `assets/img/` | posnetki zaslona |
-| `index.html`, `storitve/`, `delo/`, `kontakt/`, `en/…` | zgrajene strani, ki jih streže GitHub Pages |
+| `assets/img/` | posnetki zaslona in fotografija (`img/vika/`, brez metapodatkov) |
+| `index.html`, `storitve/`, `projekti/`, `o-meni/`, `kontakt/`, `en/…` | zgrajene strani, ki jih streže GitHub Pages |
 
 Design sistem: https://claude.ai/artifact/QMSTcyAZq2PXfPNSFTN81s
 
@@ -26,17 +26,17 @@ Design sistem: https://claude.ai/artifact/QMSTcyAZq2PXfPNSFTN81s
 3. Preveri lokalno: `py -m http.server 8765` in odpri http://127.0.0.1:8765/
 4. Commit in push. GitHub Pages objavi v 1–2 minutah.
 
-## Nov case study
+## Nov projekt ali case study
 
-1. V `tools/build.py` dodaj vrstico v `PAGES`, npr. `"primer": ("delo/primer/", "en/work/primer/")`.
+1. V `tools/build.py` dodaj vrstico v `PAGES`, npr. `"primer": ("projekti/primer/", "en/projects/primer/")`.
 2. Kopiraj `src/sl/gobe.html` in `src/en/gobe.html` v `src/sl/primer.html` in `src/en/primer.html` ter zamenjaj vsebino.
 3. Za zemljevid problema dodaj `assets/maps/primer.js` in v glavi strani `scripts: maps/primer.js`; na sliki `data-map="primer"`.
-4. Na strani Delo (`src/sl/work.html`, `src/en/work.html`) kopiraj kartico `<li class="site-card">` in jo postavi na vrh seznama. Za kartico »V pripravi« uporabi `site-card site-card--soon` (navodilo je v komentarju na strani).
+4. Na strani Projekti (`src/sl/work.html`, `src/en/work.html`) kopiraj kartico `<li class="site-card">` in jo postavi na vrh seznama. Za kartico »V pripravi« uporabi `site-card site-card--soon` (navodilo je v komentarju na strani).
 5. `py tools/build.py`, commit, push.
 
-## Obrazec
+## Kontakt
 
-Obrazec pošilja prek Formspree na `vika.pirnat@gmail.com`. Endpoint je v `tools/build.py` (`FORM_ENDPOINT`). Polja: `ime`, `email`, `faza`, `sporocilo`, skrita `_subject`, `jezik` in past za robote `_gotcha`.
+Stran nima obrazca. Kontakt je gumb za e-pošto (`mailto:` z zadevo), naslov s kopiranjem in povezava na LinkedIn. Vse je v `contact_block()` v `tools/build.py`; naslov in povezava sta v `EMAIL` in `LINKEDIN`.
 
 ## Lastna domena (ko jo kupiš)
 

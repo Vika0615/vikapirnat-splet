@@ -54,13 +54,21 @@ html { scroll-padding-top: var(--space-4); }
 .site-card--soon:hover { border-color: var(--edge); }
 .site-card--soon h2 { color: var(--ink-dim); }
 
-/* Obrazec */
-.site-hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
-.site-form__error { margin: 0; padding: var(--space-3) var(--space-4); border: 1px solid var(--edge); border-radius: var(--radius-m); color: var(--ink); font-size: 15px; }
-.vp-form button[disabled] { opacity: 0.7; cursor: progress; }
+/* O meni */
+.site-about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 340px); gap: var(--space-8); align-items: center; padding-block: var(--space-9) var(--space-7); }
+.site-portrait { margin: 0; width: 100%; max-width: 340px; }
+.site-portrait img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius-xl); border: 1px solid var(--line); background: var(--raised); }
+.site-portrait--sm { max-width: 220px; }
+.site-open { margin: 0; padding: var(--space-3) var(--space-4); max-width: var(--measure); background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--lime-line); border-radius: var(--radius-m); color: var(--ink); font-size: 16px; line-height: 1.5; }
 
 /* Kontaktna stran */
 .site-contact { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--space-7); padding-block: var(--space-9) var(--space-8); align-items: start; }
+
+/* Pet povezav v glavi gre na telefonu v eno vrstico */
+@media (max-width: 480px) {
+  .vp-header__nav { gap: 6px 12px; font-size: 12px; }
+  .vp-header__nav a { padding-block: 6px; }
+}
 
 @media (max-width: 820px) {
   .site-intro { padding-block: var(--space-7) var(--space-6); }
@@ -68,5 +76,7 @@ html { scroll-padding-top: var(--space-4); }
   .site-card { grid-template-columns: minmax(0, 1fr); gap: var(--space-5); padding: var(--space-5); }
   .site-card img { max-width: 160px; }
   .site-contact { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); padding-block: var(--space-7); }
+  .site-about { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); padding-block: var(--space-7) var(--space-6); }
+  .site-about .site-portrait { order: -1; max-width: 240px; }
   .vp-contact { padding: var(--space-5); }
 }

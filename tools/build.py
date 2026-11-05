@@ -10,17 +10,17 @@
 
 Pisave (assets/fonts.css, assets/fonts/) gostujejo na strani.
 
-Vsebina strani je v src/. Glava, noga, pas s klicem k pogovoru in obrazec so tukaj,
+Vsebina strani je v src/. Glava, noga, pas s klicem k pogovoru in kontakt so tukaj,
 da so na vseh straneh enaki. Ko je domena pripravljena, spremeni SITE_URL in ponovno zaženi.
 """
 import json
 import re
 from pathlib import Path
+from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parent.parent
 
 SITE_URL = "https://vika0615.github.io/vikapirnat-splet/"  # z domeno: "https://vikapirnat.si/"
-FORM_ENDPOINT = ""  # Formspree, npr. "https://formspree.io/f/abcdwxyz"; prazno = obrazec še ni povezan
 EMAIL = "vika.pirnat@gmail.com"
 LINKEDIN = "https://www.linkedin.com/in/vika-pirnat/"
 YEAR = "2026"
@@ -29,17 +29,18 @@ YEAR = "2026"
 PAGES = {
     "home": ("", "en/"),
     "services": ("storitve/", "en/services/"),
-    "work": ("delo/", "en/work/"),
-    "gobe": ("delo/gobe/", "en/work/gobe/"),
+    "work": ("projekti/", "en/projects/"),
+    "gobe": ("projekti/gobe/", "en/projects/gobe/"),
+    "about": ("o-meni/", "en/about/"),
     "contact": ("kontakt/", "en/contact/"),
 }
-NAV = ["home", "services", "work", "contact"]
+NAV = ["home", "services", "work", "about", "contact"]
 LANGS = ("sl", "en")
 
 T = {
     "sl": {
         "locale": "sl_SI",
-        "nav": {"home": "Kako delam", "services": "Storitve", "work": "Delo", "contact": "Kontakt"},
+        "nav": {"home": "Kako delam", "services": "Storitve", "work": "Projekti", "about": "O meni", "contact": "Kontakt"},
         "nav_label": "Glavna navigacija",
         "lang_label": "Jezik",
         "theme_label": "Tema",
@@ -49,27 +50,16 @@ T = {
         "cta_eyebrow": "Kontakt",
         "cta_title": "Prvi 30-minutni pogovor je brezplačen.",
         "cta_lede": "Povejte mi, kaj gradite, za koga in kje se je zataknilo. Odgovorim osebno.",
-        "cta_button": "Pišite mi →",
-        "alt_eyebrow": "Raje po e-pošti ali LinkedInu?",
+        "cta_open": "Odprta sem za pogodbeno delo, skupen projekt ali zaposlitev.",
+        "c_write": "Pišite mi →",
+        "c_subject": "Povpraševanje s spletne strani",
+        "c_mail": "E-pošta",
         "copy": "Kopiraj",
         "linkedin": "Pišite mi na LinkedInu ↗",
-        "f_subject": "Povpraševanje s spletne strani",
-        "f_name": "Ime in podjetje",
-        "f_email": "E-pošta",
-        "f_stage": "Kje ste zdaj?",
-        "f_stages": [("ideja", "Ideja"), ("prototip", "Prototip"), ("produkt", "Produkt z uporabniki")],
-        "f_msg": "Kaj gradite, za koga in kje se je zataknilo?",
-        "f_send": "Pošlji",
-        "f_sending": "Pošiljam …",
-        "f_done": "Hvala, sporočilo je poslano. Odgovorim osebno na vaš e-naslov.",
-        "f_error": "Sporočila ni bilo mogoče poslati. Pišite mi na " + EMAIL + ".",
-        "f_off": "Obrazec še ni povezan. Pišite mi na " + EMAIL + ".",
-        "f_privacy": "Podatke iz obrazca uporabim samo za odgovor na vaše sporočilo. Obrazec deluje prek storitve Formspree.",
-        "f_hp": "Tega polja ne izpolnjujte",
     },
     "en": {
         "locale": "en_GB",
-        "nav": {"home": "How I work", "services": "Services", "work": "Work", "contact": "Contact"},
+        "nav": {"home": "How I work", "services": "Services", "work": "Projects", "about": "About", "contact": "Contact"},
         "nav_label": "Main navigation",
         "lang_label": "Language",
         "theme_label": "Theme",
@@ -79,23 +69,12 @@ T = {
         "cta_eyebrow": "Contact",
         "cta_title": "The first 30-minute call is free.",
         "cta_lede": "Tell me what you're building, who it's for and where you're stuck. I'll reply personally.",
-        "cta_button": "Get in touch →",
-        "alt_eyebrow": "Prefer email or LinkedIn?",
+        "cta_open": "I'm open to contract work, a joint project or employment.",
+        "c_write": "Email me →",
+        "c_subject": "Enquiry from the website",
+        "c_mail": "Email",
         "copy": "Copy",
         "linkedin": "Message me on LinkedIn ↗",
-        "f_subject": "Enquiry from the website",
-        "f_name": "Name and company",
-        "f_email": "Email",
-        "f_stage": "Where are you now?",
-        "f_stages": [("ideja", "Idea"), ("prototip", "Prototype"), ("produkt", "Product with users")],
-        "f_msg": "What are you building, for whom, and where are you stuck?",
-        "f_send": "Send",
-        "f_sending": "Sending …",
-        "f_done": "Thank you, your message has been sent. I'll reply personally to your email.",
-        "f_error": "The message couldn't be sent. Please email me at " + EMAIL + ".",
-        "f_off": "The form isn't connected yet. Please email me at " + EMAIL + ".",
-        "f_privacy": "I use the details from this form only to reply to your message. The form runs on Formspree.",
-        "f_hp": "Leave this field empty",
     },
 }
 
@@ -198,52 +177,27 @@ def cta_band(lang, root, page_id):
       <p class="vp-eyebrow">{s['cta_eyebrow']}</p>
       <h2 class="vp-h2" id="cta-title">{s['cta_title']}</h2>
       <p class="vp-lede">{s['cta_lede']}</p>
+      <p class="vp-small">{s['cta_open']}</p>
     </div>
-    <div class="vp-contact">
-      <div><a class="vp-btn vp-btn--primary" href="{root}{url_of('contact', lang)}">{s['cta_button']}</a></div>
-      {alt_contact(lang)}
-    </div>
+    {contact_block(lang)}
   </div>
 </section>"""
 
 
-def alt_contact(lang):
+def contact_block(lang):
+    """Brez obrazca (GitHub Pages ga ne streže): e-pošta s kopiranjem in LinkedIn."""
     s = T[lang]
-    return f"""<div class="vp-contact__alt">
-        <p class="vp-eyebrow">{s['alt_eyebrow']}</p>
+    mailto = f"mailto:{EMAIL}?subject={quote(s['c_subject'])}"
+    return f"""<div class="vp-contact">
+      <div><a class="vp-btn vp-btn--primary" href="{mailto}">{s['c_write']}</a></div>
+      <div class="vp-contact__alt">
+        <p class="vp-eyebrow">{s['c_mail']}</p>
         <div class="vp-contact__row">
           <span class="vp-contact__email" id="mail">{EMAIL}</span>
           <button class="vp-btn" type="button" data-copy="mail"><span lang="{lang}">{s['copy']}</span></button>
         </div>
         <div><a class="vp-btn vp-btn--quiet" href="{LINKEDIN}" target="_blank" rel="noopener">{s['linkedin']}</a></div>
-      </div>"""
-
-
-def contact_block(lang):
-    s = T[lang]
-    action = FORM_ENDPOINT or "#"
-    off = "" if FORM_ENDPOINT else " data-off"
-    options = "\n".join(f'          <option value="{v}">{label}</option>' for v, label in s["f_stages"])
-    return f"""<div class="vp-contact">
-      <form class="vp-form" data-form action="{action}" method="POST"{off}>
-        <input type="hidden" name="_subject" value="{s['f_subject']}">
-        <input type="hidden" name="jezik" value="{lang}">
-        <div class="site-hp" aria-hidden="true"><label>{s['f_hp']} <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
-        <div class="vp-field"><label for="f-name">{s['f_name']}</label><input class="vp-input" id="f-name" name="ime" autocomplete="name"></div>
-        <div class="vp-field"><label for="f-email">{s['f_email']}</label><input class="vp-input" id="f-email" name="email" type="email" autocomplete="email" required></div>
-        <div class="vp-field"><label for="f-stage">{s['f_stage']}</label>
-          <select class="vp-input" id="f-stage" name="faza">
-{options}
-          </select>
-        </div>
-        <div class="vp-field"><label for="f-msg">{s['f_msg']}</label><textarea class="vp-input" id="f-msg" name="sporocilo" required></textarea></div>
-        <div><button class="vp-btn vp-btn--primary" type="submit" data-sending="{s['f_sending']}">{s['f_send']}</button></div>
-        <p class="vp-form__done" data-form-done hidden role="status">{s['f_done']}</p>
-        <p class="site-form__error" data-form-error hidden role="alert">{s['f_error']}</p>
-        <p class="site-form__error" data-form-off hidden role="alert">{s['f_off']}</p>
-        <p class="vp-small">{s['f_privacy']}</p>
-      </form>
-      {alt_contact(lang)}
+      </div>
     </div>"""
 
 
