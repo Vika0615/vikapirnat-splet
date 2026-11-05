@@ -208,7 +208,11 @@ html.js .site-flow:not(.is-in) .site-flow__track li::after { background-position
 html.js .site-flow:not(.is-in) .site-flow__loop li { border-color: var(--line); background: var(--ground); }
 
 /* Gumba za prenos aplikacije: Google Play deluje, App Store je v pripravi (utripa) */
-.site-stores { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.site-stores { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3) var(--space-4); }
+/* Uradni gumb Google Play: nespremenjen; prozoren rob v sliki je del predpisanega praznega prostora */
+.site-store-badge { display: inline-block; line-height: 0; border-radius: var(--radius-m); }
+.site-store-badge img { display: block; width: auto; height: 72px; margin-block: -8px; }
+.site-store-badge:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 .site-store { display: inline-grid; gap: 2px; min-width: 176px; padding: 10px 16px; border: 1px solid var(--edge); border-radius: var(--radius-m); color: var(--ink); text-decoration: none; transition: border-color .2s; }
 a.site-store:hover { border-color: var(--ink); }
 .site-store__k { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 11px; line-height: 1.3; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-dim); }

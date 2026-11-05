@@ -24,6 +24,8 @@ SITE_URL = "https://vika0615.github.io/vikapirnat-splet/"  # z domeno: "https://
 EMAIL = "vika.pirnat@gmail.com"
 LINKEDIN = "https://www.linkedin.com/in/vika-pirnat/"
 GOBE_PLAY = "https://play.google.com/store/apps/details?id=io.github.vika0615.gobe"
+# Uradni gumb Google Play (nespremenjen, iz play.google.com/intl/en_us/badges). Za jezik brez gumba ostane besedilni gumb.
+PLAY_BADGE = {"sl": "assets/img/badges/google-play-sl.png"}
 YEAR = "2026"
 
 # id strani: (pot SL, pot EN). Nova stran = nova vrstica + src/sl/<id>.html + src/en/<id>.html
@@ -72,6 +74,8 @@ T = {
         "play_k": "Prenesi za Android",
         "ios_k": "V pripravi",
         "ios_n": "Za iPhone",
+        "play_alt": "Na voljo v Googlu Play",
+        "play_legal": "Google Play in logotip Google Play sta blagovni znamki družbe Google LLC.",
     },
     "en": {
         "locale": "en_GB",
@@ -103,6 +107,8 @@ T = {
         "play_k": "Download for Android",
         "ios_k": "Coming soon",
         "ios_n": "For iPhone",
+        "play_alt": "Get it on Google Play",
+        "play_legal": "Google Play and the Google Play logo are trademarks of Google LLC.",
     },
 }
 
@@ -251,12 +257,16 @@ def contact_block(lang):
     </div>"""
 
 
-def stores_block(lang):
+def stores_block(lang, root):
     """Gumba za aplikacijo Gobe: Google Play (deluje) in iPhone (v pripravi, utripa).
     Applovega gumba »App Store« ne smemo uporabiti, dokler aplikacija ni v App Storu (Applova pravila)."""
     s = T[lang]
+    if lang in PLAY_BADGE:
+        play = f'<a class="site-store-badge" href="{GOBE_PLAY}" target="_blank" rel="noopener"><img src="{root}{PLAY_BADGE[lang]}" width="646" height="250" alt="{s["play_alt"]}"></a>'
+    else:
+        play = f'<a class="site-store" href="{GOBE_PLAY}" target="_blank" rel="noopener"><span class="site-store__k">{s["play_k"]}</span><span class="site-store__n">Google Play ↗</span></a>'
     return f"""<div class="site-stores" role="group" aria-label="{s['stores']}">
-          <a class="site-store" href="{GOBE_PLAY}" target="_blank" rel="noopener"><span class="site-store__k">{s['play_k']}</span><span class="site-store__n">Google Play ↗</span></a>
+          {play}
           <span class="site-store site-store--soon"><span class="site-store__k"><span class="site-dot site-dot--soon" aria-hidden="true"></span>{s['ios_k']}</span><span class="site-store__n">{s['ios_n']}</span></span>
         </div>"""
 
@@ -370,7 +380,10 @@ def page(lang, page_id, meta, body):
     )
     body = body.replace("{{cta}}", cta_band(lang, root, page_id))
     body = body.replace("{{contact}}", contact_block(lang))
-    body = body.replace("{{stores}}", stores_block(lang))
+    note = meta.get("footnote", "")
+    if "{{stores}}" in body and lang in PLAY_BADGE:
+        note = (note + " · " if note else "") + s["play_legal"]
+    body = body.replace("{{stores}}", stores_block(lang, root))
     body = body.replace("{{posts}}", posts_list(lang, root))
     if page_id.startswith("post:"):
         m = POSTS[lang][page_id[5:]]
@@ -410,7 +423,7 @@ def page(lang, page_id, meta, body):
 {body.strip()}
 </main>
 {pager(lang, root, page_id, meta.get('next'))}
-{footer(lang, root, meta.get('footnote', ''))}
+{footer(lang, root, note)}
 <script src="{root}assets/bundle.js"></script>{scripts}
 <script src="{root}assets/site.js"></script>
 </body>
