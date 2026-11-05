@@ -28,19 +28,18 @@ YEAR = "2026"
 # id strani: (pot SL, pot EN). Nova stran = nova vrstica + src/sl/<id>.html + src/en/<id>.html
 PAGES = {
     "home": ("", "en/"),
-    "services": ("storitve/", "en/services/"),
+    "method": ("kako-delam/", "en/how-i-work/"),
     "work": ("projekti/", "en/projects/"),
     "gobe": ("projekti/gobe/", "en/projects/gobe/"),
-    "about": ("o-meni/", "en/about/"),
     "contact": ("kontakt/", "en/contact/"),
 }
-NAV = ["home", "services", "work", "about", "contact"]
+NAV = ["home", "method", "work", "contact"]
 LANGS = ("sl", "en")
 
 T = {
     "sl": {
         "locale": "sl_SI",
-        "nav": {"home": "Kako delam", "services": "Storitve", "work": "Projekti", "about": "O meni", "contact": "Kontakt"},
+        "nav": {"home": "O meni", "method": "Kako delam", "work": "Projekti", "contact": "Kontakt"},
         "nav_label": "Glavna navigacija",
         "lang_label": "Jezik",
         "theme_label": "Tema",
@@ -59,7 +58,7 @@ T = {
     },
     "en": {
         "locale": "en_GB",
-        "nav": {"home": "How I work", "services": "Services", "work": "Projects", "about": "About", "contact": "Contact"},
+        "nav": {"home": "About", "method": "How I work", "work": "Projects", "contact": "Contact"},
         "nav_label": "Main navigation",
         "lang_label": "Language",
         "theme_label": "Theme",
@@ -245,7 +244,7 @@ def footer(lang, note):
 </div>"""
 
 
-HEAD_THEME = "(function(){try{var t=localStorage.getItem('vp-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}})();"
+HEAD_THEME = "document.documentElement.classList.add('js');(function(){try{var t=localStorage.getItem('vp-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}})();"
 
 
 def page(lang, page_id, meta, body):

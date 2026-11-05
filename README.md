@@ -12,10 +12,9 @@ Osebna spletna stran Vike Pirnat (produktno vodenje, svetovanje). Statični HTML
 | `tools/bundle.css` | **nespremenjena kopija** komponent iz design sistema; gradnja iz nje naredi `assets/bundle.css` brez pisav z Googla |
 | `assets/bundle.js` | **kopija** skripte iz design sistema, ne urejaj ročno |
 | `assets/fonts.css`, `assets/fonts/` | pisave Red Hat (latin, latin-ext), gostujejo na strani, da obiskovalčev IP ne gre k Googlu |
-| `assets/site.css`, `assets/site.js` | dodatki samo za to stran (kartice projektov, O meni, preklop jezika) |
-| `assets/maps/*.js` | podatki za zemljevid problema (en na case study) |
+| `assets/site.css`, `assets/site.js` | dodatki samo za to stran (domača stran O meni, kartice projektov, diagram poteka, pojav ob drsenju in števci) |
 | `assets/img/` | posnetki zaslona in fotografija (`img/vika/`, brez metapodatkov) |
-| `index.html`, `storitve/`, `projekti/`, `o-meni/`, `kontakt/`, `en/…` | zgrajene strani, ki jih streže GitHub Pages |
+| `index.html` (O meni), `kako-delam/`, `projekti/`, `kontakt/`, `en/…` | zgrajene strani, ki jih streže GitHub Pages |
 
 Design sistem: https://claude.ai/artifact/QMSTcyAZq2PXfPNSFTN81s
 
@@ -30,7 +29,7 @@ Design sistem: https://claude.ai/artifact/QMSTcyAZq2PXfPNSFTN81s
 
 1. V `tools/build.py` dodaj vrstico v `PAGES`, npr. `"primer": ("projekti/primer/", "en/projects/primer/")`.
 2. Kopiraj `src/sl/gobe.html` in `src/en/gobe.html` v `src/sl/primer.html` in `src/en/primer.html` ter zamenjaj vsebino.
-3. Za zemljevid problema dodaj `assets/maps/primer.js` in v glavi strani `scripts: maps/primer.js`; na sliki `data-map="primer"`.
+3. Za diagram poteka kopiraj `<figure class="site-flow">` iz `src/sl/gobe.html` in zamenjaj korake (`--i` je zaporedna številka koraka, `--j` v krogu).
 4. Na strani Projekti (`src/sl/work.html`, `src/en/work.html`) kopiraj kartico `<li class="site-card">` in jo postavi na vrh seznama. Za kartico »V pripravi« uporabi `site-card site-card--soon` (navodilo je v komentarju na strani).
 5. `py tools/build.py`, commit, push.
 

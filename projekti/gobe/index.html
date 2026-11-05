@@ -4,18 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Case study Gobe: aplikacija, ki namenoma ne prepozna gob · Vika Pirnat</title>
-<meta name="description" content="Kako sem iz ideje »fotografiraj in izvej« prišla do učnega kviza za začetnike. Od ideje do Trgovine Play v 23 dneh.">
+<meta name="description" content="Zakaj sem zgradila aplikacijo, ki gob ne določa, kako sem jo s Claude Code v 23 dneh pripeljala do Trgovine Play in katerim bližnjicam sem se odpovedala.">
 <link rel="canonical" href="https://vika0615.github.io/vikapirnat-splet/projekti/gobe/">
 <link rel="alternate" hreflang="sl" href="https://vika0615.github.io/vikapirnat-splet/projekti/gobe/">
 <link rel="alternate" hreflang="en" href="https://vika0615.github.io/vikapirnat-splet/en/projects/gobe/">
 <link rel="alternate" hreflang="x-default" href="https://vika0615.github.io/vikapirnat-splet/projekti/gobe/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Case study Gobe: aplikacija, ki namenoma ne prepozna gob · Vika Pirnat">
-<meta property="og:description" content="Kako sem iz ideje »fotografiraj in izvej« prišla do učnega kviza za začetnike. Od ideje do Trgovine Play v 23 dneh.">
+<meta property="og:description" content="Zakaj sem zgradila aplikacijo, ki gob ne določa, kako sem jo s Claude Code v 23 dneh pripeljala do Trgovine Play in katerim bližnjicam sem se odpovedala.">
 <meta property="og:url" content="https://vika0615.github.io/vikapirnat-splet/projekti/gobe/">
 <meta property="og:locale" content="sl_SI">
 <link rel="icon" href="data:,">
-<script>(function(){try{var t=localStorage.getItem('vp-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
+<script>document.documentElement.classList.add('js');(function(){try{var t=localStorage.getItem('vp-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
 <link rel="preload" href="../../assets/fonts/red-hat-text-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../assets/fonts/red-hat-display-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../assets/fonts.css">
@@ -30,10 +30,9 @@
     <a class="vp-header__name" href="../../">Vika Pirnat</a>
     <div class="vp-header__end">
       <nav class="vp-header__nav" aria-label="Glavna navigacija">
-        <a href="../../">Kako delam</a>
-        <a href="../../storitve/">Storitve</a>
+        <a href="../../">O meni</a>
+        <a href="../../kako-delam/">Kako delam</a>
         <a href="../../projekti/" aria-current="page">Projekti</a>
-        <a href="../../o-meni/">O meni</a>
         <a href="../../kontakt/">Kontakt</a>
       </nav>
       <div class="vp-lang" role="group" aria-label="Jezik">
@@ -49,7 +48,7 @@
     <div class="vp-hero__text">
       <p class="vp-eyebrow">Case study · Gobe · Android · 2026</p>
       <h1 class="vp-h1">Aplikacija, ki namenoma ne prepozna gob</h1>
-      <p class="vp-lede">Kako sem iz ideje »fotografiraj in izvej« prišla do učnega kviza za začetnike: koga rešujemo, česa ne gradimo in zakaj, kako merimo. Od ideje do Trgovine Play v 23 dneh.</p>
+      <p class="vp-lede">Hitrejša pot je bila aplikacija, ki gobo prepozna s fotografije. Zgradila sem počasnejšo: tako, ki začetnika nauči gledati. Od ideje do Trgovine Play v 23 dneh.</p>
       <dl class="vp-meta">
         <div><dt>Vloga</dt><dd>Produktna vodja, od ideje do objave</dd></div>
         <div><dt>Ekipa</dt><dd>Ena oseba, koda s Claude Code</dd></div>
@@ -67,100 +66,106 @@
   <dl class="vp-stats">
     <div class="vp-stat"><dt class="vp-stat__l">dni od prve vrstice specifikacije do javne objave</dt><dd class="vp-stat__n">23</dd></div>
     <div class="vp-stat"><dt class="vp-stat__l">odgovorov »ne vem« pri vprašanju o gomolju, ko sem v pomoč dodala fotografije (prej 60&nbsp;%)</dt><dd class="vp-stat__n">8&nbsp;%</dd></div>
-    <div class="vp-stat"><dt class="vp-stat__l">vrst gob ob objavi, prej 25, po 33 prijavah testerjev</dt><dd class="vp-stat__n">64</dd></div>
-    <div class="vp-stat"><dt class="vp-stat__l">pravih aktivnih naprav namesto 87, ko sem izločila Googlove testne robote</dt><dd class="vp-stat__n">57</dd></div>
+    <div class="vp-stat"><dt class="vp-stat__l">vrst gob ob objavi, prej 25</dt><dd class="vp-stat__n">64</dd></div>
+    <div class="vp-stat"><dt class="vp-stat__l">avtomatskih testov, ki varujejo vsako spremembo</dt><dd class="vp-stat__n">542</dd></div>
   </dl>
 
-  <section class="vp-section" style="border-top:0" aria-labelledby="na-kratko">
+  <section class="vp-section" style="border-top:0" aria-labelledby="zakaj">
     <div class="vp-section__head">
-      <p class="vp-eyebrow">Na kratko</p>
-      <h2 class="vp-h2" id="na-kratko">Kaj to pomeni za vaš produkt</h2>
-    </div>
-    <ul class="site-takeaway">
-      <li>Odločim, česa ne gradite, tudi ko je to funkcija, ki jo vsi pričakujejo, in zapišem, koliko ta odločitev stane.</li>
-      <li>Izberem enega glavnega uporabnika in vsako naslednjo odločitev preverim na njem.</li>
-      <li>Analitiko vgradim pred testom, da imate dokaz, ne občutka.</li>
-      <li>Testiram tam, kjer se produkt res uporablja, ne le na kavču.</li>
-      <li>Preverim tudi same številke: filtre, robote in kdo se sploh šteje.</li>
-    </ul>
-  </section>
-
-  <section class="vp-section">
-    <div class="vp-section__head">
-      <p class="vp-eyebrow">01 · Problem</p>
-      <h2 class="vp-h2">Začetnik ne zna presoditi, kateri odgovor drži</h2>
+      <p class="vp-eyebrow">01 · Zakaj sem začela</p>
+      <h2 class="vp-h2" id="zakaj">Hotela sem enkrat sama izpeljati vse</h2>
     </div>
     <div class="vp-body">
-      <p>Center za klinično toksikologijo UKC Ljubljana je do začetka oktobra 2026 obravnaval 21 zastrupitev z gobami, v petih letih 533. Toksikologinja dr. Lucija Šarc opozarja, da družine pogosto šele po obroku na spletu preverjajo, katere gobe so jedle.</p>
-      <p>V gobarskih skupinah na Facebooku začetniki vsak dan objavijo fotografijo pravkar nabrane gobe in vprašajo neznance. Pogosto dobijo dva nasprotna odgovora: eden napiše, da je strupena, drugi, da je užitna. <span class="vp-marker">Začetnik nima načina, da bi sam presodil, kateri odgovor drži.</span></p>
+      <p>Od ideje do objave, z analitiko od prvega dne: kaj merim, kako sestavim lijak, kje so meje zasebnosti.</p>
+      <p>Idej je bilo več: aplikacija, dnevnik, spletna stran. Izbrala sem z matriko učinek–vložek. Zmagale so gobe.</p>
+      <p>Gob ne poznam. To je bila prednost: vsak korak sem lahko preizkusila na sebi.</p>
     </div>
   </section>
 
-  <section class="vp-section">
+  <section class="vp-section" aria-labelledby="uvid">
     <div class="vp-section__head">
-      <p class="vp-eyebrow">02 · Uporabniki</p>
-      <h2 class="vp-h2">Kdo hodi po gobe in koga sem izbrala</h2>
+      <p class="vp-eyebrow">02 · Uvid</p>
+      <h2 class="vp-h2" id="uvid">Ljudje ne iščejo znanja. Iščejo odgovor.</h2>
     </div>
-    <div class="vp-seg" role="table" aria-label="Tipi uporabnikov">
-      <div class="vp-seg__head" role="row">
-        <span class="vp-eyebrow" role="columnheader">Tip</span>
-        <span class="vp-eyebrow" role="columnheader">Kaj želi</span>
-        <span class="vp-eyebrow" role="columnheader">Kaj uporablja zdaj</span>
-        <span class="vp-eyebrow" role="columnheader">Izbira</span>
-      </div>
-      <div class="vp-seg__row" role="row">
-        <span class="vp-seg__type" role="cell">Iskalec hitrega odgovora</span>
-        <p class="vp-seg__cell" role="cell"><span class="vp-seg__k vp-eyebrow">Kaj želi</span>ime gobe in ali jo lahko poje, takoj</p>
-        <p class="vp-seg__cell vp-seg__cell--muted" role="cell"><span class="vp-seg__k vp-eyebrow">Zdaj</span>aplikacijo s fotografijo, vprašanje v skupini</p>
-        <div class="vp-seg__choice" role="cell"><span class="vp-tag vp-tag--no">Ne</span><p>Obljube, ki jo želi, ni mogoče varno izpolniti.</p></div>
-      </div>
-      <div class="vp-seg__row" role="row">
-        <span class="vp-seg__type" role="cell">Priložnostni nabiralec</span>
-        <p class="vp-seg__cell" role="cell"><span class="vp-seg__k vp-eyebrow">Kaj želi</span>nabira 2–3 gobe, ki jih pozna, npr. jurček in lisičko</p>
-        <p class="vp-seg__cell vp-seg__cell--muted" role="cell"><span class="vp-seg__k vp-eyebrow">Zdaj</span>izkušnje, nasvete domačih</p>
-        <div class="vp-seg__choice" role="cell"><span class="vp-tag vp-tag--partial">Delno</span><p>Atlas z dvojnicami: kaj je podobno »moji« gobi.</p></div>
-      </div>
-      <div class="vp-seg__row vp-seg__row--chosen" role="row">
-        <span class="vp-seg__type" role="cell">Začetnik, ki se želi naučiti</span>
-        <p class="vp-seg__cell" role="cell"><span class="vp-seg__k vp-eyebrow">Kaj želi</span>razumeti, po čem se gobe ločijo, in postopoma znati sam</p>
-        <p class="vp-seg__cell vp-seg__cell--muted" role="cell"><span class="vp-seg__k vp-eyebrow">Zdaj</span>knjige, društva, skupine</p>
-        <div class="vp-seg__choice" role="cell"><span class="vp-tag vp-tag--chosen">Izbrano</span><p>Glavni uporabnik. Tudi sama sem začetnica.</p></div>
-      </div>
-      <div class="vp-seg__row" role="row">
-        <span class="vp-seg__type" role="cell">Izkušen gobar, društva</span>
-        <p class="vp-seg__cell" role="cell"><span class="vp-seg__k vp-eyebrow">Kaj želi</span>deliti znanje, varovati ljudi in naravo</p>
-        <p class="vp-seg__cell vp-seg__cell--muted" role="cell"><span class="vp-seg__k vp-eyebrow">Zdaj</span>lastno znanje</p>
-        <div class="vp-seg__choice" role="cell"><span class="vp-tag vp-tag--no">Ne kot uporabnik</span><p>Vir zaupanja in najstrožji kritik.</p></div>
-      </div>
+    <div class="vp-body">
+      <p>V gobarskih skupinah na Facebooku začetniki vsak dan objavijo fotografijo gobe in vprašajo neznance. Pod isto fotografijo eden napiše »strupena«, drugi »užitna«. Začetnik ne zna presoditi, kdo ima prav.</p>
+      <p>Center za klinično toksikologijo UKC Ljubljana je do oktobra 2026 obravnaval 21 zastrupitev z gobami, v petih letih 533. Toksikologinja dr. Lucija Šarc opozarja, da družine pogosto šele po obroku preverjajo, kaj so jedle.</p>
+      <p><span class="vp-marker">Še en odgovor tega ne reši. Reši ga aplikacija, ki nauči presoditi.</span></p>
     </div>
-    <div class="vp-body" style="margin-top:var(--space-6)">
-      <p><strong>Zakaj začetnik, ki se želi naučiti?</strong> Zanj je problem največji, obstoječe rešitve pa mu služijo najslabše: stroka mu aplikacije za prepoznavanje odsvetuje, odgovori v skupinah si nasprotujejo. Izdelek mu lahko pošteno da vrednost, ne da bi obljubil gotovost. Sem eden od njih, zato lahko vsak korak preizkusim na sebi. In to je pot, ki jo podpira stroka, od katere je odvisno zaupanje.</p>
+    <blockquote style="margin:var(--space-7) 0 0">
+      <p class="vp-pull">Gob ne določa. Nauči te jih gledati.</p>
+      <span class="vp-pull__by">Obljuba produkta</span>
+    </blockquote>
+  </section>
+
+  <section class="vp-section" aria-labelledby="za-koga">
+    <div class="vp-section__head">
+      <p class="vp-eyebrow">03 · Za koga</p>
+      <h2 class="vp-h2" id="za-koga">En uporabnik: začetnik, ki se želi naučiti</h2>
+    </div>
+    <div class="vp-rank">
+      <div><span class="vp-tag vp-tag--no">Ne</span><b>Iskalec hitrega odgovora</b><span class="vp-small">Obljube, ki jo želi, ni mogoče varno izpolniti.</span></div>
+      <div><span class="vp-tag vp-tag--no">Ne kot uporabnik</span><b>Izkušen gobar</b><span class="vp-small">Vir zaupanja in najstrožji kritik.</span></div>
+      <div><span class="vp-tag vp-tag--chosen">Izbrano</span><b>Začetnik, ki se želi naučiti</b><span class="vp-small">Problem je zanj največji, obstoječe rešitve mu služijo najslabše.</span></div>
     </div>
   </section>
 
-  <section class="vp-section">
+  <section class="vp-section" id="gradnja" aria-labelledby="gradnja-naslov">
+    <div class="vp-section__head">
+      <p class="vp-eyebrow">04 · Kako sem gradila z AI</p>
+      <h2 class="vp-h2" id="gradnja-naslov">Z AI je hitro zgraditi karkoli. Težje je zgraditi pravo stvar.</h2>
+    </div>
+    <div class="vp-body">
+      <p>Nisem programerka. Kodo je pisal Claude Code, odločitve so bile moje.</p>
+      <p>Aplikacija v enem dnevu me ni zanimala. Z AI hitro nastane nekaj, kar deluje, nima pa glave in repa. Iskala sem ravnovesje med tremi stvarmi.</p>
+    </div>
+    <ol class="site-balance">
+      <li data-reveal><h3>Navodila</h3><p>Prvi dan produktni dokument: namen, ne-cilji, varnostna pravila, merila uspeha. V navodila za AI pravila, ki veljajo povsod: virov si ne sme izmisliti, kar nima vira, je označeno »manjka vir«.</p></li>
+      <li data-reveal style="--i:1"><h3>Vodenje</h3><p>Načrt v devetih fazah z razlogom za vrstni red. Dizajn pred zasloni, da jih zgradim enkrat. Podatki pred zasloni, da testiram na pravih gobah. Analitika, ko je aplikacija cela.</p></li>
+      <li data-reveal style="--i:2"><h3>Nadzor</h3><p>Vsak zaslon je najprej maketa. Koda nastane šele, ko jo potrdim. Po vsaki fazi pregled in testi, na koncu jih je 542.</p></li>
+    </ol>
+    <p class="site-more"><span class="vp-marker">Izdelek je na koncu odražal začetni cilj, ne tega, kar je bilo najlažje zgraditi.</span></p>
+
+    <figure class="site-flow" aria-labelledby="potek">
+      <figcaption class="site-flow__head">
+        <p class="vp-eyebrow">Potek</p>
+        <p class="site-flow__title" id="potek">Od ideje do Trgovine Play v 23 dneh</p>
+      </figcaption>
+      <ol class="site-flow__track">
+        <li style="--i:0"><span class="site-flow__when">5. 10.</span><b>Pravila</b><span>Produktni dokument: namen, ne-cilji, varnost, merila uspeha.</span></li>
+        <li style="--i:1"><span class="site-flow__when">6. 10.</span><b>Načrt</b><span>Devet faz z vrstnim redom. Demo z 8 gobami zamenjam s polno objavo.</span></li>
+        <li style="--i:2" class="site-flow__loopstep"><span class="site-flow__when">6.–9. 10.</span><b>Gradnja</b><span>Faza za fazo, vsaka v istem krogu.</span></li>
+        <li style="--i:3"><span class="site-flow__when">12.–26. 10.</span><b>Zaprti test</b><span>12 testerjev, 14 dni in sprehod v gozd. 25 → 64 vrst.</span></li>
+        <li style="--i:4" class="site-flow__key"><span class="site-flow__when">28. 10.</span><b>Objava</b><span>Javno v Trgovini Play.</span></li>
+        <li style="--i:5"><span class="site-flow__when">od 28. 10.</span><b>Merjenje</b><span>Kaj ljudje odpirajo in kje obstanejo.</span></li>
+      </ol>
+      <div class="site-flow__loop">
+        <p class="vp-eyebrow">Krog vsake faze</p>
+        <ol>
+          <li style="--j:0">Maketa</li>
+          <li style="--j:1">Potrdim</li>
+          <li style="--j:2">Koda s Claude Code</li>
+          <li style="--j:3">Testi</li>
+          <li style="--j:4">Pregled</li>
+        </ol>
+      </div>
+    </figure>
+  </section>
+
+  <section class="vp-section" aria-labelledby="pazi">
     <div class="vp-split">
       <div>
         <div class="vp-section__head">
-          <p class="vp-eyebrow">03 · Ključna odločitev</p>
-          <h2 class="vp-h2">Zakaj sem se odpovedala prepoznavanju s fotografijo</h2>
-          <p class="vp-small">Očitna ideja je bila: fotografiraj gobo, aplikacija ti pove, katera je. Bila bi hitrejša in bi prinesla več prenosov.</p>
+          <p class="vp-eyebrow">05 · Na kaj sem morala paziti</p>
+          <h2 class="vp-h2" id="pazi">Napačen »užitna« lahko ubije</h2>
         </div>
         <ol class="vp-reasons">
-          <li><div><h4>Uporabnik ne sprašuje po imenu.</h4><p>V gozdu želi vedeti, ali gobo lahko poje. Tega z gotovostjo ne more povedati nobena aplikacija.</p></div></li>
-          <li><div><h4>Fotografija ne vidi ključnih znakov.</h4><p>Gomolj ob dnu beta je pogosto v zemlji, vonja in spremembe barve ob prerezu ni na sliki. Prav ti znaki ločijo smrtno strupene gobe od užitnih.</p></div></li>
-          <li><div><h4>Tveganje ni simetrično.</h4><p>Napačen »užitna« lahko ubije. Napačen »ne vem« stane le polno košaro.</p></div></li>
-          <li><div><h4>Hiter odgovor ne nauči ničesar.</h4><p>Začetnik ostane odvisen od aplikacije in je naslednjič na istem.</p></div></li>
-          <li><div><h4>Stroka bi izdelek zavrnila.</h4><p>Pod mojo objavo v gobarski skupini je izkušen gobar zapisal, da začetnikom odsvetuje aplikacije za prepoznavanje, ker lahko napačna določitev povzroči hudo zastrupitev. Vsaka beseda drži.</p></div></li>
+          <li><div><h4>Smrtno strupenih kviz nikoli tiho ne izloči.</h4><p>Tveganje ni simetrično. Napačen »ne vem« stane polno košaro, napačen »užitna« lahko življenje.</p></div></li>
+          <li><div><h4>»Ne vem« je vedno dovoljen.</h4><p>Nevarne gobe nikoli ne izloči.</p></div></li>
+          <li><div><h4>Barva je mehak znak.</h4><p>Zelena mušnica ima pogosto olivno rjav klobuk in začetnik reče »rjava«. Barva gobe zato ne izloči, le premakne nižje.</p></div></li>
+          <li><div><h4>Vsak podatek ima vir.</h4><p>Pri neskladju virov velja strožja oznaka.</p></div></li>
+          <li><div><h4>Zakon in zaupanje.</h4><p>Zavarovane vrste po uredbi, pravila nabiranja po kodeksu Mikološke zveze, analitika šele po »Dovoli«.</p></div></li>
         </ol>
-        <div class="vp-body" style="margin-top:var(--space-6)">
-          <p><strong>Kaj sem zgradila namesto tega:</strong> kviz, ki sprašuje, kar pogleda izkušen gobar: kje raste, katera drevesa so blizu, kaj je pod klobukom, ali ima obroček in gomolj. Postopoma izloča, kar se ne ujema, in ob vsaki gobi pokaže nevarne dvojnice.</p>
-        </div>
-        <blockquote style="margin:var(--space-7) 0 0">
-          <p class="vp-pull">Gob ne določa. Nauči te jih gledati.</p>
-          <span class="vp-pull__by">Obljuba produkta</span>
-        </blockquote>
-        <p class="vp-small" style="margin-top:var(--space-5)">Cena odločitve: manj prenosov in počasnejši odgovor. Zato je merilo uspeha, da začetnik od odprtja do možnih gob pride v manj kot 60 sekundah.</p>
       </div>
       <figure class="vp-phone">
         <img src="../../assets/img/gobe/03-rezultat.webp" width="540" height="960" loading="lazy" alt="Rezultat kviza: »To je možno ujemanje, ne določitev« in smrtno strupene dvojnice navadne lisičke.">
@@ -169,20 +174,34 @@
     </div>
   </section>
 
-  <section class="vp-section">
+  <section class="vp-section" aria-labelledby="bliznjice">
+    <div class="vp-section__head">
+      <p class="vp-eyebrow">06 · Bližnjice, ki jih nisem ubrala</p>
+      <h2 class="vp-h2" id="bliznjice">Kje bi lahko šla hitreje, pa nisem</h2>
+    </div>
+    <ol class="site-shortcuts">
+      <li data-reveal><p class="site-shortcuts__no">Prepoznavanje s fotografijo</p><p class="site-shortcuts__yes"><b>Kviz, ki uči gledati.</b> Fotografija ne vidi gomolja v zemlji, vonja in spremembe barve ob prerezu. Cena: manj prenosov.</p></li>
+      <li data-reveal style="--i:1"><p class="site-shortcuts__no">Demo z 8 gobami za LinkedIn</p><p class="site-shortcuts__yes"><b>Polna objava v Trgovini Play.</b> Viri, pogoji uporabe, politika zasebnosti in zaprti test. Odločila sem drugi dan.</p></li>
+      <li data-reveal style="--i:2"><p class="site-shortcuts__no">Objava s 25 vrstami</p><p class="site-shortcuts__yes"><b>64 vrst.</b> Testerji so 33-krat sporočili, da njihove gobe ni. Vsako novo vrsto sem preverila proti virom.</p></li>
+      <li data-reveal style="--i:3"><p class="site-shortcuts__no">Podatki s kavča</p><p class="site-shortcuts__yes"><b>Test v gozdu.</b> Testerji so kviz večinoma preklikali doma. Takšni podatki merijo radovednost, ne rabe.</p></li>
+      <li data-reveal style="--i:4"><p class="site-shortcuts__no">Surove številke</p><p class="site-shortcuts__yes"><b>Filter za testne naprave.</b> Googlovi roboti so se šteli kot uporabniki. Aktivnih naprav ni bilo 87, ampak 57.</p></li>
+    </ol>
+  </section>
+
+  <section class="vp-section" aria-labelledby="preprosto">
     <div class="vp-split">
       <div>
         <div class="vp-section__head">
-          <p class="vp-eyebrow">04 · V čevljih uporabnika</p>
-          <h2 class="vp-h2">Načrtovano za gozd, ne za kavč</h2>
+          <p class="vp-eyebrow">07 · Kje nisem komplicirala</p>
+          <h2 class="vp-h2" id="preprosto">Česa nisem zgradila</h2>
         </div>
         <ul class="vp-notes">
-          <li><h4>Ena roka, gozd</h4><p>Veliki cilji za dotik, glavna dejanja v spodnji polovici zaslona, kontrast na soncu. Deluje brez interneta in ne zahteva kamere ne lokacije.</p></li>
-          <li><h4>Barva je mehak znak</h4><p>Zelena mušnica ima pogosto olivno rjav klobuk in začetnik reče »rjava«. Barva zato gobe ne izloči, le premakne nižje.</p></li>
-          <li><h4>»Ne vem« je dovoljen odgovor</h4><p>Je pri vsakem vprašanju in nikoli ne izloči nevarne gobe. Pomoč »Kako to preverim?« ima fotografije.</p></li>
-          <li><h4>Preizkus doma</h4><p>Hči je prinesla gobo: orjaški dežnik ali koničasta mušnica, ki je smrtno strupena. Aplikacija ni izbrala namesto naju, pokazala je razliko: kačaste luskice na betu.</p></li>
-          <li><h4>Preizkus v gozdu</h4><p>En sprehod je pokazal, da je pogostih gob veliko več kot 25. Testerji so 33-krat sporočili, da njihove gobe ni. Pred objavo: 64 vrst.</p></li>
-          <li><h4>Napaka s travnika</h4><p>»Na travniku« in »Gladko« je dalo 0 možnih gob. Nastal je zaslon »Nobena goba v aplikaciji se ne ujema. Gobe, ki je ne prepoznaš, ne jej.«</p></li>
+          <li><h4>Računa in strežnika</h4><p>Uporabnik se ne prijavi. Vse je v aplikaciji.</p></li>
+          <li><h4>Interneta, kamere in lokacije</h4><p>V gozdu ni signala. Manj dovoljenj, več zasebnosti.</p></li>
+          <li><h4>Čakanja na strokovni pregled</h4><p>Google Play ga ne zahteva. Pogoj je bil v moji specifikaciji, zamenjala sem ga z viri.</p></li>
+          <li><h4>Aplikacije za vse gobarje</h4><p>En glavni uporabnik, ena obljuba.</p></li>
+          <li><h4>Opozoril ob vsaki posodobitvi</h4><p>Opozorilo pride ob prvem zagonu. Preveč opozoril ljudje nehajo brati.</p></li>
+          <li><h4>Oglasov</h4><p>Oglas ob opozorilu o smrtno strupeni gobi bi zmanjšal zaupanje.</p></li>
         </ul>
       </div>
       <figure class="vp-phone">
@@ -192,102 +211,38 @@
     </div>
   </section>
 
-  <section class="vp-section">
-    <figure class="vp-map" id="zemljevid" data-map="gobe">
-      <div class="vp-map__head">
-        <div>
-          <p class="vp-eyebrow">05 · Zemljevid problema</p>
-          <h2 class="vp-map__title">Objavo je določil 14-dnevni test, ne gradnja.</h2>
-          <p class="vp-map__sub">5 ključnih gradnikov · 12 nalog · 4 slepe pege · 1 ovira · 28 dni</p>
-        </div>
-        <button class="vp-map__replay" type="button" data-replay>↻ Izriši znova</button>
-      </div>
-      <p class="vp-map__hint">↔ povlecite diagram vstran</p>
-      <div class="vp-map__scroll"><svg class="vp-map__svg" role="img" aria-label="Zemljevid projekta Gobe po dnevih: ključni gradniki kot pasovi, naloge, pogoji, kritična pot, 14-dnevni zaprti test kot ovira in štiri slepe pege."></svg></div>
-      <div class="vp-map__legend" aria-hidden="true">
-        <span><i class="vp-lg vp-lg--block"></i>ključni gradnik</span>
-        <span><i class="vp-lg vp-lg--task"></i>naloga</span>
-        <span><i class="vp-lg vp-lg--link"></i>pogoj</span>
-        <span><i class="vp-lg vp-lg--crit"></i>kritična pot</span>
-        <span><i class="vp-lg vp-lg--blind"></i>slepa pega</span>
-        <span><i class="vp-lg vp-lg--bar"></i>ovira</span>
-      </div>
-      <figcaption class="vp-map__cap">
-        <p class="vp-eyebrow">Kaj pove slika</p>
-        <p>Prvo delujočo različico sem zgradila v enem tednu. <strong>Datum objave je določil zaprti test, ki ga zahteva Google: 12 testerjev, 14 dni.</strong> Med testom je delo teklo naprej. Testerji so 33-krat sporočili manjkajočo gobo, zato je aplikacija pred objavo zrasla s 25 na 64 vrst.</p>
-      </figcaption>
-    </figure>
-  </section>
-
-  <section class="vp-section">
-    <div class="vp-section__head">
-      <p class="vp-eyebrow">06 · Odločitve</p>
-      <h2 class="vp-h2">Odločitve in kompromisi</h2>
-      <p class="vp-small">Vsak zaslon je najprej maketa, ki jo potrdim, šele nato koda. Med idejami sem izbrala z matriko učinek–vložek.</p>
-    </div>
-    <div class="vp-decisions">
-      <article class="vp-decision"><h3 class="vp-decision__what">Kviz namesto kamere</h3><div class="vp-decision__part"><p class="vp-eyebrow">Zakaj</p><p>Prepoznavanje s fotografijo obljublja gotovost, ki je ni.</p></div><div class="vp-decision__part vp-decision__cost"><p class="vp-eyebrow">Cena</p><p>Manj prenosov, počasnejši odgovor.</p></div></article>
-      <article class="vp-decision"><h3 class="vp-decision__what">Smrtno strupenih nikoli tiho ne izloči</h3><div class="vp-decision__part"><p class="vp-eyebrow">Zakaj</p><p>Tveganje ni simetrično: napačen »užitna« lahko ubije.</p></div><div class="vp-decision__part vp-decision__cost"><p class="vp-eyebrow">Cena</p><p>Daljši seznam možnih gob.</p></div></article>
-      <article class="vp-decision"><h3 class="vp-decision__what">Mehki in trdi znaki</h3><div class="vp-decision__part"><p class="vp-eyebrow">Zakaj</p><p>Začetniki napačno ocenijo barvo, zato barva gobe ne izloči.</p></div><div class="vp-decision__part vp-decision__cost"><p class="vp-eyebrow">Cena</p><p>Manj ozek izbor.</p></div></article>
-      <article class="vp-decision"><h3 class="vp-decision__what">Dvojnice tudi, ko jih aplikacija ne pozna</h3><div class="vp-decision__part"><p class="vp-eyebrow">Zakaj</p><p>Tišina o dvojnici ne sme pomeniti »varno«.</p></div><div class="vp-decision__part vp-decision__cost"><p class="vp-eyebrow">Cena</p><p>Javno priznam, česa aplikacija ne zna.</p></div></article>
-      <article class="vp-decision"><h3 class="vp-decision__what">Brez interneta, kamere in lokacije</h3><div class="vp-decision__part"><p class="vp-eyebrow">Zakaj</p><p>V gozdu ni signala; zasebnost.</p></div><div class="vp-decision__part vp-decision__cost"><p class="vp-eyebrow">Cena</p><p>Vse slike so v aplikaciji, namestitev je večja.</p></div></article>
-      <article class="vp-decision"><h3 class="vp-decision__what">Viri namesto čakanja na strokovni pregled</h3><div class="vp-decision__part"><p class="vp-eyebrow">Zakaj</p><p>Objava ni odvisna od prostovoljca; pri neskladju virov velja strožja oznaka.</p></div><div class="vp-decision__part vp-decision__cost"><p class="vp-eyebrow">Cena</p><p>Odgovornost za vsebino je moja.</p></div></article>
-      <article class="vp-decision"><h3 class="vp-decision__what">64 vrst namesto 25 pred objavo</h3><div class="vp-decision__part"><p class="vp-eyebrow">Zakaj</p><p>33 prijav manjkajoče gobe in en sprehod po gozdu.</p></div><div class="vp-decision__part vp-decision__cost"><p class="vp-eyebrow">Cena</p><p>Kasnejša objava.</p></div></article>
-      <article class="vp-decision"><h3 class="vp-decision__what">Analitika samo s soglasjem</h3><div class="vp-decision__part"><p class="vp-eyebrow">Zakaj</p><p>Zaupanje in GDPR; brez IP naslovov in iskalnih nizov.</p></div><div class="vp-decision__part vp-decision__cost"><p class="vp-eyebrow">Cena</p><p>Vidim približno 57 % uporabnikov.</p></div></article>
-    </div>
-  </section>
-
-  <section class="vp-section">
+  <section class="vp-section" aria-labelledby="podatki">
     <div class="vp-split" style="grid-template-columns:minmax(0,1fr) minmax(0,420px)">
       <div>
         <div class="vp-section__head">
-          <p class="vp-eyebrow">07 · Merjenje</p>
-          <h2 class="vp-h2">Kaj ljudje res počnejo</h2>
+          <p class="vp-eyebrow">08 · Kaj so pokazali podatki</p>
+          <h2 class="vp-h2" id="podatki">Ljudje odpirajo nevarne dvojnice</h2>
         </div>
         <div class="vp-body">
-          <p>Analitika (PostHog, strežniki v EU) se zažene šele, ko uporabnik izbere »Dovoli«. Brez IP naslovov, posnetkov sej in iskalnih nizov.</p>
-          <p>Med testom so testerji kviz večinoma preklikali na kavču. <span class="vp-marker">Takšni podatki merijo radovednost, ne rabe.</span> Pravi test je bil gozd.</p>
-          <p>Googlovi testni roboti so se šteli kot uporabniki (28 lažnih naprav). Po popravku filtra aktivnih naprav ni bilo 87, ampak 57.</p>
+          <p>Najbolj odprta goba v prvem tednu je divji lisičkovec, strupena dvojnica lisičke. Druga je mesnorjavi dežniček, smrtno strupena dvojnica marele. Jurčka ni med prvimi osmimi.</p>
+          <p>55 % odpiranj je ob vikendu, ko se gre po gobe. Številke so majhne, 46 ljudi z analitiko v enem tednu, smer pa je jasna.</p>
+          <p><span class="vp-marker">Ne iščejo le imena gobe. Iščejo razliko med užitno in strupeno.</span></p>
         </div>
       </div>
       <div class="vp-bars" role="img" aria-label="»Ne vem« pri vprašanju o gomolju: pred fotografijami 12 od 20, po fotografijah 1 od 12.">
         <p class="vp-bars__title">»Ne vem« pri vprašanju o gomolju</p>
         <div class="vp-bar"><div class="vp-bar__label"><span>Pred fotografijami v pomoči</span><span class="vp-bar__value">12 od 20 · 60 %</span></div><div class="vp-bar__track"><div class="vp-bar__fill" style="width:60%"></div></div></div>
         <div class="vp-bar vp-bar--after"><div class="vp-bar__label"><span>Po dodanih fotografijah</span><span class="vp-bar__value">1 od 12 · 8 %</span></div><div class="vp-bar__track"><div class="vp-bar__fill" style="width:8.33%"></div></div></div>
-        <p class="vp-small">Majhne številke, a smer je jasna. Manj »ne vem« ni nujno bolje, ljudje morda ugibajo. Zato »ne vem« nevarnih gob nikoli ne izloči.</p>
+        <p class="vp-small">Manj »ne vem« ni nujno bolje, ljudje morda ugibajo. Zato »ne vem« nevarnih gob nikoli ne izloči.</p>
       </div>
     </div>
   </section>
 
-  <section class="vp-section">
-    <div class="vp-section__head">
-      <p class="vp-eyebrow">08 · Prvi teden</p>
-      <h2 class="vp-h2">Ljudje odpirajo nevarne dvojnice</h2>
-    </div>
-    <div class="vp-rank">
-      <div><span class="vp-eyebrow">1. najbolj odprta</span><b>Divji lisičkovec</b><span><span class="vp-tag vp-tag--risk">Strupena</span></span><span class="vp-small">dvojnica lisičke</span></div>
-      <div><span class="vp-eyebrow">2. najbolj odprta</span><b>Mesnorjavi dežniček</b><span><span class="vp-tag vp-tag--risk">Smrtno strupena</span></span><span class="vp-small">dvojnica marele</span></div>
-      <div><span class="vp-eyebrow">Ni med prvimi 8</span><b>Jurček</b><span><span class="vp-tag">Užitna</span></span><span class="vp-small">goba, ki jo vsi poznajo</span></div>
-    </div>
-    <ul class="vp-notes" style="margin-top:var(--space-6)">
-      <li><h4>~56 namestitev</h4><p>v prvih 4 dneh, 5 odstranitev</p></li>
-      <li><h4>395 odprtih kartic gob</h4><p>13 ljudi se je vrnilo h kvizu</p></li>
-      <li><h4>55 % odpiranj ob vikendu</h4><p>takrat, ko se gre po gobe</p></li>
-      <li><h4>46 ljudi z analitiko</h4><p>en teden, vmes tudi testerji: majhne številke</p></li>
-    </ul>
-    <p class="vp-pull" style="margin-top:var(--space-7);max-width:22ch;font-size:clamp(26px,3.4vw,36px)">Ne iščejo le imena gobe. Iščejo razliko med užitno in strupeno.</p>
-  </section>
-
-  <section class="vp-section">
+  <section class="vp-section" aria-labelledby="lekcije">
     <div class="vp-section__head">
       <p class="vp-eyebrow">09 · Kaj sem se naučila</p>
-      <h2 class="vp-h2">Štiri lekcije za vsak naslednji produkt</h2>
+      <h2 class="vp-h2" id="lekcije">Za vsak naslednji produkt</h2>
     </div>
     <ul class="vp-notes">
-      <li><h4>Opustiti je najtežje</h4><p>Najtežja produktna odločitev je opustiti funkcijo, ki jo vsi pričakujejo.</p></li>
-      <li><h4>Testiraj v pravem okolju</h4><p>Podatki s kavča merijo radovednost. Pravi test je okolje, v katerem se produkt uporablja.</p></li>
-      <li><h4>Meri pred testom</h4><p>Analitiko vgradim pred testom. Brez nje bi imela občutek, ne dokaza.</p></li>
-      <li><h4>Preveri filter</h4><p>Če je številka z njim in brez njega enaka, filter ne dela.</p></li>
+      <li><h4>Opustiti je najtežje</h4><p>Najtežja odločitev je opustiti funkcijo, ki jo vsi pričakujejo.</p></li>
+      <li><h4>Gradnja z AI je hitra</h4><p>Prva delujoča različica je bila gotova v enem tednu. Aplikacijo je izboljšal počasni del: test, viri in pregledi.</p></li>
+      <li><h4>Testiraj v pravem okolju</h4><p>Pravi test je okolje, v katerem se produkt uporablja.</p></li>
+      <li><h4>Meri pred testom</h4><p>Brez analitike bi imela občutek, ne dokaza. Filter preizkusim: če je številka z njim in brez njega enaka, ne dela.</p></li>
     </ul>
   </section>
 
@@ -325,7 +280,6 @@
   </footer>
 </div>
 <script src="../../assets/bundle.js"></script>
-<script src="../../assets/maps/gobe.js"></script>
 <script src="../../assets/site.js"></script>
 </body>
 </html>
