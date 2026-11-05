@@ -55,7 +55,8 @@ html { scroll-padding-top: var(--space-4); }
 .vp-lang a[aria-current="true"] { background: var(--ink); color: var(--ground); }
 
 /* Preklop teme v nogi */
-.vp-footer { align-items: center; }
+/* Brez črte nad nogo: pas s kontaktom je čez celo širino, črta pa le v širini vsebine, zato je bila videti odrezana */
+.vp-footer { align-items: center; border-top: 0; padding-top: var(--space-6); }
 .site-theme { display: inline-flex; align-items: center; gap: var(--space-2); }
 
 /* Oznaka »Kaj pove slika« ostane oznaka (v bundle.css jo povozi .vp-map__cap p) */
