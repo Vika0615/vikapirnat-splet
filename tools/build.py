@@ -36,7 +36,9 @@ PAGES = {
     "blog": ("blog/", "en/blog/"),
     "contact": ("kontakt/", "en/contact/"),
 }
-NAV = ["home", "work", "blog", "contact"]
+NAV = ["home", "work", "blog"]
+# Noga ima še kontakt (v meniju ga ni, ker je na vsaki strani pas s kontaktom)
+FOOT_NAV = NAV + ["contact"]
 # Drobtinice in »Nazaj«: nadrejena stran. Zapisi na blogu (post:<ime>) imajo za starša blog.
 PARENT = {"work": "home", "gobe": "work", "blog": "home", "contact": "home"}
 # Zapisi na blogu: src/<jezik>/blog/<ime>.html (datoteke z _ na začetku so predloge). Napolni collect_posts().
@@ -361,7 +363,7 @@ def footer(lang, root, note):
     return f"""<div class="vp-wrap">
   <footer class="vp-footer">
     <span>© {YEAR} {name_html(' site-wm--sm')}</span>{note_html}
-    <nav class="site-footnav" aria-label="{s['footer_nav']}">{' · '.join(f'<a href="{root}{url_of(k, lang)}">{s["nav"][k]}</a>' for k in NAV)}</nav>
+    <nav class="site-footnav" aria-label="{s['footer_nav']}">{' · '.join(f'<a href="{root}{url_of(k, lang)}">{s["nav"][k]}</a>' for k in FOOT_NAV)}</nav>
     <span><a href="mailto:{EMAIL}">{EMAIL}</a> · <a href="{LINKEDIN}" target="_blank" rel="noopener">LinkedIn ↗</a></span>
     <span class="site-theme"><span>{s['theme_label']}</span>
       <span class="vp-lang" role="group" aria-label="{s['theme_label']}">{''.join(themes)}</span>
