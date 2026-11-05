@@ -263,6 +263,8 @@ html.js .site-flow:not(.is-in) .site-flow__loop li { border-color: var(--line); 
 /* Uradni gumb Google Play: nespremenjen; prozoren rob v sliki je del predpisanega praznega prostora */
 .site-store-badge { display: inline-block; line-height: 0; border-radius: var(--radius-m); }
 .site-store-badge img { display: block; width: auto; height: 72px; margin-block: -8px; }
+/* Angleški gumb ima večji prozoren rob (41 px namesto 29 px), zato je slika večja, vidni gumb pa enako velik kot slovenski */
+.site-store-badge--en img { height: 82px; margin-block: -13px; }
 .site-store-badge:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 .site-store { display: inline-grid; gap: 2px; min-width: 176px; padding: 10px 16px; border: 1px solid var(--edge); border-radius: var(--radius-m); color: var(--ink); text-decoration: none; transition: border-color .2s; }
 a.site-store:hover { border-color: var(--ink); }

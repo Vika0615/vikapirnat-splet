@@ -25,7 +25,7 @@ EMAIL = "vika.pirnat@gmail.com"
 LINKEDIN = "https://www.linkedin.com/in/vika-pirnat/"
 GOBE_PLAY = "https://play.google.com/store/apps/details?id=io.github.vika0615.gobe"
 # Uradni gumb Google Play (nespremenjen, iz play.google.com/intl/en_us/badges). Za jezik brez gumba ostane besedilni gumb.
-PLAY_BADGE = {"sl": "assets/img/badges/google-play-sl.png"}
+PLAY_BADGE = {"sl": "assets/img/badges/google-play-sl.png", "en": "assets/img/badges/google-play-en.png"}
 YEAR = "2026"
 
 # id strani: (pot SL, pot EN). Nova stran = nova vrstica + src/sl/<id>.html + src/en/<id>.html
@@ -264,7 +264,7 @@ def stores_block(lang, root):
     Applovega gumba »App Store« ne smemo uporabiti, dokler aplikacija ni v App Storu (Applova pravila)."""
     s = T[lang]
     if lang in PLAY_BADGE:
-        play = f'<a class="site-store-badge" href="{GOBE_PLAY}" target="_blank" rel="noopener"><img src="{root}{PLAY_BADGE[lang]}" width="646" height="250" alt="{s["play_alt"]}"></a>'
+        play = f'<a class="site-store-badge site-store-badge--{lang}" href="{GOBE_PLAY}" target="_blank" rel="noopener"><img src="{root}{PLAY_BADGE[lang]}" width="646" height="250" alt="{s["play_alt"]}"></a>'
     else:
         play = f'<a class="site-store" href="{GOBE_PLAY}" target="_blank" rel="noopener"><span class="site-store__k">{s["play_k"]}</span><span class="site-store__n">Google Play ↗</span></a>'
     return f"""<div class="site-stores" role="group" aria-label="{s['stores']}">
