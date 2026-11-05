@@ -5,18 +5,14 @@ html { scroll-padding-top: var(--space-4); }
 /* Samo za bralnike zaslona */
 .site-sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
-/* Znak z imenom v glavi: male črke, Bricolage Grotesque, zeleni piki na i utripata kot zadetek v tarčo */
-.site-mark { display: inline-block; padding-block: 4px; font-family: "Bricolage Grotesque", var(--font-display); font-size: 27px; line-height: 1; font-weight: 700; letter-spacing: -0.035em; color: var(--ink); text-decoration: none; }
+/* Ime kot znak, povsod enako (glava, naslov na domači strani, noga): Bricolage Grotesque, veliki začetnici,
+   na i-jih mirni, malo povečani zeleni piki z razmikom od črk */
+.site-wm { font-family: "Bricolage Grotesque", var(--font-display); font-weight: 700; letter-spacing: -0.02em; white-space: nowrap; }
+.site-wm__i { position: relative; display: inline-block; margin-inline: 0.035em; }
+.site-wm__i::after { content: ""; position: absolute; left: 50%; top: -0.12em; width: 0.22em; height: 0.22em; margin-left: -0.11em; border-radius: 50%; background: var(--lime-line); }
+.site-wm--sm { font-size: 15px; color: var(--ink); }
+.site-mark { display: inline-block; padding-block: 10px 4px; font-size: 28px; line-height: 1; color: var(--ink); text-decoration: none; }
 .site-mark:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; border-radius: var(--radius-s); }
-.site-mark__i { position: relative; display: inline-block; }
-.site-mark__i::before, .site-mark__i::after { content: ""; position: absolute; left: 50%; top: 0.03em; width: 0.2em; height: 0.2em; margin-left: -0.1em; border-radius: 50%; }
-.site-mark__i::after { background: var(--lime-line); }
-.site-mark .site-mark__i::before { border: 2px solid var(--lime-line); box-sizing: border-box; opacity: 0; animation: site-target 3.2s ease-out infinite; }
-.site-mark .site-mark__i + .site-mark__i::before { animation-delay: 1.6s; }
-@keyframes site-target { 0% { transform: scale(1); opacity: 0.8; } 70%, 100% { transform: scale(3.2); opacity: 0; } }
-/* Isti piki na i v velikem imenu na domači strani, brez utripanja */
-.site-name .site-mark__i::before { display: none; }
-.site-name .site-mark__i::after { top: 0.02em; width: 0.17em; height: 0.17em; margin-left: -0.085em; }
 
 /* Drobtinice */
 .site-crumbs { padding-top: var(--space-4); }
@@ -161,6 +157,47 @@ html.js .site-photo__tag--c { animation-delay: 0.3s; }
 .site-chips li { padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; font-size: 14px; line-height: 1.3; color: var(--ink); background: var(--surface); }
 .site-chips--ai li { border-color: var(--lime-line); background: var(--lime-soft); }
 
+/* ---------- Kako razmišljam: koncepti z diagrami ---------- */
+.site-concepts { display: grid; gap: var(--space-5); }
+.site-concepts__group { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2) var(--space-3); margin: var(--space-4) 0 0; font-family: var(--font-text); font-size: 15px; line-height: 1.4; font-weight: 400; color: var(--ink-dim); }
+.site-concepts__group span { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--lime-line); }
+.site-concepts__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); }
+.site-concept { display: grid; grid-template-rows: auto 1fr; min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-l); overflow: hidden; }
+.site-concept__fig { margin: 0; padding: var(--space-5) var(--space-5) var(--space-4); background: var(--raised); border-bottom: 1px solid var(--line); }
+.site-concept__fig svg { display: block; width: 100%; height: auto; }
+.site-concept__body { display: grid; gap: var(--space-2); align-content: start; padding: var(--space-4) var(--space-5) var(--space-5); min-width: 0; }
+.site-concept h4 { margin: 0; font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--lime-line); }
+.site-concept__one { margin: 0; font-family: var(--font-display); font-size: 19px; line-height: 1.35; font-weight: 600; color: var(--ink); text-wrap: balance; }
+.site-concept__ex { margin-top: var(--space-1); font-size: 15px; line-height: 1.55; color: var(--ink-dim); }
+.site-concept__ex summary { cursor: pointer; width: fit-content; font-weight: 600; color: var(--link); list-style: none; }
+.site-concept__ex summary::-webkit-details-marker { display: none; }
+.site-concept__ex summary::before { content: "+ "; font-family: var(--font-mono); }
+.site-concept__ex[open] summary::before { content: "− "; }
+.site-concept__ex summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+.site-concept__ex p, .site-concept__ex ul { margin: var(--space-2) 0 0; }
+.site-concept__ex ul { padding-left: 1.1em; display: grid; gap: 4px; }
+.site-concept__ex b { color: var(--ink); font-weight: 600; }
+.site-concept__src { margin: var(--space-1) 0 0; font-size: 13px; color: var(--ink-dim); }
+.site-concept__src a { color: var(--ink-dim); text-underline-offset: 3px; }
+.site-concept__src a:hover { color: var(--ink); }
+.site-concept--wide { grid-column: 1 / -1; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); grid-template-rows: auto; }
+.site-concept--wide .site-concept__fig { border-bottom: 0; border-right: 1px solid var(--line); display: grid; align-items: center; }
+.site-concepts__grid--one { grid-template-columns: minmax(0, 1fr); }
+/* Diagrami: barve iz žetonov, besedilo nikoli pod črtami */
+.site-dia text { font-family: var(--font-mono); font-size: 11px; fill: var(--ink-dim); }
+.site-dia .d-small { font-size: 10px; fill: var(--ink); }
+.site-dia .d-ink { fill: var(--ink); }
+.site-dia .d-lime { fill: var(--lime-line); }
+.site-dia .d-mag { fill: var(--magenta); }
+.site-dia .d-head { font-family: var(--font-display); font-size: 13px; font-weight: 700; fill: var(--ink); }
+.site-dia .d-line { stroke: var(--edge); fill: none; stroke-width: 1.5; }
+.site-dia .d-lime-s { stroke: var(--lime-line); fill: none; stroke-width: 2; }
+.site-dia .d-mag-s { stroke: var(--magenta); fill: none; stroke-width: 2; }
+.site-dia .d-fl { fill: var(--lime-line); }
+.site-dia .d-soft { fill: var(--lime-soft); }
+.site-dia .d-surf { fill: var(--surface); stroke: var(--line); stroke-width: 1; }
+.site-dia .d-dim { fill: var(--edge); }
+
 /* ---------- Kako delam ---------- */
 .site-services { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); }
 .site-services li { display: grid; gap: var(--space-2); align-content: start; padding: var(--space-5); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-l); transition: border-color .2s; }
@@ -231,7 +268,6 @@ html.js [data-reveal].is-in { opacity: 1; transform: none; }
   html.js [data-reveal] { opacity: 1; transform: none; transition: none; }
   html.js .site-photo__tag, .site-dot::after { animation: none; }
   .site-flow__track li::before, .site-flow__track li::after, .site-flow__loop li { transition: none; }
-  .site-mark .site-mark__i::before { animation: none; }
   .site-principles li:hover { transform: none; }
 }
 
@@ -276,7 +312,9 @@ html.js [data-reveal].is-in { opacity: 1; transform: none; }
   .site-path li:last-child { padding-bottom: 0; }
   .site-feature { grid-template-columns: minmax(0, 1fr); gap: var(--space-6); padding: var(--space-5); }
   .site-facts { grid-template-columns: minmax(0, 1fr); }
-  .site-principles, .site-skills, .site-services, .site-balance { grid-template-columns: minmax(0, 1fr); }
+  .site-principles, .site-skills, .site-services, .site-balance, .site-concepts__grid { grid-template-columns: minmax(0, 1fr); }
+  .site-concept--wide { grid-template-columns: minmax(0, 1fr); }
+  .site-concept--wide .site-concept__fig { border-right: 0; border-bottom: 1px solid var(--line); }
   .site-shortcuts li { grid-template-columns: minmax(0, 1fr); gap: var(--space-1); }
   .site-pager { grid-template-columns: minmax(0, 1fr); padding-block: var(--space-6) var(--space-5); }
   .site-pager__link--next { grid-column: auto; }

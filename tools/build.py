@@ -73,7 +73,7 @@ T = {
         "stores": "Prenos aplikacije Gobe",
         "play_k": "Prenesi za Android",
         "ios_k": "V pripravi",
-        "ios_n": "Za iPhone",
+        "ios_n": "Apple",
         "play_alt": "Na voljo v Googlu Play",
         "play_legal": "Google Play in logotip Google Play sta blagovni znamki družbe Google LLC.",
     },
@@ -106,7 +106,7 @@ T = {
         "stores": "Get the Gobe app",
         "play_k": "Download for Android",
         "ios_k": "Coming soon",
-        "ios_n": "For iPhone",
+        "ios_n": "Apple",
         "play_alt": "Get it on Google Play",
         "play_legal": "Google Play and the Google Play logo are trademarks of Google LLC.",
     },
@@ -271,10 +271,17 @@ def stores_block(lang, root):
         </div>"""
 
 
+# Ime kot znak, povsod enako: Bricolage Grotesque, veliki začetnici, zeleni piki na i (brez utripanja).
+WM = 'V<span class="site-wm__i">ı</span>ka P<span class="site-wm__i">ı</span>rnat'
+
+
+def name_html(extra=""):
+    """Ime za besedilo (naslov na domači strani, noga): bralniki zaslona preberejo »Vika Pirnat«."""
+    return f'<span class="site-sr">Vika Pirnat</span><span class="site-wm{extra}" aria-hidden="true">{WM}</span>'
+
+
 def wordmark(href):
-    """Ime kot znak: male črke, pisava Bricolage Grotesque, na i-jih utripajoči zeleni piki."""
-    i = '<span class="site-mark__i">ı</span>'
-    return f'<a class="site-mark" href="{href}" aria-label="Vika Pirnat"><span aria-hidden="true">v{i}ka p{i}rnat</span></a>'
+    return f'<a class="site-mark" href="{href}" aria-label="Vika Pirnat"><span class="site-wm" aria-hidden="true">{WM}</span></a>'
 
 
 def crumbs(lang, root, page_id):
@@ -353,7 +360,7 @@ def footer(lang, root, note):
         themes.append(f'<button type="button" data-set-theme="{m}" aria-pressed="{pressed}">{s["theme"][m]}</button>')
     return f"""<div class="vp-wrap">
   <footer class="vp-footer">
-    <span>© {YEAR} {s['site']}</span>{note_html}
+    <span>© {YEAR} {name_html(' site-wm--sm')}</span>{note_html}
     <nav class="site-footnav" aria-label="{s['footer_nav']}">{' · '.join(f'<a href="{root}{url_of(k, lang)}">{s["nav"][k]}</a>' for k in NAV)}</nav>
     <span><a href="mailto:{EMAIL}">{EMAIL}</a> · <a href="{LINKEDIN}" target="_blank" rel="noopener">LinkedIn ↗</a></span>
     <span class="site-theme"><span>{s['theme_label']}</span>
@@ -385,6 +392,7 @@ def page(lang, page_id, meta, body):
         note = (note + " · " if note else "") + s["play_legal"]
     body = body.replace("{{stores}}", stores_block(lang, root))
     body = body.replace("{{posts}}", posts_list(lang, root))
+    body = body.replace("{{name}}", name_html())
     if page_id.startswith("post:"):
         m = POSTS[lang][page_id[5:]]
         body = body.replace("{{date}}", f'<time datetime="{m["date"]}">{fmt_date(m["date"], lang)}</time>')
