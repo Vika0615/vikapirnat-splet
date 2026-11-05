@@ -27,6 +27,12 @@ GOBE_PLAY = "https://play.google.com/store/apps/details?id=io.github.vika0615.go
 # Uradni gumb Google Play (nespremenjen, iz play.google.com/intl/en_us/badges). Za jezik brez gumba ostane besedilni gumb.
 PLAY_BADGE = {"sl": "assets/img/badges/google-play-sl.png", "en": "assets/img/badges/google-play-en.png"}
 YEAR = "2026"
+# Analitika: PostHog EU brez piškotkov (cookieless_mode "always"; v projektu vklopljeno »Enable cookieless tracking«).
+# Projekt je isti kot za aplikacijo Gobe (brezplačen paket dovoli en projekt); dogodke strani loči lastnost $host.
+# Pošilja samo na vikapirnat.com, ne lokalno. Vika svoje obiske izklopi z ?brez-analitike (vklopi z ?z-analitiko).
+POSTHOG_KEY = "phc_qcTxKMxqicwLq6bWYLHHncrDpWL37qh4yPaEoa363g6V"
+POSTHOG_HOST = "https://eu.i.posthog.com"
+ANALYTICS_HOSTS = ("vikapirnat.com", "www.vikapirnat.com")
 
 # id strani: (pot SL, pot EN). Nova stran = nova vrstica + src/sl/<id>.html + src/en/<id>.html
 PAGES = {
@@ -35,12 +41,13 @@ PAGES = {
     "gobe": ("projekti/gobe/", "en/projects/gobe/"),
     "blog": ("blog/", "en/blog/"),
     "contact": ("kontakt/", "en/contact/"),
+    "privacy": ("zasebnost/", "en/privacy/"),
 }
 NAV = ["home", "work", "blog"]
 # Noga ima še kontakt (v meniju ga ni, ker je na vsaki strani pas s kontaktom)
-FOOT_NAV = NAV + ["contact"]
+FOOT_NAV = NAV + ["contact", "privacy"]
 # Drobtinice in »Nazaj«: nadrejena stran. Zapisi na blogu (post:<ime>) imajo za starša blog.
-PARENT = {"work": "home", "gobe": "work", "blog": "home", "contact": "home"}
+PARENT = {"work": "home", "gobe": "work", "blog": "home", "contact": "home", "privacy": "home"}
 # Zapisi na blogu: src/<jezik>/blog/<ime>.html (datoteke z _ na začetku so predloge). Napolni collect_posts().
 POSTS = {"sl": {}, "en": {}}
 LANGS = ("sl", "en")
@@ -48,7 +55,7 @@ LANGS = ("sl", "en")
 T = {
     "sl": {
         "locale": "sl_SI",
-        "nav": {"home": "O meni", "work": "Projekti", "blog": "Blog", "contact": "Kontakt"},
+        "nav": {"home": "O meni", "work": "Projekti", "blog": "Blog", "contact": "Kontakt", "privacy": "Zasebnost"},
         "crumb": {"gobe": "Gobe"},
         "crumbs_label": "Kje ste",
         "pager_label": "Naprej ali nazaj",
@@ -81,7 +88,7 @@ T = {
     },
     "en": {
         "locale": "en_GB",
-        "nav": {"home": "About", "work": "Projects", "blog": "Blog", "contact": "Contact"},
+        "nav": {"home": "About", "work": "Projects", "blog": "Blog", "contact": "Contact", "privacy": "Privacy"},
         "crumb": {"gobe": "Gobe"},
         "crumbs_label": "You are here",
         "pager_label": "Next or back",
@@ -372,6 +379,24 @@ def footer(lang, root, note):
 </div>"""
 
 
+# Uradni nalagalnik posthog-js (skrajšan seznam metod), init samo na lastni domeni.
+HEAD_ANALYTICS = (
+    "(function(){var h=location.hostname;if(" + "&&".join(f"h!=='{d}'" for d in ANALYTICS_HOSTS) + ")return;"
+    "try{var q=location.search;if(q.indexOf('brez-analitike')>-1)localStorage.setItem('vp-notrack','1');"
+    "if(q.indexOf('z-analitiko')>-1)localStorage.removeItem('vp-notrack');if(localStorage.getItem('vp-notrack')==='1')return}catch(e){}"
+    "!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split('.');"
+    "2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}"
+    "(p=t.createElement('script')).type='text/javascript',p.crossOrigin='anonymous',p.async=!0,"
+    "p.src=s.api_host.replace('.i.posthog.com','-assets.i.posthog.com')+'/static/array.js',"
+    "(r=t.getElementsByTagName('script')[0]).parentNode.insertBefore(p,r);var u=e;"
+    "for(void 0!==a?u=e[a]=[]:a='posthog',u.people=u.people||[],u.toString=function(t){var e='posthog';"
+    "return'posthog'!==a&&(e+='.'+a),t||(e+=' (stub)'),e},u.people.toString=function(){return u.toString(1)+'.people (stub)'},"
+    "o='capture register register_once unregister get_distinct_id get_session_id reset set_config debug'.split(' '),n=0;n<o.length;n++)g(u,o[n]);"
+    "e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);"
+    f"posthog.init('{POSTHOG_KEY}',{{api_host:'{POSTHOG_HOST}',cookieless_mode:'always',person_profiles:'identified_only',"
+    "capture_pageview:true,capture_pageleave:true,disable_session_recording:true,disable_surveys:true})})();"
+)
+
 HEAD_THEME = "document.documentElement.classList.add('js');(function(){try{var t=localStorage.getItem('vp-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}})();"
 
 
@@ -418,6 +443,7 @@ def page(lang, page_id, meta, body):
 <meta property="og:locale" content="{s['locale']}">
 <link rel="icon" href="data:,">
 <script>{HEAD_THEME}</script>
+<script>{HEAD_ANALYTICS}</script>
 <link rel="preload" href="{root}assets/fonts/red-hat-text-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{root}assets/fonts/red-hat-display-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{root}assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -488,6 +514,7 @@ def build_extras():
 <meta name="robots" content="noindex">
 <link rel="icon" href="data:,">
 <script>{HEAD_THEME}</script>
+<script>{HEAD_ANALYTICS}</script>
 <link rel="stylesheet" href="{base}assets/fonts.css">
 <link rel="stylesheet" href="{base}assets/tokens.css">
 <link rel="stylesheet" href="{base}assets/bundle.css">

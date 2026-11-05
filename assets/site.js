@@ -3,6 +3,40 @@
   var VP = window.VP;
   var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Analitika: PostHog brez piškotkov se naloži v glavi, samo na vikapirnat.com (tools/build.py, HEAD_ANALYTICS).
+  // Drugje window.posthog ne obstaja in track() ne naredi nič. Zasebnost: /zasebnost/.
+  function track(name, props) {
+    try { if (window.posthog && window.posthog.capture) window.posthog.capture(name, props || {}); } catch (e) {}
+  }
+  function placeOf(el) {
+    if (el.closest('.vp-footer')) return 'footer';
+    if (el.closest('.vp-header')) return 'header';
+    if (el.closest('.vp-band')) return 'contact_band';
+    if (el.closest('.site-contact')) return 'contact_page';
+    if (el.closest('.vp-hero')) return 'hero';
+    var s = el.closest('section[id], section[aria-labelledby]');
+    return s ? (s.id || s.getAttribute('aria-labelledby')) : 'page';
+  }
+  document.addEventListener('click', function (ev) {
+    var a = ev.target.closest && ev.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    if (href.indexOf('mailto:') === 0) track('contact_clicked', { channel: 'email', place: placeOf(a) });
+    else if (href.indexOf('linkedin.com') > -1) track('contact_clicked', { channel: 'linkedin', place: placeOf(a) });
+    else if (href.indexOf('play.google.com') > -1) track('store_clicked', { store: 'google_play', place: placeOf(a) });
+    else if (a.hasAttribute('hreflang') && a.closest('.vp-lang')) track('language_switched', { to: a.getAttribute('hreflang') });
+  });
+  document.querySelectorAll('[data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () { track('email_copied', { place: placeOf(b) }); });
+  });
+  document.querySelectorAll('.site-acc__item').forEach(function (d, i) {
+    var sum = d.querySelector('summary');
+    var name = d.querySelector('.site-acc__name');
+    if (sum) sum.addEventListener('click', function () {
+      if (!d.open) track('concept_opened', { concept: name ? name.textContent.trim() : '', concept_index: i + 1 });
+    });
+  });
+
   if (VP) {
     // Tema: sledi brskalniku, dokler obiskovalec ne izbere Svetla ali Temna.
     VP.theme(document.body, { follow: true });
