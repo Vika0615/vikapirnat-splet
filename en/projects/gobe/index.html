@@ -55,7 +55,10 @@
         <div><dt>Time</dt><dd>23 days</dd></div>
         <div><dt>Market</dt><dd>Slovenia, Android</dd></div>
       </dl>
-      <div><a class="vp-btn vp-btn--quiet" href="https://play.google.com/store/apps/details?id=io.github.vika0615.gobe" target="_blank" rel="noopener">Gobe on Google Play ↗</a></div>
+      <div class="site-stores" role="group" aria-label="Get the Gobe app">
+          <a class="site-store" href="https://play.google.com/store/apps/details?id=io.github.vika0615.gobe" target="_blank" rel="noopener"><span class="site-store__k">Download for Android</span><span class="site-store__n">Google Play ↗</span></a>
+          <span class="site-store site-store--soon"><span class="site-store__k"><span class="site-dot site-dot--soon" aria-hidden="true"></span>For iPhone · coming soon</span><span class="site-store__n">App Store</span></span>
+        </div>
     </div>
     <figure class="vp-phone">
       <img src="../../../assets/img/gobe/02-kviz.webp" width="540" height="960" alt="The Gobe quiz (in Slovenian): “What's under the cap?” with the answers gills, tubes, blunt ridges, smooth, spines and “Don't know”.">
@@ -73,12 +76,13 @@
   <section class="vp-section" style="border-top:0" aria-labelledby="why">
     <div class="vp-section__head">
       <p class="vp-eyebrow">01 · Why I started</p>
-      <h2 class="vp-h2" id="why">I wanted to do the whole thing myself, once</h2>
+      <h2 class="vp-h2" id="why">Time, freedom and the wish to make something of my own</h2>
     </div>
     <div class="vp-body">
-      <p>From idea to launch, with analytics from day one: what I measure, how I build the funnel, where privacy draws the line.</p>
-      <p>I had several ideas: an app, a journal, a website. I chose with an impact–effort matrix. Mushrooms won.</p>
-      <p>I don't know mushrooms. That turned out to be an advantage: I could test every step on myself.</p>
+      <p>When I finished at my last job, I suddenly had time and freedom. And a strong wish to take a whole product from idea to launch on my own, with analytics from day one.</p>
+      <p>Then came the idea of mushrooms. I don't know them, and many people don't know where to start. Not everyone wants to join a society. There had to be a simpler way. Not knowing them was an advantage: I could test every step on myself.</p>
+      <p>I've also always been bothered by how we strip the forest. We pick more mushrooms and chestnuts than we eat, and some end up in the bin. Technology can be a mentor: it can teach what's right and what the law says, and build patience.</p>
+      <p><span class="vp-marker">The goal: the confidence to pick your first chanterelle without asking a Facebook group, back at home, whether it's edible.</span></p>
     </div>
   </section>
 
@@ -90,6 +94,7 @@
     <div class="vp-body">
       <p>Every day, beginners in Facebook foraging groups post a photo of a mushroom and ask strangers. Under the same photo, one person writes “poisonous”, the next “edible”. A beginner can't tell who is right.</p>
       <p>By October 2026, the Clinical Toxicology Centre in Ljubljana had treated 21 mushroom poisonings that year, and 533 over five years. Toxicologist Dr Lucija Šarc warns that families often check what they ate only after the meal.</p>
+      <p>The obvious solution was a “snap and identify” app. Simple, fast, high impact. And wrong. It would encourage even more careless picking. Worse, it would give false confidence. A chanterelle can be mistaken for the deadly webcap, which can kill.</p>
       <p><span class="vp-marker">One more answer doesn't solve this. An app that teaches people to judge does.</span></p>
     </div>
     <blockquote style="margin:var(--space-7) 0 0">
@@ -117,12 +122,12 @@
     </div>
     <div class="vp-body">
       <p>I'm not a developer. Claude Code wrote the code; the decisions were mine.</p>
-      <p>An app in a day didn't interest me. With AI you quickly get something that works but has no head or tail. I looked for a balance between three things.</p>
+      <p>An app in a day didn't interest me. With AI you quickly get something that works but has neither head nor tail. I looked for a balance between instructions, management and control.</p>
     </div>
     <ol class="site-balance">
-      <li data-reveal><h3>Instructions</h3><p>On day one, a product document: purpose, non-goals, safety rules, success criteria. In the AI's instructions, rules that apply everywhere: never invent a source; anything without one is marked “source missing”.</p></li>
-      <li data-reveal style="--i:1"><h3>Management</h3><p>A plan in nine phases, with a reason for the order. Design before screens, so I build them once. Data before screens, so I test on real mushrooms. Analytics once the app is whole.</p></li>
-      <li data-reveal style="--i:2"><h3>Control</h3><p>Every screen starts as a mock-up. Code comes only after I approve it. A review and tests after every phase: 542 by the end.</p></li>
+      <li data-reveal><h3>Instructions</h3><p>On day one I wrote a product document: purpose, non-goals, safety rules and success criteria. AI got rules that apply everywhere. For example: never invent a source; mark anything without one as “source missing”.</p></li>
+      <li data-reveal style="--i:1"><h3>Management</h3><p>I split the build into nine phases and wrote down a reason for the order. Design before screens, so I build them once. Data before screens, so I test on real mushrooms. Analytics only once the app is whole.</p></li>
+      <li data-reveal style="--i:2"><h3>Control</h3><p>Every screen started as a mock-up. Code came only after I approved the mock-up. Every phase ended with a review and tests: 542 by the end.</p></li>
     </ol>
     <p class="site-more"><span class="vp-marker">In the end the product reflected the original goal, not whatever was easiest to build.</span></p>
 
@@ -133,7 +138,7 @@
       </figcaption>
       <ol class="site-flow__track">
         <li style="--i:0"><span class="site-flow__when">5 Oct</span><b>Rules</b><span>Product document: purpose, non-goals, safety, success criteria.</span></li>
-        <li style="--i:1"><span class="site-flow__when">6 Oct</span><b>Plan</b><span>Nine phases in order. A demo with 8 mushrooms becomes a full launch.</span></li>
+        <li style="--i:1"><span class="site-flow__when">6 Oct</span><b>Plan</b><span>Nine phases and their order. A full launch instead of a demo with 8 mushrooms.</span></li>
         <li style="--i:2" class="site-flow__loopstep"><span class="site-flow__when">6–9 Oct</span><b>Build</b><span>Phase by phase, each in the same loop.</span></li>
         <li style="--i:3"><span class="site-flow__when">12–26 Oct</span><b>Closed test</b><span>12 testers, 14 days and a walk in the forest. 25 → 64 species.</span></li>
         <li style="--i:4" class="site-flow__key"><span class="site-flow__when">28 Oct</span><b>Launch</b><span>Public on Google Play.</span></li>
@@ -161,15 +166,15 @@
         </div>
         <ol class="vp-reasons">
           <li><div><h4>The quiz never silently rules out a deadly mushroom.</h4><p>The risk isn't symmetrical. A wrong “don't know” costs a full basket; a wrong “edible” can cost a life.</p></div></li>
-          <li><div><h4>“Don't know” is always allowed.</h4><p>It never rules out a dangerous mushroom.</p></div></li>
-          <li><div><h4>Colour is a soft sign.</h4><p>The death cap often has an olive-brown cap, and a beginner says “brown”. So colour doesn't rule a mushroom out, it only moves it down.</p></div></li>
+          <li><div><h4>“Don't know” is always allowed.</h4><p>And it never rules out a dangerous mushroom.</p></div></li>
+          <li><div><h4>Colour is a soft sign.</h4><p>The death cap often has an olive-brown cap, and a beginner says “brown”. So colour doesn't rule a mushroom out, it only moves it down the list.</p></div></li>
           <li><div><h4>Every fact has a source.</h4><p>When sources disagree, the stricter label wins.</p></div></li>
-          <li><div><h4>Law and trust.</h4><p>Protected species by regulation, picking rules by the Mycological Association's code, analytics only after “Allow”.</p></div></li>
+          <li><div><h4>Law, nature and privacy.</h4><p>Protected species by regulation, picking rules by the Mycological Association's code, analytics only once the user taps “Allow”.</p></div></li>
         </ol>
       </div>
       <figure class="vp-phone">
         <img src="../../../assets/img/gobe/03-rezultat.webp" width="540" height="960" loading="lazy" alt="Quiz result (in Slovenian): “This is a possible match, not an identification” and the deadly poisonous lookalikes of the chanterelle.">
-        <figcaption>The result is a possible match, not an identification, and it always shows the dangerous lookalikes.</figcaption>
+        <figcaption>The result is a possible match, not an identification. It always shows the dangerous lookalikes.</figcaption>
       </figure>
     </div>
   </section>
@@ -180,9 +185,9 @@
       <h2 class="vp-h2" id="shortcuts">Where I could have gone faster, and didn't</h2>
     </div>
     <ol class="site-shortcuts">
-      <li data-reveal><p class="site-shortcuts__no">Photo identification</p><p class="site-shortcuts__yes"><b>A quiz that teaches you to look.</b> A photo can't see a volva in the soil, a smell, or a colour change when cut. The price: fewer downloads.</p></li>
-      <li data-reveal style="--i:1"><p class="site-shortcuts__no">A demo with 8 mushrooms for LinkedIn</p><p class="site-shortcuts__yes"><b>A full Google Play launch.</b> Sources, terms of use, a privacy policy and a closed test. I decided on day two.</p></li>
-      <li data-reveal style="--i:2"><p class="site-shortcuts__no">Launching with 25 species</p><p class="site-shortcuts__yes"><b>64 species.</b> Testers reported 33 times that their mushroom was missing. I checked every new species against sources.</p></li>
+      <li data-reveal><p class="site-shortcuts__no">Photo identification</p><p class="site-shortcuts__yes"><b>A quiz that teaches you to look.</b> A photo doesn't show a volva in the soil, a smell or a colour change when cut. The price: fewer downloads.</p></li>
+      <li data-reveal style="--i:1"><p class="site-shortcuts__no">A demo with 8 mushrooms for LinkedIn</p><p class="site-shortcuts__yes"><b>A full Google Play launch.</b> With sources, terms of use, a privacy policy and a closed test. I decided on day two.</p></li>
+      <li data-reveal style="--i:2"><p class="site-shortcuts__no">Launching with 25 species</p><p class="site-shortcuts__yes"><b>64 species.</b> Testers reported 33 times that their mushroom was missing from the app. I checked every new species against sources.</p></li>
       <li data-reveal style="--i:3"><p class="site-shortcuts__no">Data from the sofa</p><p class="site-shortcuts__yes"><b>A test in the forest.</b> Testers mostly clicked through the quiz at home. That kind of data measures curiosity, not use.</p></li>
       <li data-reveal style="--i:4"><p class="site-shortcuts__no">Raw numbers</p><p class="site-shortcuts__yes"><b>A filter for test devices.</b> Google's test bots counted as users. Active devices weren't 87, but 57.</p></li>
     </ol>
@@ -193,20 +198,20 @@
       <div>
         <div class="vp-section__head">
           <p class="vp-eyebrow">07 · Where I kept it simple</p>
-          <h2 class="vp-h2" id="simple">What I didn't build</h2>
+          <h2 class="vp-h2" id="simple">Less was more</h2>
         </div>
         <ul class="vp-notes">
-          <li><h4>Accounts and a server</h4><p>Nobody signs in. Everything is inside the app.</p></li>
-          <li><h4>Internet, camera and location</h4><p>There's no signal in the forest. Fewer permissions, more privacy.</p></li>
-          <li><h4>Waiting for an expert review</h4><p>Google Play doesn't require one. The requirement was in my own spec; I replaced it with sources.</p></li>
-          <li><h4>An app for every forager</h4><p>One main user, one promise.</p></li>
-          <li><h4>Warnings on every update</h4><p>The warning shows on first launch. Too many warnings and people stop reading.</p></li>
-          <li><h4>Ads</h4><p>An ad next to a warning about a deadly mushroom would erode trust.</p></li>
+          <li><h4>No accounts or server</h4><p>Nobody needs to sign in. Everything is inside the app.</p></li>
+          <li><h4>No internet, camera or location</h4><p>There's no signal in the forest. Fewer permissions, more privacy.</p></li>
+          <li><h4>No waiting for an expert review</h4><p>Google Play doesn't require one. I had set that requirement myself and replaced it with sources.</p></li>
+          <li><h4>No app for everyone</h4><p>One main user and one promise.</p></li>
+          <li><h4>No warnings on every update</h4><p>The warning shows on first launch. Too many warnings and people stop reading.</p></li>
+          <li><h4>No ads</h4><p>An ad next to a warning about a deadly mushroom would undermine trust.</p></li>
         </ul>
       </div>
       <figure class="vp-phone">
         <img src="../../../assets/img/gobe/05-dvojnice.webp" width="540" height="960" loading="lazy" alt="A mushroom card (in Slovenian): “Watch out for lookalikes” with the deadly poisonous funeral bell, and lookalikes the app doesn't know yet.">
-        <figcaption>Lookalikes, even ones the app doesn't know yet.</figcaption>
+        <figcaption>The app shows lookalikes, even ones it doesn't know yet.</figcaption>
       </figure>
     </div>
   </section>
@@ -220,7 +225,7 @@
         </div>
         <div class="vp-body">
           <p>The most opened mushroom in the first week was the false chanterelle, a poisonous lookalike of the chanterelle. Second was the deadly dapperling, a deadly lookalike of the parasol. The porcini isn't in the top eight.</p>
-          <p>55% of opens happen at the weekend, when people go foraging. The numbers are small, 46 people with analytics in one week, but the direction is clear.</p>
+          <p>55% of opens were at the weekend, when people go foraging. The numbers are small: 46 people with analytics in one week. But the direction is clear.</p>
           <p><span class="vp-marker">They're not just looking for a name. They're looking for the difference between edible and poisonous.</span></p>
         </div>
       </div>
@@ -228,7 +233,7 @@
         <p class="vp-bars__title">“Don't know” on the volva question</p>
         <div class="vp-bar"><div class="vp-bar__label"><span>Before photos in the help</span><span class="vp-bar__value">12 of 20 · 60%</span></div><div class="vp-bar__track"><div class="vp-bar__fill" style="width:60%"></div></div></div>
         <div class="vp-bar vp-bar--after"><div class="vp-bar__label"><span>After adding photos</span><span class="vp-bar__value">1 of 12 · 8%</span></div><div class="vp-bar__track"><div class="vp-bar__fill" style="width:8.33%"></div></div></div>
-        <p class="vp-small">Fewer “don't know” answers isn't automatically better; people may be guessing. That's why “don't know” never rules out a dangerous mushroom.</p>
+        <p class="vp-small">Fewer “don't know” answers isn't automatically better: people may be guessing.</p>
       </div>
     </div>
   </section>
@@ -239,10 +244,10 @@
       <h2 class="vp-h2" id="lessons">For every next product</h2>
     </div>
     <ul class="vp-notes">
-      <li><h4>Letting go is hardest</h4><p>The hardest decision is dropping the feature everyone expects.</p></li>
-      <li><h4>Building with AI is fast</h4><p>The first working version was ready in a week. What improved the app was the slow part: testing, sources and reviews.</p></li>
-      <li><h4>Test where it's used</h4><p>The real test is the place where the product is used.</p></li>
-      <li><h4>Measure before testing</h4><p>Without analytics I'd have had a feeling, not evidence. I test the filter: if a number is the same with and without it, it doesn't work.</p></li>
+      <li><h4>Letting go is hardest</h4><p>Especially a feature everyone expects.</p></li>
+      <li><h4>AI speeds up building, not quality</h4><p>The first working version was ready in a week. What improved the app was the slow part: testing, sources and reviews.</p></li>
+      <li><h4>Test where it's used</h4><p>For Gobe, that's the forest, not the sofa.</p></li>
+      <li><h4>Measure before testing</h4><p>Without analytics I'd have had a feeling, not evidence.</p></li>
     </ul>
   </section>
 
@@ -252,7 +257,7 @@
   <div class="vp-wrap vp-band__inner">
     <div class="site-stack">
       <p class="vp-eyebrow">Contact</p>
-      <h2 class="vp-h2" id="cs-contact">Do you have an idea or a product, and aren't sure who it's for and what it must do?</h2>
+      <h2 class="vp-h2" id="cs-contact">Do you have an idea or a product, but aren't sure who it's for and what it must do?</h2>
       <p class="vp-lede">Write me a few lines. I'll reply personally. The first 30-minute call is free.</p>
     </div>
     <div class="vp-contact">

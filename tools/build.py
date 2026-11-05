@@ -23,6 +23,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SITE_URL = "https://vika0615.github.io/vikapirnat-splet/"  # z domeno: "https://vikapirnat.si/"
 EMAIL = "vika.pirnat@gmail.com"
 LINKEDIN = "https://www.linkedin.com/in/vika-pirnat/"
+GOBE_PLAY = "https://play.google.com/store/apps/details?id=io.github.vika0615.gobe"
 YEAR = "2026"
 
 # id strani: (pot SL, pot EN). Nova stran = nova vrstica + src/sl/<id>.html + src/en/<id>.html
@@ -55,6 +56,9 @@ T = {
         "c_mail": "E-pošta",
         "copy": "Kopiraj",
         "linkedin": "Pišite mi na LinkedInu ↗",
+        "stores": "Prenos aplikacije Gobe",
+        "play_k": "Prenesi za Android",
+        "ios_k": "Za iPhone · v pripravi",
     },
     "en": {
         "locale": "en_GB",
@@ -74,6 +78,9 @@ T = {
         "c_mail": "Email",
         "copy": "Copy",
         "linkedin": "Message me on LinkedIn ↗",
+        "stores": "Get the Gobe app",
+        "play_k": "Download for Android",
+        "ios_k": "For iPhone · coming soon",
     },
 }
 
@@ -200,6 +207,15 @@ def contact_block(lang):
     </div>"""
 
 
+def stores_block(lang):
+    """Gumba za aplikacijo Gobe: Google Play (deluje) in App Store (v pripravi, utripa)."""
+    s = T[lang]
+    return f"""<div class="site-stores" role="group" aria-label="{s['stores']}">
+          <a class="site-store" href="{GOBE_PLAY}" target="_blank" rel="noopener"><span class="site-store__k">{s['play_k']}</span><span class="site-store__n">Google Play ↗</span></a>
+          <span class="site-store site-store--soon"><span class="site-store__k"><span class="site-dot site-dot--soon" aria-hidden="true"></span>{s['ios_k']}</span><span class="site-store__n">App Store</span></span>
+        </div>"""
+
+
 def header(lang, root, page_id, nav_key):
     s = T[lang]
     nav = []
@@ -261,6 +277,7 @@ def page(lang, page_id, meta, body):
     )
     body = body.replace("{{cta}}", cta_band(lang, root, page_id))
     body = body.replace("{{contact}}", contact_block(lang))
+    body = body.replace("{{stores}}", stores_block(lang))
     body = body.replace("{{email}}", EMAIL).replace("{{linkedin}}", LINKEDIN)
     body = re.sub(r"\{\{href:([a-z0-9-]+)\}\}", lambda m: root + url_of(m.group(1), lang), body)
     body = body.replace("{{root}}", root)

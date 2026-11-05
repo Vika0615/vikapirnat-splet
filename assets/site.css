@@ -161,6 +161,16 @@ html.js .site-flow:not(.is-in) .site-flow__track li::before { background: var(--
 html.js .site-flow:not(.is-in) .site-flow__track li::after { background-position: right; }
 html.js .site-flow:not(.is-in) .site-flow__loop li { border-color: var(--line); background: var(--ground); }
 
+/* Gumba za prenos aplikacije: Google Play deluje, App Store je v pripravi (utripa) */
+.site-stores { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.site-store { display: inline-grid; gap: 2px; min-width: 176px; padding: 10px 16px; border: 1px solid var(--edge); border-radius: var(--radius-m); color: var(--ink); text-decoration: none; transition: border-color .2s; }
+a.site-store:hover { border-color: var(--ink); }
+.site-store__k { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 11px; line-height: 1.3; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-dim); }
+.site-store__n { font-family: var(--font-display); font-size: 18px; line-height: 1.2; font-weight: 700; }
+.site-store--soon { border-style: dashed; color: var(--ink-dim); cursor: default; }
+.site-dot--soon { width: 7px; height: 7px; background: var(--magenta); }
+.site-dot--soon::after { border-color: var(--magenta); }
+
 /* Odprta za delo (kontakt) */
 .site-open { margin: 0; padding: var(--space-3) var(--space-4); max-width: var(--measure); background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--lime-line); border-radius: var(--radius-m); color: var(--ink); font-size: 16px; line-height: 1.5; }
 
