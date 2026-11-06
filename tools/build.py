@@ -382,10 +382,16 @@ def footer(lang, root, note):
 
 
 # Uradni nalagalnik posthog-js (skrajšan seznam metod), init samo na lastni domeni.
+# Boti: brez piškotkov PostHog ne dobi podatka o brskalniku, zato svojega filtra ($virt_is_bot) tu ne more uporabiti.
+# Zato se analitika zažene šele ob prvem dejanju človeka (premik miške, dotik, drsenje, tipka), avtomatizirani
+# brskalniki (navigator.webdriver) pa nikoli. Obisk brez kakršnegakoli dejanja se ne šteje.
 HEAD_ANALYTICS = (
     "(function(){var h=location.hostname;if(" + "&&".join(f"h!=='{d}'" for d in ANALYTICS_HOSTS) + ")return;"
     "try{var q=location.search;if(q.indexOf('brez-analitike')>-1)localStorage.setItem('vp-notrack','1');"
     "if(q.indexOf('z-analitiko')>-1)localStorage.removeItem('vp-notrack');if(localStorage.getItem('vp-notrack')==='1')return}catch(e){}"
+    "if(navigator.webdriver)return;"
+    "var E=['pointerdown','pointermove','keydown','scroll','touchstart'],O={passive:true,capture:true},D=0;"
+    "function go(){if(D)return;D=1;E.forEach(function(n){removeEventListener(n,go,O)});"
     "!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split('.');"
     "2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}"
     "(p=t.createElement('script')).type='text/javascript',p.crossOrigin='anonymous',p.async=!0,"
@@ -396,7 +402,8 @@ HEAD_ANALYTICS = (
     "o='capture register register_once unregister get_distinct_id get_session_id reset set_config debug'.split(' '),n=0;n<o.length;n++)g(u,o[n]);"
     "e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);"
     f"posthog.init('{POSTHOG_KEY}',{{api_host:'{POSTHOG_HOST}',cookieless_mode:'always',person_profiles:'identified_only',"
-    "capture_pageview:true,capture_pageleave:true,disable_session_recording:true,disable_surveys:true})})();"
+    "capture_pageview:true,capture_pageleave:true,disable_session_recording:true,disable_surveys:true})}"
+    "E.forEach(function(n){addEventListener(n,go,O)})})();"
 )
 
 HEAD_THEME = "document.documentElement.classList.add('js');(function(){try{var t=localStorage.getItem('vp-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}})();"
