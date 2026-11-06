@@ -7,11 +7,10 @@ html { scroll-padding-top: var(--space-4); }
 
 /* Ime kot znak, povsod enako (glava, naslov na domači strani, noga): Bricolage Grotesque, veliki začetnici,
    na i-jih mirni, malo povečani zeleni piki z razmikom od črk */
-.site-wm { font-family: "Bricolage Grotesque", var(--font-display); font-weight: 700; letter-spacing: -0.02em; white-space: nowrap; }
-.site-wm__i { position: relative; display: inline-block; margin-inline: 0.035em; }
-.site-wm__i::after { content: ""; position: absolute; left: 50%; top: -0.12em; width: 0.22em; height: 0.22em; margin-left: -0.11em; border-radius: 50%; background: var(--lime-line); }
+.site-wm { white-space: nowrap; }
+.site-logo { display: inline-block; height: 0.771em; width: auto; vertical-align: -0.014em; overflow: visible; }
+.site-logo__dots { fill: var(--lime-line); }
 .site-wm--sm { font-size: 17px; color: var(--ink); }
-.site-wm--sm .site-wm__i::after { width: 4px; height: 4px; margin-left: -2px; top: -3px; }
 .site-mark { display: inline-block; padding-block: 10px 4px; font-size: 28px; line-height: 1; color: var(--ink); text-decoration: none; }
 .site-mark:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; border-radius: var(--radius-s); }
 

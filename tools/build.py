@@ -281,17 +281,18 @@ def stores_block(lang, root):
         </div>"""
 
 
-# Ime kot znak, povsod enako: Bricolage Grotesque, veliki začetnici, zeleni piki na i (brez utripanja).
-WM = 'V<span class="site-wm__i">ı</span>ka P<span class="site-wm__i">ı</span>rnat'
+# Logotip: vektorski obrisi črk Bricolage Grotesque in zeleni piki na i, povsod ista oblika (tools/logo.svg).
+# Barva črk je barva besedila, barva pik je v assets/site.css. Datoteki za drugo uporabo: assets/img/logo/.
+LOGO = (ROOT / "tools" / "logo.svg").read_text(encoding="utf-8").strip()
 
 
 def name_html(extra=""):
     """Ime za besedilo (naslov na domači strani, noga): bralniki zaslona preberejo »Vika Pirnat«."""
-    return f'<span class="site-sr">Vika Pirnat</span><span class="site-wm{extra}" aria-hidden="true">{WM}</span>'
+    return f'<span class="site-sr">Vika Pirnat</span><span class="site-wm{extra}" aria-hidden="true">{LOGO}</span>'
 
 
 def wordmark(href):
-    return f'<a class="site-mark" href="{href}" aria-label="Vika Pirnat"><span class="site-wm" aria-hidden="true">{WM}</span></a>'
+    return f'<a class="site-mark" href="{href}" aria-label="Vika Pirnat"><span class="site-wm" aria-hidden="true">{LOGO}</span></a>'
 
 
 def crumbs(lang, root, page_id):
@@ -453,7 +454,6 @@ def page(lang, page_id, meta, body):
 <script>{analytics}</script>
 <link rel="preload" href="{root}assets/fonts/red-hat-text-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{root}assets/fonts/red-hat-display-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="{root}assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{root}assets/fonts.css">
 <link rel="stylesheet" href="{root}assets/tokens.css">
 <link rel="stylesheet" href="{root}assets/bundle.css">
