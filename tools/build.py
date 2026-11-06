@@ -42,12 +42,13 @@ PAGES = {
     "blog": ("blog/", "en/blog/"),
     "contact": ("kontakt/", "en/contact/"),
     "privacy": ("zasebnost/", "en/privacy/"),
+    "quiz": ("kviz/", "en/quiz/"),
 }
 NAV = ["home", "work", "blog"]
 # Noga ima še kontakt (v meniju ga ni, ker je na vsaki strani pas s kontaktom)
 FOOT_NAV = NAV + ["contact", "privacy"]
 # Drobtinice in »Nazaj«: nadrejena stran. Zapisi na blogu (post:<ime>) imajo za starša blog.
-PARENT = {"work": "home", "gobe": "work", "blog": "home", "contact": "home", "privacy": "home"}
+PARENT = {"work": "home", "gobe": "work", "blog": "home", "contact": "home", "privacy": "home", "quiz": "home"}
 # Zapisi na blogu: src/<jezik>/blog/<ime>.html (datoteke z _ na začetku so predloge). Napolni collect_posts().
 POSTS = {"sl": {}, "en": {}}
 LANGS = ("sl", "en")
@@ -56,7 +57,7 @@ T = {
     "sl": {
         "locale": "sl_SI",
         "nav": {"home": "O meni", "work": "Projekti", "blog": "Blog", "contact": "Kontakt", "privacy": "Zasebnost"},
-        "crumb": {"gobe": "Gobe"},
+        "crumb": {"gobe": "Gobe", "quiz": "Kviz"},
         "crumbs_label": "Kje ste",
         "pager_label": "Naprej ali nazaj",
         "back": "Nazaj",
@@ -89,7 +90,7 @@ T = {
     "en": {
         "locale": "en_GB",
         "nav": {"home": "About", "work": "Projects", "blog": "Blog", "contact": "Contact", "privacy": "Privacy"},
-        "crumb": {"gobe": "Gobe"},
+        "crumb": {"gobe": "Gobe", "quiz": "Quiz"},
         "crumbs_label": "You are here",
         "pager_label": "Next or back",
         "back": "Back",
@@ -426,6 +427,12 @@ def page(lang, page_id, meta, body):
     body = body.replace("{{email}}", EMAIL).replace("{{linkedin}}", LINKEDIN)
     body = re.sub(r"\{\{href:([a-z0-9-]+)\}\}", lambda m: root + url_of(m.group(1), lang), body)
     body = body.replace("{{root}}", root)
+    # V glavi strani v src/: "image: <pot>" doda sliko za deljenje povezave.
+    # "analytics: pageviews" meri obiske, ne pa klikov: PostHog bi sicer zapisal tudi besedilo gumbov (v kvizu so to odgovori).
+    analytics = HEAD_ANALYTICS
+    if meta.get("analytics") == "pageviews":
+        analytics = analytics.replace("capture_pageview:true", "autocapture:false,capture_heatmaps:false,capture_dead_clicks:false,capture_pageview:true")
+    og_image = f'<meta property="og:image" content="{SITE_URL}{meta["image"]}">\n' if meta.get("image") else ""
     return f"""<!doctype html>
 <html lang="{lang}">
 <head>
@@ -441,9 +448,9 @@ def page(lang, page_id, meta, body):
 <meta property="og:description" content="{esc(desc)}">
 <meta property="og:url" content="{SITE_URL}{path}">
 <meta property="og:locale" content="{s['locale']}">
-<link rel="icon" href="data:,">
+{og_image}<link rel="icon" href="data:,">
 <script>{HEAD_THEME}</script>
-<script>{HEAD_ANALYTICS}</script>
+<script>{analytics}</script>
 <link rel="preload" href="{root}assets/fonts/red-hat-text-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{root}assets/fonts/red-hat-display-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{root}assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>

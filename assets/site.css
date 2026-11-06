@@ -348,3 +348,27 @@ html.js [data-reveal].is-in { opacity: 1; transform: none; }
   html.js .site-flow:not(.is-in) .site-flow__track li::after { background-position: bottom; }
   .vp-contact { padding: var(--space-5); }
 }
+
+/* Kviz »Kaj če ni služba?« (assets/quiz.js) */
+.site-quiz { display: grid; gap: var(--space-6); max-width: 38rem; min-width: 0; padding-block: var(--space-7) var(--space-6); }
+.site-quiz p { margin: 0; }
+.site-quiz h1:focus, .site-quiz h2:focus { outline: none; }
+.site-quiz__mark { background: var(--lime); color: var(--on-lime); padding-inline: 0.14em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.site-quiz__block { display: grid; gap: var(--space-3); min-width: 0; }
+.site-quiz__levels { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
+.site-quiz__levels li { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr) auto; align-items: center; gap: var(--space-3); font-size: 15px; }
+.site-quiz__band { display: block; height: 8px; width: var(--w); border-radius: 999px; background: var(--line); }
+.site-quiz__dots { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; min-height: 10px; }
+.site-quiz__dot { width: 10px; height: 10px; border-radius: 50%; background: var(--edge); }
+.site-quiz__top .site-quiz__dot { background: var(--lime-line); }
+.site-quiz__top .site-quiz__name { font-weight: 600; }
+.site-quiz__n { font-family: var(--font-mono); font-size: 13px; color: var(--ink-dim); }
+.site-quiz__progress { display: flex; gap: var(--space-1); }
+.site-quiz__progress span { flex: 1; height: 4px; border-radius: 2px; background: var(--line); }
+.site-quiz__progress .is-done { background: var(--lime-line); }
+.site-quiz__options { display: grid; gap: var(--space-2); }
+.site-quiz__opt { width: 100%; padding: 14px var(--space-4); font: inherit; color: var(--ink); text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-l); cursor: pointer; }
+.site-quiz__opt:hover { border-color: var(--edge); }
+.site-quiz__opt[aria-pressed="true"] { border-color: var(--lime-line); box-shadow: inset 0 0 0 1px var(--lime-line); }
+.site-quiz__step { display: grid; gap: var(--space-1); padding-left: var(--space-4); border-left: 3px solid var(--lime-line); }
+.site-quiz__also { display: grid; gap: var(--space-3); padding-top: var(--space-5); border-top: 1px solid var(--line); }
