@@ -5,11 +5,9 @@ html { scroll-padding-top: var(--space-4); }
 /* Samo za bralnike zaslona */
 .site-sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
-/* Ime kot znak, povsod enako (glava, naslov na domači strani, noga): Bricolage Grotesque, veliki začetnici,
-   na i-jih mirni, malo povečani zeleni piki z razmikom od črk */
+/* Logotip (tools/logo.svg): vektorski obrisi črk, zeleni piki na i. Velikost določa font-size okoli njega. */
 .site-wm { white-space: nowrap; }
-.site-logo { display: inline-block; height: 0.771em; width: auto; vertical-align: -0.014em; overflow: visible; }
-.site-logo__dots { fill: var(--lime-line); }
+.site-logo { display: inline-block; vertical-align: -0.014em; overflow: visible; }
 .site-wm--sm { font-size: 17px; color: var(--ink); }
 .site-mark { display: inline-block; padding-block: 10px 4px; font-size: 28px; line-height: 1; color: var(--ink); text-decoration: none; }
 .site-mark:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; border-radius: var(--radius-s); }

@@ -33,6 +33,10 @@ Design sistem: https://claude.ai/artifact/QMSTcyAZq2PXfPNSFTN81s
 4. Na strani Projekti (`src/sl/work.html`, `src/en/work.html`) kopiraj kartico `<li class="site-card">` in jo postavi na vrh seznama. Za kartico »V pripravi« uporabi `site-card site-card--soon` (navodilo je v komentarju na strani).
 5. `py tools/build.py`, commit, push.
 
+## Logotip
+
+Logotip je vektorski: `tools/logo.svg` se ob gradnji vstavi v glavo, nogo in na domačo stran, zato barve sledijo temi, velikost pa `font-size`. Za uporabo drugje sta v `assets/img/logo/` datoteki SVG in PNG za svetlo in temno podlago.
+
 ## Kviz
 
 Kviz »Kaj če ni služba?« je na `/kviz/` in `/en/quiz/`. Besedilo v obeh jezikih in logika sta v `assets/quiz.js`, videz v `assets/site.css` (`.site-quiz`), stran v `src/sl/quiz.html` in `src/en/quiz.html`. V meniju ga ni. Slika za deljenje je v glavi strani (`image:`, `assets/img/kviz/`). Analitika meri samo obiske (`analytics: pageviews` v glavi strani), da PostHog ne zapiše besedila gumbov, torej odgovorov. Tega ne odstrani.
